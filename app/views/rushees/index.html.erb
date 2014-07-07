@@ -1,0 +1,29 @@
+<h1>Listing rushees</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Bio</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rushees.each do |rushee| %>
+      <tr>
+        <td><%= rushee.name %></td>
+        <td><%= rushee.age %></td>
+        <td><%= rushee.bio %></td>
+        <td><%= link_to 'Show', rushee %></td>
+        <td><%= link_to 'Edit', edit_rushee_path(rushee) %></td>
+        <td><%= link_to 'Destroy', rushee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rushee', new_rushee_path %>

@@ -1,5 +1,4 @@
 <nav class="navbar navbar-default" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -11,15 +10,16 @@
       <%= link_to "Creepbook 2k14", root_path, class: "navbar-brand" %>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "About", "http://www.sigmachi.org" %></a> </li>
         <% if current_user %>
           <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+        <% else %>
+          <li><%= link_to "Sign in with Facebook", "/auth/facebook" %> <!-- changed link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" // not sure if I really fucked something up or not -->
         <% end %>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-collapse -->
+    </div>
+  </div>
 </nav>

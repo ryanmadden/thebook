@@ -16,7 +16,9 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "About", "http://www.sigmachi.org" %></a> </li>
-        <li><%= link_to "Log in", "#" %></li>
+        <% if current_user %>
+          <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-collapse -->

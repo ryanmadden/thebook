@@ -1,28 +1,20 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Okay Jon, I'll do my best. If (when) I forget something/make something horribly unclear, don't kill me plz.
 
-Things you may want to cover:
+What we have so far is a very bare-bones user authenitcation system run through Facebook using the OmniAuth gem and a simple scaffold of rushees. I did a tiny bit of front-end stuff using Bootstrap just to allow me to see the changes that I had been making.
 
-* Ruby version
+Omniauth:
+Actually pretty simple. I followed [instructions online](https://coderwall.com/p/bsfitw). it's similar but not the same to what they have on their git page because I chose not to use it alongside Devise (another authentication gem).
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+• /app/assets/javascripts/facebook.js.cofffee -- Some js that I added (read: copied off of the internet) for client-side functionality. Understand its purpose but not exactly how it does what it does. It frustratingly logs you out of facebook when you log out of the web app... We should be able to change that pretty easily but I am hesistant to mess with a language that I do not understand in the slightest
+• /app/controllers/sessions_controller.rb -- controls sessions, as the name would suggest
+• /app/models/user.rb -- gets user info (name, email) from FB
+• /app/config/omniauth.rb -- FB app info. I don't want the 'secretkey' public so I'll send it to you and you can put it into the file
+• /app/config/routes.rb -- configures the redirect paths after successful FB authentication and logout
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Rushees:
+Simple rails scaffold that currently has columns for name, age, and bio. In /app/controllers/rushees_contoller.rb I have written a bit of permissions code that (should) prevent users from editing others' posts. As it would logically make sense, rushee belongs_to :user and user has_many :rusheess (/app/models/user.rb and /app/models/rushee.rb).
+
+

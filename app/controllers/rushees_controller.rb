@@ -1,5 +1,6 @@
 class RusheesController < ApplicationController
   before_action :set_rushee, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
     @rushees = Rushee.all
@@ -25,7 +26,7 @@ class RusheesController < ApplicationController
     end
   end
 
-  def create
+  def update
     if @rushee.update(rushee_params)
       redirect_to @rushee, notice: 'Rushee was successfully updated.'
     else
@@ -42,6 +43,11 @@ class RusheesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_rushee
       @rushee = Rushee.find(params[:id])
+    end
+
+    def correct_user
+      @rushee = current_user.rushee.find_by(id: params[:id])
+      redirect_to rushees_path, notice: "Not authorized to edit this post" if @rushee.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

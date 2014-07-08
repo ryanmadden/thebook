@@ -15,5 +15,8 @@
   <%= @rushee.bio %>
 </p>
 
-<%= link_to 'Edit', edit_rushee_path(@rushee) %> |
+<% if @rushee.user == current_user %>
+	<%= link_to 'Edit', edit_rushee_path(@rushee) %>
+<% end %>
+
 <%= link_to 'Back', rushees_path %>

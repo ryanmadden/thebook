@@ -6,6 +6,7 @@
       <th>Name</th>
       <th>Age</th>
       <th>Bio</th>
+      <th>Author</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,12 +14,14 @@
   <tbody>
     <% @rushees.each do |rushee| %>
       <tr>
-        <td><%= rushee.name %></td>
+        <td><%= link_to rushee.name, rushee %></td>
         <td><%= rushee.age %></td>
         <td><%= rushee.bio %></td>
-        <td><%= link_to 'Show', rushee %></td>
-        <td><%= link_to 'Edit', edit_rushee_path(rushee) %></td>
-        <td><%= link_to 'Destroy', rushee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= rushee.user.name if rushee.user%></td>
+        <% if rushee.user == current_user %>
+          <td><%= link_to 'Edit', edit_rushee_path(rushee) %></td>
+          <td><%= link_to 'Delete', rushee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

@@ -2,7 +2,7 @@
 	<h1>Creepbook Homepage</h1>
 	<p>There should be some sort of challenge here</p>
 	<% if current_user %>
-		Welcome <strong><%= current_user.name %></strong>!
+		<strong>Welcome, brother!</strong>
     <% else %>
         <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
     <% end %>

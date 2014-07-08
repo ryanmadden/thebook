@@ -19,7 +19,7 @@
           <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
           <li><%= link_to current_user.name, "#" %></li>
         <% else %>
-          <li><%= link_to "Sign in with Facebook", "/auth/facebook" %> <!-- changed from link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" // not sure if I really fucked something up or not -->
+          <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %> <!-- changed from link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" // not sure if I really fucked something up or not -->
         <% end %>
       </ul>
     </div>

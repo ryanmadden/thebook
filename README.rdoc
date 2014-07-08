@@ -5,7 +5,7 @@ Okay Jon, I'll do my best. If (when) I forget something/make something horribly 
 What we have so far is a very bare-bones user authenitcation system run through Facebook using the OmniAuth gem and a simple scaffold of rushees. I did a tiny bit of front-end stuff using Bootstrap just to allow me to see the changes that I had been making.
 
 Omniauth:
-Actually pretty simple. I followed [instructions online](https://coderwall.com/p/bsfitw). it's similar but not the same to what they have on their git page because I chose not to use it alongside Devise (another authentication gem).
+Actually pretty simple. I followed instructions online (https://coderwall.com/p/bsfitw). it's similar but not the same to what they have on their git page because I chose not to use it alongside Devise (another authentication gem).
 
 • /app/assets/javascripts/facebook.js.cofffee -- Some js that I added (read: copied off of the internet) for client-side functionality. Understand its purpose but not exactly how it does what it does. It frustratingly logs you out of facebook when you log out of the web app... We should be able to change that pretty easily but I am hesistant to mess with a language that I do not understand in the slightest
 

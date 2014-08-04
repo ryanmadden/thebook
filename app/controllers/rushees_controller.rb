@@ -1,4 +1,5 @@
 class RusheesController < ApplicationController
+  before_action :signed_in, only: [:index, :show, :edit, :update, :destroy]
   before_action :set_rushee, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
@@ -10,15 +11,15 @@ class RusheesController < ApplicationController
   end
 
   def new
-    @rushee = Rushee.new
+    @rushee = current_user.rushees.build
   end
 
   def edit
   end
 
 
-   def create
-    @rushee = Rushee.new(rushee_params)
+  def create
+    @rushee = current_user.rushees.build(rushee_params)
     if @rushee.save
       redirect_to @rushee, notice: 'Rushee was successfully added.'
     else
@@ -45,8 +46,12 @@ class RusheesController < ApplicationController
       @rushee = Rushee.find(params[:id])
     end
 
+    def signed_in
+      redirect_to root_path, notice: "Please log in to view page" if not current_user
+    end
+
     def correct_user
-      @rushee = current_user.rushee.find_by(id: params[:id])
+      @rushee = current_user.rushees.find_by(id: params[:id])
       redirect_to rushees_path, notice: "Not authorized to edit this post" if @rushee.nil?
     end
 
@@ -55,3 +60,9 @@ class RusheesController < ApplicationController
       params.require(:rushee).permit(:name, :age, :bio)
     end
 end
+
+
+# def correct_user
+#      @rushee = current_user.rushees.find_by(id: params[:id])
+#      redirect_to rushees_path, notice: "Not authorized to edit this post" if @rushee.nil?
+#    end

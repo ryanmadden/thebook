@@ -19,3 +19,6 @@
 /log/*.log
 /tmp
 .DS_Store
+
+# Ignore omniauth information
+/config/initializers/omniauth.rb

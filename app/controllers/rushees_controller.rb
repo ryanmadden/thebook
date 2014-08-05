@@ -1,5 +1,5 @@
 class RusheesController < ApplicationController
-  before_action :signed_in, only: [:index, :show, :edit, :update, :destroy]
+  before_action :signed_in, only: [:index, :show, :new, :edit, :update, :destroy]
   before_action :set_rushee, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
@@ -57,12 +57,7 @@ class RusheesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rushee_params
-      params.require(:rushee).permit(:name, :age, :bio)
+      params.require(:rushee).permit(:name, :age, :bio, :image)
     end
 end
 
-
-# def correct_user
-#      @rushee = current_user.rushees.find_by(id: params[:id])
-#      redirect_to rushees_path, notice: "Not authorized to edit this post" if @rushee.nil?
-#    end

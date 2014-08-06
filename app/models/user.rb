@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
   end
 
   has_many :rushees
+  acts_as_voter
 end

@@ -40,6 +40,22 @@ class RusheesController < ApplicationController
     redirect_to rushees_url
   end
 
+  def vote
+    @rushee = Rushee.find(params[:id])
+    @rushee.liked_by current_user
+    respond_to do |format|
+      format.html {redirect_to :back }
+    end
+  end
+
+  def unvote
+    @rushee = Rushee.find(params[:id])
+    @rushee.unliked_by current_user
+    respond_to do |format|
+      format.html {redirect_to :back }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_rushee

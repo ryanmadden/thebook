@@ -11,6 +11,7 @@ gem 'bootstrap-sass'
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
 gem 'paperclip', github: 'thoughtbot/paperclip'
+gem 'acts_as_votable', '~> 0.10.0'
 
 
 

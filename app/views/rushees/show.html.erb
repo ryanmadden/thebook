@@ -1,6 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <%= image_tag @rushee.image.url(:medium) %>
+
+<p>
+  <% if current_user.voted_for? @rushee %>
+  	<%= link_to 'Unlike', unlike_rushee_path(@rushee), method: :put %>
+  <% else %>
+  	<%= link_to 'Like', like_rushee_path(@rushee), method: :put %>
+  <% end %>
+  (<%= @rushee.votes_for.size %>)
+</p>
 <p>
   <strong>Name:</strong>
   <%= @rushee.name %>

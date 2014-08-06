@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   
-  resources :rushees
+  resources :rushees do
+    member do
+      put 'like', to: "rushees#vote"
+      put 'unlike', to: "rushees#unvote"
+    end
+  end
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]

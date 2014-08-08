@@ -5,6 +5,13 @@ Rails.application.routes.draw do
       put 'like', to: "rushees#vote"
       put 'unlike', to: "rushees#unvote"
     end
+    resources :comments do
+      member do
+        put 'like', to: "comments#vote"
+        put 'unlike', to: "comments#unvote"
+        put 'delete', to: "comments#destroy"
+      end
+    end
   end
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]

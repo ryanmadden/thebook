@@ -11,5 +11,6 @@ class User < ActiveRecord::Base
   end
 
   has_many :rushees
+  has_many :comments
   acts_as_voter
 end

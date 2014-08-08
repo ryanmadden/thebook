@@ -1,5 +1,6 @@
 class Rushee < ActiveRecord::Base
 	belongs_to :user
+	has_many :comments
 	acts_as_votable
 
 	has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }

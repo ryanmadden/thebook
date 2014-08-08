@@ -1,4 +1,4 @@
-<div id="rushees">
+<div id="rushees" class="transitions-enabled">
   <% @rushees.each do |rushee| %>
     <div class="box panel panel-default"> <!-- Class doesn't work, bootstrap deleted :( -->
       <%= image_tag rushee.image.url(:medium) %>

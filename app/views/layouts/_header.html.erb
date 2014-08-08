@@ -9,6 +9,7 @@
 
                 <% if current_user %>
                     <li><%= link_to "Rushees", "/rushees" %></li>
+                    <li><%= link_to "Add rushee", new_rushee_path %></li>
                     <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
                     <li><%= link_to current_user.name, "#" %></li>
                 <% else %>

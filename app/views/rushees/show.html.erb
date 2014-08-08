@@ -36,6 +36,7 @@
 <br>
 
 <% @rushee.comments.each do |comment| %>
+  <%= image_tag comment.user.image%>
   <strong><%= comment.user.name %>:</strong>
   <%= comment.body  %>
 

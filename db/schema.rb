@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140808154208) do
+ActiveRecord::Schema.define(version: 20140808174807) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -38,15 +38,8 @@ ActiveRecord::Schema.define(version: 20140808154208) do
 
   add_index "rushees", ["user_id"], name: "index_rushees_on_user_id"
 
-  create_table "users", force: true do |t|
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "name"
-    t.string   "oauth_token"
-    t.datetime "oauth_expires_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "users" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "votes", force: true do |t|
     t.integer  "votable_id"

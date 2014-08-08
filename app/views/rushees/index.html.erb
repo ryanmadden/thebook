@@ -1,37 +1,11 @@
-<main id="Rushees">
-
-    <section>
-
-        <h1>Rushees</h1>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Bio</th>
-                    <th>Added by</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @rushees.each do |rushee| %>
-                    <tr>
-                        <td><%= link_to rushee.name, rushee %></td>
-                        <td><%= rushee.age %></td>
-                        <td><%= rushee.bio %></td>
-                        <td><%= rushee.user.name if rushee.user%></td>
-                        <td><%= image_tag rushee.image.url(:medium) %></td>
-                        <% if rushee.user == current_user %>
-                            <td><%= link_to 'Edit', edit_rushee_path(rushee) %></td>
-                            <td><%= link_to 'Delete', rushee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                        <% end %>
-                    </tr>
-                <% end %>
-            </tbody>
-        </table>
-
-        <%= link_to 'New Rushee', new_rushee_path %>
-
-    </section>
-
-</main>
+<div id="rushees">
+  <% @rushees.each do |rushee| %>
+    <div class="box panel panel-default"> <!-- Class doesn't work, bootstrap deleted :( -->
+      <%= image_tag rushee.image.url(:medium) %>
+      <div class="panel-body"> <!-- See above -->
+          <%= link_to rushee.name, rushee_path(rushee) %>
+          <%= rushee.user.name  %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -12,6 +12,8 @@ gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'jquery-turbolinks'
+gem 'masonry-rails', '~> 0.2.0'
 
 
 

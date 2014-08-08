@@ -1,9 +1,15 @@
-<div class="jumbotron center">
-	<h1>Creepbook Homepage</h1>
-	<p>There should be some sort of challenge here</p>
-	<% if current_user %>
-		<strong>Welcome, brother!</strong>
-    <% else %>
-        <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-    <% end %>
-</div>
+<main id="Home">
+
+	<section>
+
+		<h1>The Book</h1>
+
+		<% if current_user %>
+			<h2>Welcome, brother.</h2>
+		<% else %>
+			<%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+		<% end %>
+
+	</section>
+
+</main>

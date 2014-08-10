@@ -1,5 +1,35 @@
-<h1>New rushee</h1>
+<main id="New-Rushee">
 
-<%= render 'form' %>
+	<section>
 
-<%= link_to 'Back', rushees_path %>
+		<h1>New Rushee</h1>
+
+		<%= form_for(@rushee) do |f| %>
+			<% if @rushee.errors.any? %>
+				<div id="error_explanation">
+					<h2><%= pluralize(@rushee.errors.count, "error") %> prohibited this rushee from being saved:</h2>
+
+					<ul>
+						<% @rushee.errors.full_messages.each do |message| %>
+							<li><%= message %></li>
+						<% end %>
+					</ul>
+				</div>
+			<% end %>
+
+			<%= f.text_field :name, :placeholder => "Name" %>
+			
+			<%= f.text_field :age, :placeholder => "Age" %>
+			
+			<%= f.text_area :bio, :placeholder => "Relevant Information" %>
+			
+			<%= f.label :image %>
+			<%= f.file_field :image, :placeholder => "SDF" %>
+			
+			<%= f.submit %>
+			
+		<% end %>
+
+	</section>
+
+</main>

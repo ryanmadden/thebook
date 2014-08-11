@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810203935) do
+ActiveRecord::Schema.define(version: 20140811161226) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -23,34 +23,33 @@ ActiveRecord::Schema.define(version: 20140810203935) do
 
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
-  create_table "rushees", force: true do |t|
-    t.string   "name"
-    t.string   "age"
-    t.string   "bio"
+  create_table "impressions", force: true do |t|
+    t.string   "impressionable_type"
+    t.integer  "impressionable_id"
+    t.integer  "user_id"
+    t.string   "controller_name"
+    t.string   "action_name"
+    t.string   "view_name"
+    t.string   "request_hash"
+    t.string   "ip_address"
+    t.string   "session_hash"
+    t.text     "message"
+    t.text     "referrer"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.integer  "cached_votes_total",      default: 0
-    t.integer  "cached_votes_score",      default: 0
-    t.integer  "cached_votes_up",         default: 0
-    t.integer  "cached_votes_down",       default: 0
-    t.integer  "cached_weighted_score",   default: 0
-    t.integer  "cached_weighted_total",   default: 0
-    t.float    "cached_weighted_average", default: 0.0
   end
 
-  add_index "rushees", ["cached_votes_down"], name: "index_rushees_on_cached_votes_down"
-  add_index "rushees", ["cached_votes_score"], name: "index_rushees_on_cached_votes_score"
-  add_index "rushees", ["cached_votes_total"], name: "index_rushees_on_cached_votes_total"
-  add_index "rushees", ["cached_votes_up"], name: "index_rushees_on_cached_votes_up"
-  add_index "rushees", ["cached_weighted_average"], name: "index_rushees_on_cached_weighted_average"
-  add_index "rushees", ["cached_weighted_score"], name: "index_rushees_on_cached_weighted_score"
-  add_index "rushees", ["cached_weighted_total"], name: "index_rushees_on_cached_weighted_total"
-  add_index "rushees", ["user_id"], name: "index_rushees_on_user_id"
+  add_index "impressions", ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index"
+  add_index "impressions", ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index"
+  add_index "impressions", ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index"
+  add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], name: "poly_ip_index"
+  add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index"
+  add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
+  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
+  add_index "impressions", ["user_id"], name: "index_impressions_on_user_id"
+
+# Could not dump table "rushees" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
 # Could not dump table "users" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass

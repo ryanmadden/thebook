@@ -3,6 +3,8 @@ class RusheesController < ApplicationController
   before_action :set_rushee, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
+  impressionist
+
   def index
     @rushees = Rushee.all.shuffle
   end
@@ -13,6 +15,10 @@ class RusheesController < ApplicationController
 
   def top
     @rushees = Rushee.all.order(:cached_votes_total => :asc)
+  end
+
+  def views
+    @rushees = Rushee.all.order(:impressions_count => :asc)
   end
 
   def show

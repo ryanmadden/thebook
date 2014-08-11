@@ -60,7 +60,11 @@ GEM
     hashie (2.1.2)
     hike (1.2.3)
     httpauth (0.2.1)
+    httpclient (2.4.0)
     i18n (0.6.9)
+    impressionist (1.5.1)
+      httpclient (~> 2.2)
+      nokogiri (~> 1.5)
     jbuilder (2.1.1)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -79,9 +83,12 @@ GEM
     masonry-rails (0.2.1)
       rails
     mime-types (1.25.1)
+    mini_portile (0.6.0)
     minitest (5.3.5)
     multi_json (1.10.1)
     multipart-post (2.0.0)
+    nokogiri (1.6.3.1)
+      mini_portile (= 0.6.0)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -165,6 +172,7 @@ DEPENDENCIES
   acts_as_votable (~> 0.10.0)
   bootstrap-sass
   coffee-rails (~> 4.0.0)
+  impressionist
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks

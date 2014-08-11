@@ -51,7 +51,7 @@ class RusheesController < ApplicationController
 
   def destroy
     @rushee.destroy
-    redirect_to rushees_url
+    redirect_to rushees_url, notice: 'Rushee was successfully deleted'
   end
 
   def vote
@@ -81,8 +81,11 @@ class RusheesController < ApplicationController
     end
 
     def correct_user
-      @rushee = current_user.rushees.find_by(id: params[:id])
-      redirect_to rushees_path, notice: "Not authorized to edit this post" if @rushee.nil?
+      if current_user.id == 1 or 2
+      else
+        @rushee = current_user.rushees.find_by(id: params[:id])
+        redirect_to rushees_path, notice: "Not authorized to edit this post" if @rushee.nil?
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

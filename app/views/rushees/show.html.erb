@@ -29,6 +29,7 @@
 
 <% if @rushee.user == current_user %>
 	<%= link_to 'Edit', edit_rushee_path(@rushee) %>
+  <%= link_to 'Delete', rushee_path(@rushee), method: :delete, data: { confirm: "Are you sure you want to delete this post?" } %>
 <% end %>
 
 <br>

@@ -4,7 +4,15 @@ class RusheesController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @rushees = Rushee.all
+    @rushees = Rushee.all.shuffle
+  end
+
+  def recent
+    @rushees = Rushee.all.order("created_at DESC")
+  end
+
+  def top
+    @rushees = Rushee.all.order(:cached_votes_total => :asc)
   end
 
   def show

@@ -4,7 +4,7 @@
 	src: url(/app/assets/fonts/Nevis/nevis.ttf);
 }
 
-$font-family: "Nevis", "Lucida-Grande", Arial, Helvetica, sans-serif;
+$font-family: "Lucida-Grande", Arial, Helvetica, sans-serif;
 $primary-color: #003050;
 $secondary-color: #edb700;
 $h1-color: $secondary-color;
@@ -30,6 +30,9 @@ html {
 			width: 100%;
 
 			section {
+				margin: 0 auto;
+				padding: 80px 0;
+				width: 80%;
 
 				h1 {
 					color: $h1-color;
@@ -40,6 +43,13 @@ html {
 					text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 				}
 			}
+			section:first-child {
+
+				> h1 {
+					margin: 0 0 10px 0;
+					font-size: 30px;
+				}
+			}
 		}
 	}
 }
@@ -48,8 +58,10 @@ html {
 
 /* Header */
 header {
+	position: fixed;
 	width: 100%;
 	background-color: $secondary-color;
+	opacity: 0.8;
 
 	> nav {
 		margin: 0 auto;
@@ -59,8 +71,9 @@ header {
 
 		> a {
 			float: left;
-			text-decoration: none;
 			color: $primary-color;
+			font-family: "Nevis";
+			text-decoration: none;
 		}
 		nav {
 			float: right;
@@ -96,13 +109,13 @@ header {
 main#Home {
 
 	section:first-child {
-		padding: 250px 0;
+		padding: 280px 0;
 		width: 100%;
 		text-align: center;
 
 		h1 {
-			margin-bottom: 10px;
 			font-size: 50px;
+			font-family: "Nevis";
 		}
 		h2 {
 			margin-top: 10px;
@@ -127,6 +140,110 @@ main#Home {
 /* Rushees page */
 main#Rushees {
 
+	section:first-child {
+
+		> div {
+			display: inline-block;
+			margin: 10px;
+			padding: 0 0 10px 0;
+			background-color: #fff;
+			border-radius: 3px;
+			cursor: pointer;
+
+			img {
+				margin: 0 0 10px 0;
+				display: block;
+				height: 230px;
+				border-radius: 3px 3px 0 0;
+			}
+			a {
+				float: left;
+				padding: 0 0 0 10px;
+				color: #f64c3f;
+				font-size: 14px;
+				text-decoration: none;
+			}
+			span {
+				float: right;
+				padding: 0 10px 0 0;
+				color: #000;
+				font-size: 14px;
+			}
+		}
+		> div:hover {
+			opacity: 0.6;
+			-webkit-transition: 0.5s;
+			-moz-transition: 0.5s;
+			-o-transition: 0.5s;
+			transition: 0.5s;	
+		}
+	}
+}
+
+
+
+/* Rushee page */
+main#Rushee {
+
+	section:first-child {
+
+		h1 {
+			display: inline-block;
+		}
+		h2 {
+			display: inline-block;
+			margin: 0 0 0 40px;
+			font-size: 20px;	
+		}
+		span#rushee-edit-instruct {
+			display: block;
+			margin: 0 0 5px 0;
+			color: #bbb;
+		}
+		ul#rushee-edit {
+			margin: 0 0 10px 0;
+			list-style: none;
+
+			li {
+				display: inline-block;
+				margin: 0 10px 0 0;
+
+				a {
+					color: #f64c3f;
+				}
+			}
+		}
+		img {
+			display: block;
+			width: 300px;	
+		}
+		div#rushee-likes {
+			margin: 10px 0 0 0;
+			width: 300px;
+			height: 2.4em;
+			text-align: center;
+			background-color: $secondary-color;
+			box-shadow: 0 3px 0 #333;
+			border: 1px solid $secondary-color;
+			border-radius: 3px;
+
+			a {
+				font-size: 20px;
+				line-height: 1.8em;
+				color: $primary-color;
+				text-decoration: none;
+			}
+		}
+		ul#rushee-info {
+			margin: 15px 0 0 0;
+			list-style: none;
+
+			li {
+				padding: 0 0 10px 0;
+				color: #ddd;
+			}
+		}
+	}
 }
 
 
@@ -135,11 +252,7 @@ main#Rushees {
 main#New-Rushee {
 
 	section:first-child {
-		padding: 30px 0 0 50px;
 
-		h1 {
-			font-size: 30px;
-		}
 		form {
 			margin-top: 20px;
 

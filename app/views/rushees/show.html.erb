@@ -1,74 +1,62 @@
-<p id="notice"><%= notice %></p>
+<main id="Rushee">
 
-<%= image_tag @rushee.image.url(:medium) %>
+    <section>
 
-<p>
-  <% if current_user.voted_for? @rushee %>
-  	<%= link_to 'Unlike', unlike_rushee_path(@rushee), method: :put %>
-  <% else %>
-  	<%= link_to 'Like', like_rushee_path(@rushee), method: :put %>
-  <% end %>
-  (<%= @rushee.votes_for.size %>)
-</p>
-<p>
-  <strong>Name:</strong>
-  <%= @rushee.name %>
-</p>
-
-<p>
-  <strong>Age:</strong>
-  <%= @rushee.age %>
-</p>
-
-<p>
-  <strong>Bio:</strong>
-  <%= @rushee.bio %>
-</p>
-
-<br>
-
-<% if @rushee.user == current_user %>
-	<%= link_to 'Edit', edit_rushee_path(@rushee) %>
-  <%= link_to 'Delete', rushee_path(@rushee), method: :delete, data: { confirm: "Are you sure you want to delete this post?" } %>
-<% end %>
-
-<br>
-<br>
-<br>
-
-<% @rushee.comments.each do |comment| %>
-  <%= image_tag comment.user.image%>
-  <strong><%= comment.user.name %>:</strong>
-  <%= comment.body  %>
-
-  <% if (current_user != comment.user) && !(current_user.voted_for? comment) %>
-
-    <%= link_to "like", like_rushee_comment_path(@rushee, comment), method: :put %>
-
-    <%= comment.votes_for.size %>
-
-  <% else %>
-
-    <%= comment.votes_for.size  %>
-
-  <% end %>
-  <% if current_user == comment.user %>
-    <%= link_to "Delete", delete_rushee_comment_path(@rushee, comment), method: :put %>
-  <% end %>
-  <br>
-<% end %>
+        <h1><%= @rushee.name %></h1>
+        <% if @rushee.votes_for.size == 1 %>
+            <h2>1 like</h2>
+        <% else %>
+            <h2><%= @rushee.votes_for.size %> likes</h2>
+        <% end %>
 
 
-<br />
+        <% if @rushee.user == current_user %>
+            <span id="rushee-edit-instruct">Since you added this rushee, you can perform the following actions: </span>
+            <ul id="rushee-edit">
+                <li><%= link_to 'Edit rushee', edit_rushee_path(@rushee) %></li>
+                <li><%= link_to 'Delete rushee', rushee_path(@rushee), method: :delete, data: { confirm: "Are you sure you want to delete this post?" } %></li>
+            </ul>
+        <% end %>
 
 
-<%= form_for([@rushee, @rushee.comments.build]) do |f| %>
+        <%= image_tag @rushee.image.url(:medium) %>
 
-  <p><%= f.text_area :body, :cols => "55", :rows => "3" %></p>
+        <div id="rushee-likes">
+            <% if current_user.voted_for? @rushee %>
+                <%= link_to 'Unlike', unlike_rushee_path(@rushee), method: :put %>
+            <% else %>
+                <%= link_to 'Like', like_rushee_path(@rushee), method: :put %>
+            <% end %>
+        </div>
 
-  <p><%= f.submit "comment" %></p>
 
-<% end %>
+        <ul id="rushee-info">
+            <li><strong>Age: </strong><%= @rushee.age %></li>
+            <li><strong>Bio: </strong><%= @rushee.bio %></li>
+        </ul>
 
-<br>
-<%= link_to 'Back', rushees_path %>
+
+        <% @rushee.comments.each do |comment| %>
+            <%= image_tag comment.user.image%>
+            <strong><%= comment.user.name %>:</strong>
+            <%= comment.body  %>
+            <% if (current_user != comment.user) && !(current_user.voted_for? comment) %>
+                <%= link_to "like", like_rushee_comment_path(@rushee, comment), method: :put %>
+                <%= comment.votes_for.size %>
+            <% else %>
+                <%= comment.votes_for.size  %>
+            <% end %>
+            <% if current_user == comment.user %>
+                <%= link_to "Delete", delete_rushee_comment_path(@rushee, comment), method: :put %>
+            <% end %>
+        <% end %>
+
+
+        <%= form_for([@rushee, @rushee.comments.build]) do |f| %>
+            <p><%= f.text_area :body, :cols => "55", :rows => "3" %></p>
+            <p><%= f.submit "comment" %></p>
+        <% end %>
+
+    </section>
+
+</main>

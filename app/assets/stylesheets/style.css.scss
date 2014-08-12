@@ -243,6 +243,19 @@ main#Rushee {
 				color: #ddd;
 			}
 		}
+		div.user-comment {
+
+			img {
+				width: 50px;
+				display: inline-block;
+			}
+			strong {
+				color: $secondary-color;
+			}
+			span {
+				color: #888;
+			}
+		}
 	}
 }
 
@@ -346,4 +359,3 @@ main#Edit-Rushee {
 		}
 	}
 }
-

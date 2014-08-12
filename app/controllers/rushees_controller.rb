@@ -1,5 +1,5 @@
 class RusheesController < ApplicationController
-  before_action :signed_in, only: [:index, :show, :new, :edit, :update, :destroy]
+  before_action :signed_in
   before_action :set_rushee, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 

@@ -1,11 +1,23 @@
-<div id="rushees" class="transitions-enabled">
-  <% @rushees.each do |rushee| %>
-    <div class="box panel panel-default"> <!-- Class doesn't work, bootstrap deleted :( -->
-      <%= image_tag rushee.image.url(:medium) %>
-      <div class="panel-body"> <!-- See above -->
-          <%= link_to rushee.name, rushee_path(rushee) %>
-          <%= rushee.user.name  %>
-      </div>
-    </div>
-  <% end %>
-</div>
+<main id="Rushees">
+
+    <section class="transitions-enabled">
+
+        <h1>Rushees</h1>
+
+        <% @rushees.each do |rushee| %>
+
+            <div>
+                <%= image_tag rushee.image.url(:medium) %>
+                <%= link_to rushee.name, rushee_path(rushee) %>
+                <% if rushee.votes_for.size == 1 %>
+                    <span>1 like</span>
+                <% else %>
+                    <span><%= rushee.votes_for.size %> likes</span>
+                <% end %>
+            </div>
+
+        <% end %>
+
+    </section>
+
+</main>

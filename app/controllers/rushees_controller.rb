@@ -14,7 +14,7 @@ class RusheesController < ApplicationController
   end
 
   def top
-    @rushees = Rushee.all.order(:cached_votes_total => :asc)
+    @rushees = Rushee.all.order(:cached_votes_total => :desc)
   end
 
   def views

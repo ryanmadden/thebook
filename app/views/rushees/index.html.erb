@@ -1,12 +1,12 @@
 <main id="Rushees">
 
-    <section class="transitions-enabled">
+    <section class="transitions-enabled" >
 
         <h1>Rushees</h1>
 
         <% @rushees.each do |rushee| %>
 
-            <div>
+            <div class="transitions-enabled" >
                 <%= image_tag rushee.image.url(:medium) %>
                 <%= link_to rushee.name, rushee_path(rushee) %>
                 <% if rushee.votes_for.size == 1 %>

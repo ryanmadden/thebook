@@ -1,6 +1,37 @@
-<h1>Editing rushee</h1>
+<main id="Edit-Rushee">
 
-<%= render 'form' %>
+	<section>
 
-<%= link_to 'Show', @rushee %> |
-<%= link_to 'Back', rushees_path %>
+		<h1>Edit Rushee</h1>
+
+		<%= image_tag @rushee.image.url(:medium) %>
+
+		<%= form_for(@rushee) do |f| %>
+			<% if @rushee.errors.any? %>
+				<div id="error_explanation">
+					<h2><%= pluralize(@rushee.errors.count, "error") %> prohibited this rushee from being saved:</h2>
+
+					<ul>
+						<% @rushee.errors.full_messages.each do |message| %>
+							<li><%= message %></li>
+						<% end %>
+					</ul>
+				</div>
+			<% end %>
+
+			<%= f.text_field :name %>
+			
+			<%= f.text_field :age %>
+			
+			<%= f.text_area :bio %>
+			
+			<%= f.label :image %>
+			<%= f.file_field :image %>
+			
+			<%= f.submit %>
+			
+		<% end %>
+
+	</section>
+
+</main>

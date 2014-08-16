@@ -35,6 +35,12 @@
             <li><strong>Bio: </strong><%= @rushee.bio %></li>
         </ul>
 
+        <div class="likers"><strong>Liked by</strong>
+            <br>
+            <% @rushee.votes_for.voters.each do |v| %> <%= image_tag(v.image) %> <% end %>
+        </div>
+        <br>
+
 
         <% @rushee.comments.each do |comment| %>
             <div class="user-comment">

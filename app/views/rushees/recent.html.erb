@@ -1,22 +1,52 @@
 <main id="Rushees">
 
-    <section class="transitions-enabled">
+    <section>
 
         <h1>Rushees</h1>
 
-        <% @rushees.each do |rushee| %>
+        <button>Random</button><button><i class="fa fa-caret-down"></i></button>
+        <ul>
+            <li><%= link_to "Random", "/rushees" %></li>
+            <li><%= link_to "Likes", "#" %></li>
+            <li><%= link_to "Views", "#" %></li>
+            <li><%= link_to "Comments", "#" %></li>
+            <li><%= link_to "Most Recent", "#" %></li>
+        </ul>
 
-            <div>
-                <%= image_tag rushee.image.url(:medium) %>
-                <%= link_to rushee.name, rushee_path(rushee) %>
-                <% if rushee.votes_for.size == 1 %>
-                    <span>1 like</span>
-                <% else %>
-                    <span><%= rushee.votes_for.size %> likes</span>
-                <% end %>
-            </div>
+        <div id="masonry-container" class="transitions-enabled has-gutters">
 
-        <% end %>
+            <% @rushees.each do |rushee| %>
+
+                <div class="masonry-rushee">
+
+                    <%= image_tag rushee.image.url() %>
+
+                    <div class="rushee-info">
+                        <h2><%= link_to rushee.name, rushee_path(rushee) %></h2>
+                        <p><%= rushee.bio[0, 200] %>...</p>
+                    </div>
+                    <div class="rushee-stats">
+
+                        <% if rushee.votes_for.size == 1 %>
+                            <span>1 like</span>
+                        <% else %>
+                            <span><%= rushee.votes_for.size %> likes</span>
+                        <% end %>
+
+                        <span><%= rand(15) %> comments</span>
+
+                        <% if rushee.impressionist_count == 1 %>
+                            <span>1 view</span>
+                        <% else %>
+                            <span><%= rushee.impressionist_count %> views</span>
+                        <% end %>
+                    </div>
+
+                </div>
+
+            <% end %>
+
+        </div>
 
     </section>
 

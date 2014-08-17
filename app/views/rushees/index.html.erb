@@ -4,13 +4,22 @@
 
         <h1>Rushees</h1>
 
-        <div id="masonry-container" class="transitions-enabled">
+        <span>Sort by</span>
+        <select>
+            <option>Random</option>
+            <option>Likes</option>
+            <option>Views</option>
+            <option>Comments</option>
+            <option>Most Recent</option>
+        </select>
+
+        <div id="masonry-container" class="transitions-enabled has-gutters">
 
             <% @rushees.each do |rushee| %>
 
                 <div class="masonry-rushee">
 
-                    <%= image_tag rushee.image.url(:medium) %>
+                    <%= image_tag rushee.image.url() %>
 
                     <div class="rushee-info">
                         <h2><%= link_to rushee.name, rushee_path(rushee) %></h2>

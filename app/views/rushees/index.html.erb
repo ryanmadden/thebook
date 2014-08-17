@@ -1,22 +1,43 @@
 <main id="Rushees">
 
-    <section class="transitions-enabled" >
+    <section>
 
         <h1>Rushees</h1>
 
-        <% @rushees.each do |rushee| %>
+        <div id="masonry-container" class="transitions-enabled">
 
-            <div class="transitions-enabled" >
-                <%= image_tag rushee.image.url(:medium) %>
-                <%= link_to rushee.name, rushee_path(rushee) %>
-                <% if rushee.votes_for.size == 1 %>
-                    <span>1 like</span>
-                <% else %>
-                    <span><%= rushee.votes_for.size %> likes</span>
-                <% end %>
-            </div>
+            <% @rushees.each do |rushee| %>
 
-        <% end %>
+                <div class="masonry-rushee">
+
+                    <%= image_tag rushee.image.url(:medium) %>
+
+                    <div class="rushee-info">
+                        <h2><%= link_to rushee.name, rushee_path(rushee) %></h2>
+                        <p><%= rushee.bio[0, 200] %>...</p>
+                    </div>
+                    <div class="rushee-stats">
+
+                        <% if rushee.votes_for.size == 1 %>
+                            <span>1 like</span>
+                        <% else %>
+                            <span><%= rushee.votes_for.size %> likes</span>
+                        <% end %>
+
+                        <span><%= rand(15) %> comments</span>
+
+                        <% if rushee.impressions_count == 1 %>
+                            <span>1 view</span>
+                        <% else %>
+                            <span><%= rushee.impressions_count %> views</span>
+                        <% end %>
+                    </div>
+
+                </div>
+
+            <% end %>
+
+        </div>
 
     </section>
 

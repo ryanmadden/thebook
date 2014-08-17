@@ -15,6 +15,7 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'jquery-turbolinks'
 gem 'masonry-rails', '~> 0.2.0'
 gem 'impressionist'
+gem 'imagesLoaded_rails'
 
 
 

@@ -13,7 +13,7 @@
                     <li><%= link_to "Log out", signout_path, id: "sign_out" %></li>
                     <li><%= link_to current_user.name, "#" %></li>
                 <% else %>
-                    <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
+                    <li><%= link_to "Sign in ", "/auth/facebook", id: "sign_in" %></li>
                 <% end %>
             </ul>
         </nav>

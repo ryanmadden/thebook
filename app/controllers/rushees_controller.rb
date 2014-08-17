@@ -3,7 +3,6 @@ class RusheesController < ApplicationController
   before_action :set_rushee, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
-  impressionist
 
   def index
     @rushees = Rushee.all.shuffle
@@ -22,6 +21,8 @@ class RusheesController < ApplicationController
   end
 
   def show
+    @rushee = Rushee.find(params[:id])
+    impressionist(@rushee)
   end
 
   def new

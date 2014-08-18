@@ -1,14 +1,50 @@
 <main id="Rushee">
 
-    <section>
+    <section class="rushee-info">
+
 
         <h1><%= @rushee.name %></h1>
-        <% if @rushee.votes_for.size == 1 %>
-            <h2>1 like</h2>
-        <% else %>
-            <h2><%= @rushee.votes_for.size %> likes</h2>
-        <% end %>
 
+        <%= image_tag @rushee.image.url() %>
+
+        <ul class="rushee-specs">
+            <li><strong>Age: </strong><%= @rushee.age %></li>
+            <li><strong>Bio: </strong><%= @rushee.bio %></li>
+        </ul>
+
+        <div class="rushee-comments">
+            <% @rushee.comments.each do |comment| %>
+                <div class="user-comment">
+                    <%= image_tag comment.user.image%>
+                    <strong><%= comment.user.name %>:</strong>
+                    <span>
+                        <%= comment.body  %>
+                    </span>
+                    <% if (current_user != comment.user) && !(current_user.voted_for? comment) %>
+                        <%= link_to "like", like_rushee_comment_path(@rushee, comment), method: :put %>
+                        <%= comment.votes_for.size %>
+                    <% else %>
+                        <%= comment.votes_for.size  %>
+                    <% end %>
+                    <% if current_user == comment.user %>
+                        <%= link_to "Delete", delete_rushee_comment_path(@rushee, comment), method: :put %>
+                    <% end %>
+                </div
+            <% end %>
+
+            <%= form_for([@rushee, @rushee.comments.build]) do |f| %>
+                <p><%= f.text_area :body, :cols => "55", :rows => "3", :placeholder => "Write a comment..." %></p>
+                <p><%= f.submit "comment" %></p>
+            <% end %>
+        </div>
+
+        <div class="rushee-like">
+            <% if current_user.voted_for? @rushee %>
+                <%= link_to 'Unlike', unlike_rushee_path(@rushee), method: :put %>
+            <% else %>
+                <%= link_to 'Like', like_rushee_path(@rushee), method: :put %>
+            <% end %>
+        </div>
 
         <% if @rushee.user == current_user %>
             <span id="rushee-edit-instruct">Since you added this rushee, you can perform the following actions: </span>
@@ -18,53 +54,21 @@
             </ul>
         <% end %>
 
+    </section>
 
-        <%= image_tag @rushee.image.url(:medium) %>
+    <section class="rushee-brother-likes">
 
-        <div id="rushee-likes">
-            <% if current_user.voted_for? @rushee %>
-                <%= link_to 'Unlike', unlike_rushee_path(@rushee), method: :put %>
-            <% else %>
-                <%= link_to 'Like', like_rushee_path(@rushee), method: :put %>
-            <% end %>
-        </div>
-
-
-        <ul id="rushee-info">
-            <li><strong>Age: </strong><%= @rushee.age %></li>
-            <li><strong>Bio: </strong><%= @rushee.bio %></li>
-        </ul>
-
-        <div class="likers"><strong>Liked by</strong>
-            <br>
-            <% @rushee.votes_for.voters.each do |v| %> <%= image_tag(v.image) %> <% end %>
-        </div>
-        <br>
-
-
-        <% @rushee.comments.each do |comment| %>
-            <div class="user-comment">
-                <%= image_tag comment.user.image%>
-                <strong><%= comment.user.name %>:</strong>
-                <span>
-                    <%= comment.body  %>
-                </span>
-                <% if (current_user != comment.user) && !(current_user.voted_for? comment) %>
-                    <%= link_to "like", like_rushee_comment_path(@rushee, comment), method: :put %>
-                    <%= comment.votes_for.size %>
-                <% else %>
-                    <%= comment.votes_for.size  %>
-                <% end %>
-                <% if current_user == comment.user %>
-                    <%= link_to "Delete", delete_rushee_comment_path(@rushee, comment), method: :put %>
-                <% end %>
-            </div
+        <% if @rushee.votes_for.size == 1 %>
+            <h2>1 like</h2>
+        <% else %>
+            <h2><%= @rushee.votes_for.size %> likes</h2>
         <% end %>
 
-
-        <%= form_for([@rushee, @rushee.comments.build]) do |f| %>
-            <p><%= f.text_area :body, :cols => "55", :rows => "3", :placeholder => "Write a comment..." %></p>
-            <p><%= f.submit "comment" %></p>
+        <% @rushee.votes_for.voters.each do |v| %>
+            <div class="brother-like">
+                <%= image_tag(v.image) %>
+                <span><%= v.name %></span>
+            </div>
         <% end %>
 
     </section>

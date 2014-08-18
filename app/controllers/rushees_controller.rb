@@ -17,7 +17,7 @@ class RusheesController < ApplicationController
   end
 
   def views
-    @rushees = Rushee.all.order(:impressions_count => :asc)
+    @rushees = Rushee.all.order(:impressions_count => :desc)
   end
 
   def show
@@ -69,6 +69,10 @@ class RusheesController < ApplicationController
     respond_to do |format|
       format.html {redirect_to :back }
     end
+  end
+
+  def comments_count
+    comments.count
   end
 
   private

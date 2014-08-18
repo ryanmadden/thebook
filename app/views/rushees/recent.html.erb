@@ -4,14 +4,14 @@
 
         <h1>Rushees</h1>
 
-        <button>Random</button><button><i class="fa fa-caret-down"></i></button>
-        <ul>
-            <li><%= link_to "Random", "/rushees" %></li>
-            <li><%= link_to "Likes", "#" %></li>
-            <li><%= link_to "Views", "#" %></li>
-            <li><%= link_to "Comments", "#" %></li>
-            <li><%= link_to "Most Recent", "#" %></li>
-        </ul>
+        <span>Sort by</span>
+        <select>
+            <option value="rushees">Random</option>
+            <option value="top">Likes</option>
+            <option value="views">Views</option>
+            <option value="#">Comments</option>
+            <option selected="selected" value="recent">Most Recent</option>
+        </select>
 
         <div id="masonry-container" class="transitions-enabled has-gutters">
 

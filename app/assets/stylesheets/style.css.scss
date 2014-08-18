@@ -5,7 +5,7 @@
 }
 
 $font-family: "Lucida-Grande", Arial, Helvetica, sans-serif;
-$primary-color: #003050;
+$primary-color: #001e33;//#002640;// #003050;
 $secondary-color: #edb700;
 $h1-color: $secondary-color;
 $h2-color: $secondary-color;
@@ -21,7 +21,24 @@ label, table, caption, {
 }
 html {
 	font-family: $font-family;
-	background-color: $primary-color;
+	//background-color: $primary-color;
+	/* IE10 Consumer Preview */ 
+	background-image: -ms-linear-gradient(top left, #001E33 0%, #003752 100%);
+
+	/* Mozilla Firefox */ 
+	background-image: -moz-linear-gradient(top left, #001E33 0%, #003752 100%);
+
+	/* Opera */ 
+	background-image: -o-linear-gradient(top left, #001E33 0%, #003752 100%);
+
+	/* Webkit (Safari/Chrome 10) */ 
+	background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #001E33), color-stop(1, #003752));
+
+	/* Webkit (Chrome 11+) */ 
+	background-image: -webkit-linear-gradient(top left, #001E33 0%, #003752 100%);
+
+	/* W3C Markup, IE10 Release Preview */ 
+	background-image: linear-gradient(to bottom right, #001E33 0%, #003752 100%);
 
 	.wrapper {
 		width: 100%;
@@ -207,7 +224,7 @@ main#Rushees {
 				}
 			}
 			> div.masonry-rushee:hover {
-				opacity: 0.6;
+				opacity: 0.7;
 				-webkit-transition: 0.5s;
 				-moz-transition: 0.5s;
 				-o-transition: 0.5s;

@@ -5,7 +5,7 @@
 }
 
 $font-family: "Lucida-Grande", Arial, Helvetica, sans-serif;
-$primary-color: #003050;
+$primary-color: #001e33;//#002640;// #003050;
 $secondary-color: #edb700;
 $h1-color: $secondary-color;
 $h2-color: $secondary-color;
@@ -21,18 +21,22 @@ label, table, caption, {
 }
 html {
 	font-family: $font-family;
-	background-color: $primary-color;
+	background-image: -ms-linear-gradient(top left, #001E33 0%, #003752 100%);
+	background-image: -moz-linear-gradient(top left, #001E33 0%, #003752 100%);
+	background-image: -o-linear-gradient(top left, #001E33 0%, #003752 100%);
+	background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #001E33), color-stop(1, #003752));
+	background-image: -webkit-linear-gradient(top left, #001E33 0%, #003752 100%);
+	background-image: linear-gradient(to bottom right, #001E33 0%, #003752 100%);
 
 	.wrapper {
 		width: 100%;
 
 		main {
-			width: 100%;
+			margin: 0 auto;
+			padding: 80px 0;
+			width: 80%;
 
 			section {
-				margin: 0 auto;
-				padding: 80px 0;
-				width: 80%;
 
 				h1 {
 					color: $h1-color;
@@ -105,7 +109,6 @@ header {
 
 	}
 }
-
 
 
 
@@ -207,7 +210,7 @@ main#Rushees {
 				}
 			}
 			> div.masonry-rushee:hover {
-				opacity: 0.6;
+				opacity: 0.7;
 				-webkit-transition: 0.5s;
 				-moz-transition: 0.5s;
 				-o-transition: 0.5s;
@@ -222,15 +225,13 @@ main#Rushees {
 /* Rushee page */
 main#Rushee {
 
-	section:first-child {
+	section.rushee-info {
+		float: left;
+		width: calc(100% - 300px);
 
-		h1 {
-			display: inline-block;
-		}
-		h2 {
-			display: inline-block;
-			margin: 0 0 0 40px;
-			font-size: 20px;	
+		img {
+			display: block;
+			width: 300px;
 		}
 		span#rushee-edit-instruct {
 			display: block;
@@ -249,10 +250,6 @@ main#Rushee {
 					color: #f64c3f;
 				}
 			}
-		}
-		img {
-			display: block;
-			width: 300px;	
 		}
 		div#rushee-likes {
 			margin: 10px 0 0 0;
@@ -300,6 +297,27 @@ main#Rushee {
 			}
 			span {
 				color: #888;
+			}
+		}
+	}
+	section.rushee-brother-likes {
+		float: right;
+		width: 200px;
+
+		div.brother-like {
+			position: relative;
+			width: 100px;
+			text-align: center;
+			
+			img {
+				width: 100px;
+			}
+			span {
+				position: absolute;
+				top: 10px;
+				width: 100%;
+				color: #fff;
+				line-height: 100px;
 			}
 		}
 	}
@@ -356,6 +374,7 @@ main#New-Rushee {
 		}
 	}
 }
+
 
 main#Edit-Rushee {
 

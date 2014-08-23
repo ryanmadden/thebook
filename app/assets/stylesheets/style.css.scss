@@ -20,6 +20,7 @@ label, table, caption, {
 	padding: 0;
 }
 html {
+	height: 100%;
 	font-family: $font-family;
 	background-image: -ms-linear-gradient(top left, #001E33 0%, #003752 100%);
 	background-image: -moz-linear-gradient(top left, #001E33 0%, #003752 100%);
@@ -27,31 +28,35 @@ html {
 	background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #001E33), color-stop(1, #003752));
 	background-image: -webkit-linear-gradient(top left, #001E33 0%, #003752 100%);
 	background-image: linear-gradient(to bottom right, #001E33 0%, #003752 100%);
+	background-attachment: fixed;
 
-	.wrapper {
-		width: 100%;
+	body {
 
-		main {
-			margin: 0 auto;
-			padding: 80px 0;
-			width: 80%;
+		.wrapper {
+			width: 100%;
 
-			section {
+			main {
+				margin: 0 auto;
+				padding: 80px 0 0 0;
+				width: 80%;
 
-				h1 {
-					color: $h1-color;
-					text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+				section {
+
+					h1 {
+						color: $h1-color;
+						text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+					}
+					h2 {
+						color: $h2-color;
+						text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+					}
 				}
-				h2 {
-					color: $h2-color;
-					text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-				}
-			}
-			section:first-child {
+				section:first-child {
 
-				> h1 {
-					margin: 0 0 10px 0;
-					font-size: 30px;
+					> h1 {
+						margin: 0 0 10px 0;
+						font-size: 30px;
+					}
 				}
 			}
 		}
@@ -233,77 +238,113 @@ main#Rushee {
 			display: block;
 			width: 300px;
 		}
-		span#rushee-edit-instruct {
-			display: block;
-			margin: 0 0 5px 0;
-			color: #bbb;
-		}
-		ul#rushee-edit {
-			margin: 0 0 10px 0;
+		ul.rushee-specs {
+			margin-top: 15px;
+			width: 500px;
 			list-style: none;
 
 			li {
-				display: inline-block;
-				margin: 0 10px 0 0;
+				margin-bottom: 5px;
+				color: #bbb;
 
-				a {
-					color: #f64c3f;
+				strong {
+					color: #ddd;
 				}
 			}
 		}
-		div#rushee-likes {
-			margin: 10px 0 0 0;
-			width: 300px;
-			height: 2.4em;
-			text-align: center;
-			background-color: $secondary-color;
-			box-shadow: 0 3px 0 #333;
-			border: 1px solid $secondary-color;
-			border-radius: 3px;
+		div.rushee-comments {
+			margin-top: 15px;
 
-			a {
-				font-size: 20px;
-				line-height: 1.8em;
-				color: $primary-color;
-				text-decoration: none;
-			}
-		}
-		ul#rushee-info {
-			margin: 15px 0 0 0;
-			list-style: none;
+			div.user-comment {
 
-			li {
-				padding: 0 0 10px 0;
-				color: #ddd;
+				img {
+					width: 50px;
+					display: inline-block;
+				}
+				strong {
+					color: $secondary-color;
+				}
+				span {
+					color: #888;
+				}
 			}
+			textarea {
+				border-radius: 3px;
+			}
+			input {
+				padding: 5px 10px;
+				color: #ffffff;
+				font-size: 12px;
+				font-weight: bold;
+				text-shadow:0px 1px 0px #cc9f52;
+				background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #edb600) );
+				background: -moz-linear-gradient( center top, #ffc477 5%, #edb600 100% );
+				background-color: #ffc477;
+				border: 1px solid #eeb44f;
+				border-radius: 3px;
+				box-shadow: inset 0px 1px 0px 0px #fce2c1;
+				-moz-box-shadow: inset 0px 1px 0px 0px #fce2c1;
+				-webkit-box-shadow: inset 0px 1px 0px 0px #fce2c1;
+				}
+				.classname:active {
+					position:relative;
+					top:1px;
+				}
 		}
-		div.likers {
-			img {
-				width: 50px;
-				display: inline-block;
-			}
-			strong {
-				color: #ddd;
-			}
-		}
-		div.user-comment {
-
-			img {
-				width: 50px;
-				display: inline-block;
-			}
-			strong {
-				color: $secondary-color;
-			}
+		div.rushee-edit {
+			margin-top: 30px;
+			padding-bottom: 20px;
 			span {
-				color: #888;
+				display: block;
+				margin: 0 0 5px 0;
+				color: #bbb;
+			}
+			ul {
+				margin: 0 0 10px 0;
+				list-style: none;
+
+				li {
+					display: inline-block;
+					margin: 0 10px 0 0;
+
+					a {
+						color: #f64c3f;
+					}
+				}
 			}
 		}
 	}
 	section.rushee-brother-likes {
 		float: right;
 		width: 200px;
+		h2 {
+			display: inline-block;
+			margin-bottom: 10px;
+			font-size: 28px;
+		}
+		div.rushee-like {
+			display: inline-block;
+			margin: 0 0 10px 10px;
+			line-height: 34px;
+			vertical-align: bottom;
 
+			a {
+				padding: 4px 10px;
+				text-decoration: none;
+				color: #ffffff;
+				font-size: 15px;
+				font-weight: bold;
+				text-shadow:0px 1px 0px #cc9f52;
+				background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #edb600) );
+				background: -moz-linear-gradient( center top, #ffc477 5%, #edb600 100% );
+				background-color: #ffc477;
+				border: 1px solid #eeb44f;
+				border-radius: 3px;
+				box-shadow: inset 0px 1px 0px 0px #fce2c1;
+				-moz-box-shadow: inset 0px 1px 0px 0px #fce2c1;
+				-webkit-box-shadow: inset 0px 1px 0px 0px #fce2c1;
+			}
+		}
 		div.brother-like {
 			position: relative;
 			width: 100px;
@@ -317,7 +358,7 @@ main#Rushee {
 				top: 10px;
 				width: 100%;
 				color: #fff;
-				line-height: 100px;
+				line-height: 85px;
 			}
 		}
 	}

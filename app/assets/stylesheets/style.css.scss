@@ -329,6 +329,10 @@ main#Rushee {
 				-moz-box-shadow: inset 0px 1px 0px 0px #fce2c1;
 				-webkit-box-shadow: inset 0px 1px 0px 0px #fce2c1;
 			}
+			a:active {
+				position:relative;
+				top:1px;
+			}
 			span {
 				display: inline-block;
 				font-size: 15px;
@@ -380,50 +384,55 @@ main#Rushee {
 	section.rushee-comments {
 		float: left;
 		margin-top: 20px;
-		width: calc(100% - 280px);
+		width: calc(100% - 300px);
 		padding: 10px;
 		background-color: #fff;
 		border-radius: 3px;
 
-		div.rushee-comments {
-			margin-top: 25px;
+		h2 {
+			color: $primary-color;
+			text-shadow: none;
+		}
+		div.user-comment {
 
-			div.user-comment {
-
-				img {
-					width: 50px;
-					display: inline-block;
-				}
-				strong {
-					color: $secondary-color;
-				}
-				span {
-					color: #888;
-				}
+			img {
+				width: 50px;
+				display: inline-block;
 			}
-			textarea {
-				padding: 10px;
-				border-radius: 3px;
+			strong {
+				color: $secondary-color;
 			}
-			input {
-				padding: 5px 10px;
-				color: #fff;
-				font-size: 12px;
-				font-weight: bold;
-				text-shadow:0px 1px 0px #cc9f52;
-				background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #edb600) );
-				background: -moz-linear-gradient( center top, #ffc477 5%, #edb600 100% );
-				background-color: #ffc477;
-				border: 1px solid #eeb44f;
-				border-radius: 3px;
-				box-shadow: inset 0px 1px 0px 0px #fce2c1;
-				-moz-box-shadow: inset 0px 1px 0px 0px #fce2c1;
-				-webkit-box-shadow: inset 0px 1px 0px 0px #fce2c1;
-				}
-				.classname:active {
-					position:relative;
-					top:1px;
-				}
+			span {
+				color: #888;
+			}
+		}
+		textarea {
+			margin-top: 20px;
+			padding: 10px;
+			width: calc(100% - 25px);
+			border: 1px solid #91949d;
+			border-radius: 3px;
+		}
+		input {
+			padding: 5px 10px;
+			color: #fff;
+			font-size: 12px;
+			font-weight: bold;
+			text-shadow:0px 1px 0px #cc9f52;
+			background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #edb600) );
+			background: -moz-linear-gradient( center top, #ffc477 5%, #edb600 100% );
+			background-color: #ffc477;
+			border: 1px solid #eeb44f;
+			border-radius: 3px;
+			box-shadow: inset 0px 1px 0px 0px #fce2c1;
+			-moz-box-shadow: inset 0px 1px 0px 0px #fce2c1;
+			-webkit-box-shadow: inset 0px 1px 0px 0px #fce2c1;
+			outline: none;
+			cursor: pointe
+		}
+		input:active {
+			position:relative;
+			top:1px;
 		}
 	}
 }

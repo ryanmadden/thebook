@@ -31,9 +31,9 @@
 
         <div class="rushee-like">
             <% if current_user.voted_for? @rushee %>
-                <%= link_to 'Unlike', unlike_rushee_path(@rushee), method: :put %>
+                <%= link_to 'unlike', unlike_rushee_path(@rushee), method: :put %>
             <% else %>
-                <%= link_to 'Like', like_rushee_path(@rushee), method: :put %>
+                <%= link_to 'like', like_rushee_path(@rushee), method: :put %>
             <% end %>
 
             <% if @rushee.votes_for.size == 1 %>
@@ -71,6 +71,8 @@
     </section>
 
     <section class="rushee-comments">
+
+        <h2>Comments</h2>
 
         <% @rushee.comments.each do |comment| %>
             <div class="user-comment">

@@ -1,6 +1,26 @@
 $ ->
+	
+	# Animate navbar on scroll
+	animated = false
+	navPosition = $("header").offset().top
+	$(window).scroll ->
+		newPosition = $("header").offset().top
 
-	# 
+		if newPosition and not animated
+			$("header > nav").animate
+				padding: "10px 0"
+			,
+				duration: 400
+				queue: false
+			animated = true
+		else if not newPosition and animated
+			$("header > nav").animate
+				padding: "20px 0"
+			,
+				duration: 400
+				queue: false
+			animated = false
+		navPosition = newPosition
 
 
 	# Clicking on Rushee in Rushees page redirects to Rushee page

@@ -341,20 +341,21 @@ main#Rushee {
 		}
 		div.brother-likes-container {
 			margin-top: 10px;
+			overflow: auto;
 
 			div.brother-like {
 				position: relative;
-				display: inline-block;
-				width: 70px;
+				float: left;
+				width: calc(100% / 10);
+				text-align: center;
 				
 				img {
-					width: 70px;
+					width: 100%;
 					vertical-align: bottom;
 				}
 				span {
 					position: absolute;
 					top: 5px;
-					left: 5px;
 					width: 100%;
 					color: $primary-color;
 					line-height: 55px;

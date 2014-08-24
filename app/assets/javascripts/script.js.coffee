@@ -24,7 +24,7 @@ $ ->
 	# Brother like hover animation
 	$('main#Rushee section.rushee-brother-likes div.brother-like span').hide()
 	$('main#Rushee section.rushee-brother-likes div.brother-like').mouseenter ->
-		$(this).children('img').css('opacity', '0.8')
+		$(this).children('img').css('opacity', '0.6')
 		$(this).children('span').show()
 	$('main#Rushee section.rushee-brother-likes div.brother-like').mouseleave ->
 		$(this).children('img').css('opacity', '1.0')

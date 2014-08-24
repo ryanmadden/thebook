@@ -37,9 +37,10 @@ html {
 
 			main {
 				margin: 0 auto;
-				padding: 100px 0 0 0;
+				padding: 100px 0 20px 0;
 				width: 80%;
 				max-width: 1000px;
+				overflow: auto;
 
 				section {
 
@@ -205,7 +206,6 @@ main#Rushees {
 				}
 				div.rushee-stats {
 					width: 100%;
-					text-align: right;
 					background-color: #222;
 					border-radius: 0 0 2px 2px;
 
@@ -242,31 +242,149 @@ main#Rushee {
 
 	section.rushee-info {
 		float: left;
-		width: calc(100% - 300px);
+		margin-right: 20px;
+		width: 240px;
+		background-color: #fff;
+		border-radius: 3px;
 
 		img {
-			display: block;
-			width: 300px;
+			width: 240px;
+			border-radius: 2px 2px 0 0;
 		}
-		ul.rushee-specs {
-			margin-top: 15px;
-			width: 500px;
-			list-style: none;
+		div.rushee-info-container {
+			padding: 10px;
 
-			li {
-				margin-bottom: 5px;
-				color: #ccc;
-				font-size: 14px;
+			h1 {
+				color: $primary-color;
+				text-shadow: none;
+			}
+			ul.rushee-specs {
+				margin-top: 10px;
+				list-style: none;
 
-				strong {
-					color: #ddd;
+				li {
+					margin-bottom: 5px;
+					color: #444;
+					font-size: 14px;
+
+					strong {
+						color: $primary-color;
+					}
+					a {
+						color: #4a9de8;
+						text-decoration: none;
+					}
 				}
-				a {
-					color: #4a9de8;
-					text-decoration: none;
+			}
+			div.rushee-edit {
+				margin-top: 30px;
+				font-size: 12px;
+
+				span {
+					display: block;
+					margin-bottom: 5px;
+					color: #666;
+				}
+				ul {
+					margin: 0 0 10px 0;
+					list-style: none;
+
+					li {
+						display: inline-block;
+						margin: 0 10px 0 0;
+
+						a {
+							color: #f64c3f;
+						}
+					}
 				}
 			}
 		}
+	}
+	section.rushee-brother-likes {
+		float: left;
+		width: calc(100% - 280px);
+		background-color: #fff;
+		border-radius: 3px;
+
+		div.rushee-like {
+			display: inline-block;
+			padding: 10px 10px 0 10px;
+			line-height: 24px;
+			vertical-align: bottom;
+
+			a {
+				padding: 4px 10px;
+				text-decoration: none;
+				color: #ffffff;
+				font-size: 15px;
+				font-weight: bold;
+				text-shadow:0px 1px 0px #cc9f52;
+				background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #edb600) );
+				background: -moz-linear-gradient( center top, #ffc477 5%, #edb600 100% );
+				background-color: #ffc477;
+				border: 1px solid #eeb44f;
+				border-radius: 3px;
+				box-shadow: inset 0px 1px 0px 0px #fce2c1;
+				-moz-box-shadow: inset 0px 1px 0px 0px #fce2c1;
+				-webkit-box-shadow: inset 0px 1px 0px 0px #fce2c1;
+			}
+			span {
+				display: inline-block;
+				font-size: 15px;
+				color: $primary-color;
+			}
+		}
+		div.brother-likes-container {
+			padding: 10px;
+
+			div.brother-like {
+				position: relative;
+				display: inline-block;
+				width: 70px;
+				
+				img {
+					width: 70px;
+				}
+				span {
+					position: absolute;
+					top: 5px;
+					left: 5px;
+					width: 100%;
+					color: $primary-color;
+					line-height: 55px;
+					font-size: 11px;
+				}
+			}
+		}
+		div.rushee-stats {
+			width: 100%;
+			background-color: #222;
+			border-radius: 0 0 2px 2px;
+
+			span {
+				display: inline-block;
+				padding: 10px 0;
+				width: calc(33% - 8px);
+				color: #91949d;
+				font-size: 13px;
+				text-align: center;
+				border: 1px solid #444;
+				border-style: none solid none none;
+			}
+			span:last-child {
+				border: none;
+			}
+		}
+	}
+	section.rushee-comments {
+		float: left;
+		margin-top: 20px;
+		width: calc(100% - 280px);
+		padding: 10px;
+		background-color: #fff;
+		border-radius: 3px;
+
 		div.rushee-comments {
 			margin-top: 25px;
 
@@ -289,7 +407,7 @@ main#Rushee {
 			}
 			input {
 				padding: 5px 10px;
-				color: #ffffff;
+				color: #fff;
 				font-size: 12px;
 				font-weight: bold;
 				text-shadow:0px 1px 0px #cc9f52;
@@ -306,79 +424,6 @@ main#Rushee {
 					position:relative;
 					top:1px;
 				}
-		}
-		div.rushee-edit {
-			margin-top: 30px;
-			padding-bottom: 20px;
-			font-size: 14px;
-
-			span {
-				display: block;
-				margin: 0 0 5px 0;
-				color: #bbb;
-			}
-			ul {
-				margin: 0 0 10px 0;
-				list-style: none;
-
-				li {
-					display: inline-block;
-					margin: 0 10px 0 0;
-
-					a {
-						color: #f64c3f;
-					}
-				}
-			}
-		}
-	}
-	section.rushee-brother-likes {
-		float: right;
-		width: 250px;
-		h2 {
-			display: inline-block;
-			margin-bottom: 10px;
-			font-size: 28px;
-		}
-		div.rushee-like {
-			display: inline-block;
-			margin: 0 0 10px 10px;
-			line-height: 34px;
-			vertical-align: bottom;
-
-			a {
-				padding: 4px 10px;
-				text-decoration: none;
-				color: #ffffff;
-				font-size: 15px;
-				font-weight: bold;
-				text-shadow:0px 1px 0px #cc9f52;
-				background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #edb600) );
-				background: -moz-linear-gradient( center top, #ffc477 5%, #edb600 100% );
-				background-color: #ffc477;
-				border: 1px solid #eeb44f;
-				border-radius: 3px;
-				box-shadow: inset 0px 1px 0px 0px #fce2c1;
-				-moz-box-shadow: inset 0px 1px 0px 0px #fce2c1;
-				-webkit-box-shadow: inset 0px 1px 0px 0px #fce2c1;
-			}
-		}
-		div.brother-like {
-			position: relative;
-			display: inline-block;
-			width: 100px;
-			text-align: center;
-			
-			img {
-				width: 100px;
-			}
-			span {
-				position: absolute;
-				top: 10px;
-				width: 100%;
-				color: #fff;
-				line-height: 85px;
-			}
 		}
 	}
 }

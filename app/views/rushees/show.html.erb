@@ -84,7 +84,7 @@
                 <% if current_user == comment.user %>
                     <%= link_to "Delete", delete_rushee_comment_path(@rushee, comment), method: :put %>
                 <% end %>
-            </div
+            </div>
         <% end %>
 
         <%= form_for([@rushee, @rushee.comments.build]) do |f| %>

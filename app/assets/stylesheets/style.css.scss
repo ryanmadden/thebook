@@ -4,7 +4,7 @@
 	src: url(/app/assets/fonts/Nevis/nevis.ttf);
 }
 
-$font-family: "Lucida-Grande", Arial, Helvetica, sans-serif;
+$font-family: Arial, Helvetica, sans-serif;
 $primary-color: #001e33;//#002640;// #003050;
 $secondary-color: #edb700;
 $h1-color: $secondary-color;
@@ -37,8 +37,9 @@ html {
 
 			main {
 				margin: 0 auto;
-				padding: 80px 0 0 0;
+				padding: 100px 0 0 0;
 				width: 80%;
+				max-width: 1000px;
 
 				section {
 
@@ -69,15 +70,16 @@ html {
 header {
 	position: fixed;
 	width: 100%;
-	background-color: $secondary-color;
+	background-color: desaturate($secondary-color, 20%);
 	opacity: 0.9;
 	z-index: 1000;
 
 	> nav {
 		margin: 0 auto;
-		padding: 10px 0;
+		padding: 20px 0;
 		width: 90%;
 		overflow: auto;
+		font-family: "Nevis";
 
 		> a {
 			float: left;
@@ -96,6 +98,7 @@ header {
 
 					a {
 						text-decoration: none;
+						font-size: 14px;
 						color: $primary-color;
 					}
 				}
@@ -105,14 +108,21 @@ header {
 			}
 		}
 		a:hover {
-			opacity: 0.7;
-			-webkit-transition: 0.5s;
-			-moz-transition: 0.5s;
-			-o-transition: 0.5s;
-			transition: 0.5s;
+			opacity: 0.6;
+			-webkit-transition: 0.2s;
+			-moz-transition: 0.2s;
+			-o-transition: 0.2s;
+			transition: 0.2s;
 		}
 
 	}
+}
+header:hover {
+	background-color: $secondary-color;
+	-webkit-transition: 0.2s;
+	-moz-transition: 0.2s;
+	-o-transition: 0.2s;
+	transition: 0.2s;
 }
 
 
@@ -245,15 +255,20 @@ main#Rushee {
 
 			li {
 				margin-bottom: 5px;
-				color: #bbb;
+				color: #ccc;
+				font-size: 14px;
 
 				strong {
 					color: #ddd;
 				}
+				a {
+					color: #4a9de8;
+					text-decoration: none;
+				}
 			}
 		}
 		div.rushee-comments {
-			margin-top: 15px;
+			margin-top: 25px;
 
 			div.user-comment {
 
@@ -269,6 +284,7 @@ main#Rushee {
 				}
 			}
 			textarea {
+				padding: 10px;
 				border-radius: 3px;
 			}
 			input {
@@ -294,6 +310,8 @@ main#Rushee {
 		div.rushee-edit {
 			margin-top: 30px;
 			padding-bottom: 20px;
+			font-size: 14px;
+
 			span {
 				display: block;
 				margin: 0 0 5px 0;
@@ -316,7 +334,7 @@ main#Rushee {
 	}
 	section.rushee-brother-likes {
 		float: right;
-		width: 200px;
+		width: 250px;
 		h2 {
 			display: inline-block;
 			margin-bottom: 10px;
@@ -347,6 +365,7 @@ main#Rushee {
 		}
 		div.brother-like {
 			position: relative;
+			display: inline-block;
 			width: 100px;
 			text-align: center;
 			
@@ -366,7 +385,7 @@ main#Rushee {
 
 
 
-/* New rushees */
+/* New rushees page */
 main#New-Rushee {
 
 	section:first-child {
@@ -417,6 +436,8 @@ main#New-Rushee {
 }
 
 
+
+/* Edit rushee page */
 main#Edit-Rushee {
 
 	section:first-child {

@@ -1,6 +1,6 @@
 class Rushee < ActiveRecord::Base
 	belongs_to :user
-	has_many :comments
+	has_many :comments, dependent: :destroy
 	acts_as_votable
 	is_impressionable :counter_cache => true, :unique => :all, :column_name => :impressions_count
 

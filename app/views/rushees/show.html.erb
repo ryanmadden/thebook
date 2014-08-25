@@ -9,9 +9,11 @@
             <ul class="rushee-specs">
                 <li><strong>Year: </strong>Freshman</li>
                 <li><strong>Age: </strong><%= @rushee.age %></li>
-                <li><strong>Hometown: </strong>Loserville, MI</li>
+                <li><strong>Hometown: </strong><%= @rushee.hometown %></li>
+                <li><strong>Major: </strong><%= @rushee.major %></li>
+                <li><strong>Campus Involvement: </strong><%= @rushee.campus_involvement %></li>
                 <li><strong>Bio: </strong><%= @rushee.bio %></li>
-                <li><strong>Facebook: </strong><a target="_blank" href="https://www.facebook.com/kaldjian?fref=ts">https://www.facebook.com/kaldjian?fref=ts</a></li>
+                <li><strong>Facebook: </strong><%= @rushee.fb %></li>
             </ul>
 
             <div class="rushee-edit">

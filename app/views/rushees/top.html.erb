@@ -6,8 +6,8 @@
 
         <span>Sort by</span>
         <select>
-            <option value="rushees">Random</option>
-            <option selected="selected" value="top">Likes</option>
+            <option selected="selected" value="rushees">Random</option>
+            <option value="top">Likes</option>
             <option value="views">Views</option>
             <option value="#">Comments</option>
             <option value="recent">Most Recent</option>
@@ -32,8 +32,12 @@
                         <% else %>
                             <span><%= rushee.votes_for.size %> likes</span>
                         <% end %>
-
-                        <span><%= rand(15) %> comments</span>
+                        
+                        <% if rushee.comments_count == 1 %>
+                            <span>1 comment</span>
+                        <% else %>
+                            <span><%= rushee.comments_count %> comments</span>
+                        <% end %>
 
                         <% if rushee.impressionist_count == 1 %>
                             <span>1 view</span>

@@ -20,6 +20,10 @@ class RusheesController < ApplicationController
     @rushees = Rushee.all.order(:impressions_count => :desc)
   end
 
+  def comments
+    @rushees = Rushee.all.order(:comments_count => :desc)
+  end
+
   def show
     @rushee = Rushee.find(params[:id])
     impressionist(@rushee)
@@ -86,11 +90,11 @@ class RusheesController < ApplicationController
     end
 
     def correct_user
-      if current_user.id == 1 or 2
-      else
+      # if current_user.id == 1 or 2
+      # else
         @rushee = current_user.rushees.find_by(id: params[:id])
         redirect_to rushees_path, notice: "Not authorized to edit this post" if @rushee.nil?
-      end
+      # end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -35,12 +35,6 @@
             <% else %>
                 <%= link_to 'like', like_rushee_path(@rushee), method: :put %>
             <% end %>
-
-            <% if @rushee.votes_for.size == 1 %>
-                <span>(1 like)</span>
-            <% else %>
-                <span>(<%= @rushee.votes_for.size %> likes)</span>
-            <% end %>
         </div>
 
         <div class="brother-likes-container">

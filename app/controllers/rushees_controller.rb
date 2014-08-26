@@ -86,7 +86,7 @@ class RusheesController < ApplicationController
     end
 
     def signed_in
-      redirect_to root_path, notice: "Please log in to view page" if not current_user
+      redirect_to root_path, notice: "Please log in to view page" unless current_user
     end
 
     def correct_user

@@ -7,7 +7,6 @@
             <h1><%= @rushee.name %></h1>
 
             <ul class="rushee-specs">
-                <li><strong>Year: </strong>Freshman</li>
                 <li><strong>Age: </strong><%= @rushee.age %></li>
                 <li><strong>Hometown: </strong><%= @rushee.hometown %></li>
                 <li><strong>Major: </strong><%= @rushee.major %></li>
@@ -55,7 +54,11 @@
                 <span><%= @rushee.votes_for.size %> likes</span>
             <% end %>
 
-            <span><%= rand(15) %> comments</span>
+            <% if @rushee.comments_count == 1 %>
+                <span>1 comment</span>
+            <% else %>
+                <span><%= @rushee.comments_count %> comments</span>
+            <% end %>
 
             <% if @rushee.impressionist_count == 1 %>
                 <span>1 view</span>

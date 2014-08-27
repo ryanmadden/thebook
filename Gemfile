@@ -16,6 +16,8 @@ gem 'jquery-turbolinks'
 gem 'masonry-rails', '~> 0.2.0'
 gem 'impressionist'
 gem 'imagesLoaded_rails'
+gem 'aws-sdk', '~> 1.5.7'
+
 
 
 

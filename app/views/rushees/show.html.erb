@@ -85,6 +85,7 @@
                     <%= link_to "like", like_rushee_comment_path(@rushee, comment), method: :put %>
                     <%= comment.votes_for.size %>
                 <% else %>
+                    <%= link_to "unlike", unlike_rushee_comment_path(@rushee, comment), method: :put %>
                     <%= comment.votes_for.size  %>
                 <% end %>
                 <% if current_user == comment.user %>

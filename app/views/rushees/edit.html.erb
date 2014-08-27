@@ -19,11 +19,19 @@
 				</div>
 			<% end %>
 
-			<%= f.text_field :name %>
+			<%= f.text_field :name, :placeholder => "Name" %>
 			
-			<%= f.text_field :age %>
+			<%= f.text_field :age, :placeholder => "Age" %>
+
+			<%= f.text_field :major, :placeholder => "Major" %>
+
+			<%= f.text_field :hometown, :placeholder => "Hometown" %>
+
+			<%= f.text_field :campus_involvement, :placeholder => "Campus involvement" %>
 			
-			<%= f.text_area :bio %>
+			<%= f.text_area :bio, :placeholder => "Relevant Information" %>
+
+			<%= f.text_field :fb, :placeholder => "Link to Facebook profile" %>
 			
 			<%= f.label :image %>
 			<%= f.file_field :image %>

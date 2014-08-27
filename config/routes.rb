@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     end
     resources :comments do
       member do
+        put 'post', to: "comments#create"
         put 'like', to: "comments#vote"
         put 'unlike', to: "comments#unvote"
         put 'delete', to: "comments#destroy"

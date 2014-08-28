@@ -17,7 +17,7 @@
             </ul>
 
             <div class="rushee-edit">
-                <% if @rushee.user == current_user or current_user.id == 1 %>
+                <% if @rushee.user == current_user or current_user.id <= 3 %>
                     <span>Since you added this rushee, you can perform the following actions: </span>
                     <ul>
                         <li><%= link_to 'Edit rushee', edit_rushee_path(@rushee) %></li>

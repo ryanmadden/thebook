@@ -90,7 +90,7 @@ class RusheesController < ApplicationController
     end
 
     def correct_user
-      if current_user.id == 1 or 2
+      if current_user.id <= 3
       else
         @rushee = current_user.rushees.find_by(id: params[:id])
         redirect_to rushees_path, notice: "Not authorized to edit this post" if @rushee.nil?

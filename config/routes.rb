@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     member do
       put 'like', to: "rushees#vote"
       put 'unlike', to: "rushees#unvote"
+      match 'offer', to: "rushees#offered", via: [:get, :post]
+      match 'drop', to: "rushees#dropped", via: [:get, :post]
+      match 'table', to: "rushees#tabled", via: [:get, :post]
+      match 'reject', to: "rushees#rejected", via: [:get, :post]
     end
     resources :comments do
       member do

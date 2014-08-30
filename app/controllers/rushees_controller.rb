@@ -39,8 +39,44 @@ class RusheesController < ApplicationController
   def offered
     @rushee = Rushee.find(params[:id])
     @rushee.bid_offered = true
+    @rushee.save
+    respond_to do |format|
+      format.html {redirect_to :back }
+    end
   end
 
+  def dropped
+    @rushee = Rushee.find(params[:id])
+    @rushee.bid_dropped = true
+    @rushee.bid_tabled = false
+    @rushee.bid_rejected = false
+    @rushee.save
+    respond_to do |format|
+      format.html {redirect_to :back }
+    end
+  end
+
+  def tabled
+    @rushee = Rushee.find(params[:id])
+    @rushee.bid_dropped = false
+    @rushee.bid_tabled = true
+    @rushee.bid_rejected = false
+    @rushee.save
+    respond_to do |format|
+      format.html {redirect_to :back }
+    end
+  end
+
+  def rejected
+    @rushee = Rushee.find(params[:id])
+    @rushee.bid_dropped = false
+    @rushee.bid_tabled = false
+    @rushee.bid_rejected = true
+    @rushee.save
+    respond_to do |format|
+      format.html {redirect_to :back }
+    end
+  end
 
   def create
     @rushee = current_user.rushees.build(rushee_params)

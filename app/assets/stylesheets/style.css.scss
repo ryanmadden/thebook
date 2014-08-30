@@ -1,4 +1,3 @@
-/* Globals */
 @font-face {
 	font-family: "Nevis";
 	src: url(/fonts/Nevis/nevis.ttf);
@@ -7,6 +6,7 @@
 $font-family: Arial, Helvetica, sans-serif;
 $primary-color: #001e33;//#002640;// #003050;
 $secondary-color: #edb700;
+$facebook-color: #3b5998;
 $h1-color: $secondary-color;
 $h2-color: $secondary-color;
 
@@ -248,8 +248,43 @@ main#Rushee {
 		border-radius: 3px;
 
 		img {
+			display: block;
 			width: 240px;
 			border-radius: 2px 2px 0 0;
+		}
+		ul.rushee-stats {
+			width: 100%;
+			background-color: #222;
+
+			li {
+				display: inline-block;
+				padding: 10px 0;
+				width: calc(33% - 3px);
+				color: #91949d;
+				font-size: 11px;
+				text-align: center;
+				border: 1px solid #444;
+				border-style: none solid none none;
+
+				i {
+					display: block;
+					margin-bottom: 5px;
+					font-size: 14px;
+				}
+				div.rushee-like {
+					display: none;
+				}
+			}
+			li:first-child {
+				cursor: pointer;
+			}
+			li:first-child:hover {
+				background-color: #EDB74B;
+				color: #222;
+			}
+			li:last-child {
+				border: none;
+			}
 		}
 		div.rushee-info-container {
 			padding: 10px;
@@ -258,16 +293,28 @@ main#Rushee {
 				color: $primary-color;
 				text-shadow: none;
 			}
+			h2 {
+				text-shadow: none;
+
+				a {
+
+					i {
+						color: $facebook-color;
+						font-size: 25px;
+					}
+				}
+			}
 			ul.rushee-specs {
 				margin-top: 10px;
 				list-style: none;
 
 				li {
-					margin-bottom: 5px;
+					margin-bottom: 7px;
 					color: #444;
-					font-size: 14px;
+					font-size: 13px;
 
 					strong {
+						display: block;
 						color: $primary-color;
 					}
 					a {
@@ -361,25 +408,6 @@ main#Rushee {
 					line-height: 55px;
 					font-size: 11px;
 				}
-			}
-		}
-		div.rushee-stats {
-			width: 100%;
-			background-color: #222;
-			border-radius: 0 0 2px 2px;
-
-			span {
-				display: inline-block;
-				padding: 10px 0;
-				width: calc(33% - 8px);
-				color: #91949d;
-				font-size: 13px;
-				text-align: center;
-				border: 1px solid #444;
-				border-style: none solid none none;
-			}
-			span:last-child {
-				border: none;
 			}
 		}
 	}

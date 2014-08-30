@@ -3,20 +3,54 @@
     <section class="rushee-info">
 
         <%= image_tag @rushee.image.url() %>
+
+        <ul class="rushee-stats">
+            <li>
+                <% if @rushee.votes_for.size == 1 %>
+                    <i class="fa fa-thumbs-up"></i>1 like
+                <% else %>
+                    <i class="fa fa-thumbs-up"></i><%= @rushee.votes_for.size %> likes
+                <% end %>
+
+                <div class="rushee-like">
+                    <% if current_user.voted_for? @rushee %>
+                        <%= link_to('unlike', unlike_rushee_path(@rushee), method: :put) %>
+                    <% else %>
+                        <%= link_to 'like', like_rushee_path(@rushee), method: :put %>
+                    <% end %>
+                </div>
+            </li>
+
+            <li>
+                <% if @rushee.comments_count == 1 %>
+                    <i class="fa fa-comment"></i>1 comment
+                <% else %>
+                    <i class="fa fa-comment"></i><%= @rushee.comments_count %> comments
+                <% end %>
+            </li>
+
+            <li>
+                <% if @rushee.impressionist_count == 1 %>
+                    <i class="fa fa-eye"></i>1 view
+                <% else %>
+                    <i class="fa fa-eye"></i><%= @rushee.impressionist_count %> views
+                <% end %>
+            </li>
+        </ul>
+
         <div class="rushee-info-container">
             <h1><%= @rushee.name %></h1>
-            <h4><%= @rushee.user.name%></h4>
+            <h2><a href="<%= @rushee.fb %>"><i class="fa fa-facebook-square"></i></a></h2>
 
             <ul class="rushee-specs">
-                <li><strong>Age: </strong><%= @rushee.age %></li>
-                <li><strong>Hometown: </strong><%= @rushee.hometown %></li>
-                <li><strong>Major: </strong><%= @rushee.major %></li>
-                <li><strong>Campus Involvement: </strong><%= @rushee.campus_involvement %></li>
-                <li><strong>Bio: </strong><%= @rushee.bio %></li>
-                <li><strong>Facebook: </strong><%= @rushee.fb %></li>
+                <li><strong>Hometown </strong><%= @rushee.hometown %></li>
+                <li><strong>Major </strong><%= @rushee.major %></li>
+                <li><strong>Campus Involvement </strong><%= @rushee.campus_involvement %></li>
+                <li><strong>Summary </strong><%= @rushee.bio %></li>
             </ul>
 
             <div class="rushee-edit">
+                <span>Rushee added by <%= @rushee.user.name %></span>
                 <% if @rushee.user == current_user or current_user.id <= 3 %>
                     <span>Since you added this rushee, you can perform the following actions: </span>
                     <ul>
@@ -31,40 +65,12 @@
 
     <section class="rushee-brother-likes">
 
-        <div class="rushee-like">
-            <% if current_user.voted_for? @rushee %>
-                <%= link_to 'unlike', unlike_rushee_path(@rushee), method: :put %>
-            <% else %>
-                <%= link_to 'like', like_rushee_path(@rushee), method: :put %>
-            <% end %>
-        </div>
-
         <div class="brother-likes-container">
             <% @rushee.votes_for.voters.each do |v| %>
                 <div class="brother-like">
                     <%= image_tag(v.image) %>
                     <span><%= v.name %></span>
                 </div>
-            <% end %>
-        </div>
-
-        <div class="rushee-stats">
-            <% if @rushee.votes_for.size == 1 %>
-                <span>1 like</span>
-            <% else %>
-                <span><%= @rushee.votes_for.size %> likes</span>
-            <% end %>
-
-            <% if @rushee.comments_count == 1 %>
-                <span>1 comment</span>
-            <% else %>
-                <span><%= @rushee.comments_count %> comments</span>
-            <% end %>
-
-            <% if @rushee.impressionist_count == 1 %>
-                <span>1 view</span>
-            <% else %>
-                <span><%= @rushee.impressionist_count %> views</span>
             <% end %>
         </div>
 

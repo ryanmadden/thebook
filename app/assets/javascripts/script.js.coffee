@@ -35,6 +35,11 @@ $ ->
 		  gutterWidth: 25
 
 
+	# Triggers 'like' operation on Rushee page
+	$('main#Rushee section.rushee-info ul.rushee-stats li:first-child').click ->
+		$('main#Rushee section.rushee-info ul.rushee-stats li:first-child div.rushee-like a')[0].click()
+
+
 	# Handles rushee ordering based on select option
 	$('main#Rushees section:first-child select').change ->
 		selection = $('main#Rushees section:first-child select option:selected').attr('value')

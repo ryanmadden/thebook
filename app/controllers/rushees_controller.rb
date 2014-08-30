@@ -36,6 +36,11 @@ class RusheesController < ApplicationController
   def edit
   end
 
+  def offered
+    @rushee = Rushee.find(params[:id])
+    @rushee.bid_offered = true
+  end
+
 
   def create
     @rushee = current_user.rushees.build(rushee_params)

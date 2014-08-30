@@ -286,23 +286,27 @@ main#Rushee {
 				border: none;
 			}
 		}
+		button {
+			margin: 0;
+			width: 100%;
+			background-color: $facebook-color;
+			border: none;
+
+			a {
+				color: #fff;
+				text-decoration: none;
+
+				i {
+					font-size: 25px;
+				}
+			}
+		}
 		div.rushee-info-container {
 			padding: 10px;
 
 			h1 {
 				color: $primary-color;
 				text-shadow: none;
-			}
-			h2 {
-				text-shadow: none;
-
-				a {
-
-					i {
-						color: $facebook-color;
-						font-size: 25px;
-					}
-				}
 			}
 			ul.rushee-specs {
 				margin-top: 10px;

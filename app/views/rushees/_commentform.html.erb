@@ -1,0 +1,4 @@
+<%= form_for([@rushee, Comment.new]) do |f| %>
+    <%= f.text_area :body, :cols => "55", :rows => "3", :placeholder => "Write a comment..." %>
+    <%= f.submit "comment" %>
+<% end %>

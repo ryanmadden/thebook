@@ -81,32 +81,46 @@
 
     <section class="rushee-comments">
 
-        <h2>Comments</h2>
+        <%= render 'commentform' %>
+        <hr>
 
         <% @rushee.comments.each do |comment| %>
             <div class="user-comment">
-                <%= image_tag comment.user.image%>
-                <strong><%= comment.user.name %>:</strong>
-                <span>
-                    <%= comment.body  %>
-                </span>
-                <% if (current_user != comment.user) && !(current_user.voted_for? comment) %>
-                    <%= link_to "like", like_rushee_comment_path(@rushee, comment), method: :put %>
-                    <%= comment.votes_for.size %>
-                <% else %>
-                    <%= link_to "unlike", unlike_rushee_comment_path(@rushee, comment), method: :put %>
-                    <%= comment.votes_for.size  %>
-                <% end %>
-                <% if current_user == comment.user %>
-                    <%= link_to "Delete", delete_rushee_comment_path(@rushee, comment), method: :put %>
-                <% end %>
+
+                <div class="comment-left">
+                    <div class="comment-commenter">
+                        <%= image_tag comment.user.image%>
+                        <strong class="comment-name"><%= comment.user.name %></strong>
+                    </div>
+
+                    <div class="comment-comment">
+                        <span class="comment-body"><%= comment.body %></span>
+                    </div>
+                    <!-- <div class="comment-like">
+                        <% if (current_user != comment.user) && !(current_user.voted_for? comment) %>
+                            <%= link_to "like", like_rushee_comment_path(@rushee, comment), method: :put %>
+                            <%= comment.votes_for.size %>
+                        <% else %>
+                            <%= link_to "unlike", unlike_rushee_comment_path(@rushee, comment), method: :put %>
+                            <%= comment.votes_for.size  %>
+                        <% end %>
+                    </div> -->
+                </div>
+
+                <div class="comment-right">
+                    <div class="comment-time">
+                        <span><%= comment.created_at.in_time_zone("America/Chicago").strftime("%B %e at %I:%M%p") %></span>
+                    </div>
+                    <div class="comment-edit">
+                        <% if current_user == comment.user %>
+                            <%= link_to "Delete comment", delete_rushee_comment_path(@rushee, comment), method: :put %>
+                        <% end %>
+                    </div>
+                </div>
             </div>
         <% end %>
 
-        <%= form_for([@rushee, @rushee.comments.build]) do |f| %>
-           <p><%= f.text_area :body, :cols => "55", :rows => "3", :placeholder => "Write a comment..." %></p>
-            <p><%= f.submit "comment" %></p>
-        <% end %>
+
 
     </section>
 

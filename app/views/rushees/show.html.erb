@@ -96,15 +96,15 @@
                     <div class="comment-comment">
                         <span class="comment-body"><%= comment.body %></span>
                     </div>
-                    <!-- <div class="comment-like">
-                        <% if (current_user != comment.user) && !(current_user.voted_for? comment) %>
+                    <div class="comment-like">
+                        <% if (current_user == comment.user)%>
+                        <% elsif !(current_user.voted_for? comment) %>
                             <%= link_to "like", like_rushee_comment_path(@rushee, comment), method: :put %>
-                            <%= comment.votes_for.size %>
                         <% else %>
                             <%= link_to "unlike", unlike_rushee_comment_path(@rushee, comment), method: :put %>
-                            <%= comment.votes_for.size  %>
                         <% end %>
-                    </div> -->
+                        <%= comment.votes_for.size %>
+                    </div>
                 </div>
 
                 <div class="comment-right">

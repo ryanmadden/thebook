@@ -14,14 +14,12 @@
 ActiveRecord::Schema.define(version: 20140831200521) do
 
   create_table "comments", force: true do |t|
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "rushee_id"
     t.text     "body"
+    t.integer  "user_id"
   end
-
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "impressions", force: true do |t|
     t.string   "impressionable_type"
@@ -48,11 +46,56 @@ ActiveRecord::Schema.define(version: 20140831200521) do
   add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
   add_index "impressions", ["user_id"], name: "index_impressions_on_user_id"
 
-# Could not dump table "rushees" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "rushees", force: true do |t|
+    t.string   "name"
+    t.string   "age"
+    t.string   "bio"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "cached_votes_total",      default: 0
+    t.integer  "cached_votes_score",      default: 0
+    t.integer  "cached_votes_up",         default: 0
+    t.integer  "cached_votes_down",       default: 0
+    t.integer  "cached_weighted_score",   default: 0
+    t.integer  "cached_weighted_total",   default: 0
+    t.float    "cached_weighted_average", default: 0.0
+    t.integer  "impressions_count"
+    t.integer  "comments_count",          default: 0,   null: false
+    t.string   "fb"
+    t.string   "major"
+    t.string   "hometown"
+    t.string   "campus_involvement"
+    t.boolean  "bid_offered"
+    t.boolean  "bid_dropped"
+    t.boolean  "bid_rejected"
+    t.boolean  "bid_tabled"
+    t.boolean  "legacy"
+  end
 
-# Could not dump table "users" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  add_index "rushees", ["cached_votes_down"], name: "index_rushees_on_cached_votes_down"
+  add_index "rushees", ["cached_votes_score"], name: "index_rushees_on_cached_votes_score"
+  add_index "rushees", ["cached_votes_total"], name: "index_rushees_on_cached_votes_total"
+  add_index "rushees", ["cached_votes_up"], name: "index_rushees_on_cached_votes_up"
+  add_index "rushees", ["cached_weighted_average"], name: "index_rushees_on_cached_weighted_average"
+  add_index "rushees", ["cached_weighted_score"], name: "index_rushees_on_cached_weighted_score"
+  add_index "rushees", ["cached_weighted_total"], name: "index_rushees_on_cached_weighted_total"
+  add_index "rushees", ["user_id"], name: "index_rushees_on_user_id"
+
+  create_table "users", force: true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image"
+  end
 
   create_table "votes", force: true do |t|
     t.integer  "votable_id"

@@ -63,3 +63,14 @@ $ ->
 		$(this).children('i').css('opacity', '1.0')
 		$(this).children('span').hide()
 
+
+	# Rushee comments section fit to screen
+	leftHeight = $('main#Rushee section.rushee-info').height()
+	$('main#Rushee section.rushee-info').imagesLoaded ->
+		leftHeight = $('main#Rushee section.rushee-info').height()
+		$('main#Rushee section.rushee-comments div.comments-wrapper').css('height', leftHeight - 155)
+
+
+
+
+

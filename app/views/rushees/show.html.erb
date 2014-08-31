@@ -56,7 +56,7 @@
         <div class="rushee-info-container">
             <h1><%= @rushee.name %></h1>
 
-            <a class="rushee-facebook" href="<%= @rushee.fb %>"><i class="fa fa-facebook"></i>Facebook Profile</a>
+            <%= link_to( '<i class="fa fa-facebook"></i>Facebook Profile'.html_safe, @rushee.fb, html_options = {class: "rushee-facebook", target: "blank"} ) %>
 
             <ul class="rushee-specs">
                 <li><strong>Hometown </strong><%= @rushee.hometown %></li>
@@ -82,43 +82,50 @@
     <section class="rushee-comments">
 
         <%= render 'commentform' %>
-        <hr>
 
-        <% @rushee.comments.each do |comment| %>
-            <div class="user-comment">
+        <div class="comments-wrapper">
 
-                <div class="comment-left">
-                    <div class="comment-commenter">
-                        <%= image_tag comment.user.image%>
-                        <strong class="comment-name"><%= comment.user.name %></strong>
+            <% @rushee.comments.each do |comment| %>
+                <div class="user-comment">
+
+                    <div class="comment-left">
+                        <div class="comment-commenter">
+                            <%= image_tag comment.user.image%>
+                            <strong class="comment-name"><%= comment.user.name %></strong>
+                        </div>
+
+                        <div class="comment-comment">
+                            <span class="comment-body"><%= comment.body %></span>
+                        </div>
                     </div>
 
-                    <div class="comment-comment">
-                        <span class="comment-body"><%= comment.body %></span>
-                    </div>
-                    <div class="comment-like">
-                        <% if (current_user == comment.user)%>
-                        <% elsif !(current_user.voted_for? comment) %>
-                            <%= link_to "like", like_rushee_comment_path(@rushee, comment), method: :put %>
-                        <% else %>
-                            <%= link_to "unlike", unlike_rushee_comment_path(@rushee, comment), method: :put %>
-                        <% end %>
-                        <%= comment.votes_for.size %>
+                    <div class="comment-right">
+                        <div class="comment-time">
+                            <span><%= comment.created_at.in_time_zone("America/Chicago").strftime("%B %e at %I:%M%p") %></span>
+                        </div>
+                        <div class="comment-like">
+                            <% if !(current_user.voted_for? comment) %>
+                                <%= link_to '<i class="fa fa-thumbs-up not-liked"></i>'.html_safe, like_rushee_comment_path(@rushee, comment), method: :put %>
+                            <% else %>
+                                <%= link_to '<i class="fa fa-thumbs-up liked"></i>'.html_safe, unlike_rushee_comment_path(@rushee, comment), method: :put %>
+                            <% end %>
+
+                            <% if comment.votes_for.size == 1 %>
+                                <span>1 like</span>
+                            <% else %>
+                                <span><%= comment.votes_for.size %> likes</span>
+                            <% end %>
+                        </div>
+                        <div class="comment-edit">
+                            <% if current_user == comment.user %>
+                                <%= link_to "Delete", delete_rushee_comment_path(@rushee, comment), method: :put %>
+                            <% end %>
+                        </div>
                     </div>
                 </div>
+            <% end %>
 
-                <div class="comment-right">
-                    <div class="comment-time">
-                        <span><%= comment.created_at.in_time_zone("America/Chicago").strftime("%B %e at %I:%M%p") %></span>
-                    </div>
-                    <div class="comment-edit">
-                        <% if current_user == comment.user %>
-                            <%= link_to "Delete comment", delete_rushee_comment_path(@rushee, comment), method: :put %>
-                        <% end %>
-                    </div>
-                </div>
-            </div>
-        <% end %>
+        </div>
 
 
 

@@ -404,12 +404,14 @@ main#Rushee {
 	}
 	section.rushee-comments {
 		float: left;
-		width: calc(100% - 280px);
 		padding: 10px;
+		width: calc(100% - 280px);
+		overflow: auto;
 		background-color: #fff;
 		border-radius: 3px;
 
 		form {
+			margin-bottom: 30px;
 			padding: 10px;
 			background-color: #f7f7f7;
 			border-radius: 3px;
@@ -447,69 +449,81 @@ main#Rushee {
 				top:1px;
 			}
 		}
-		hr {
-			margin: 10px 0 30px 0;
-			height: 1px;
-			border: 0;
-			box-shadow: inset 0 6px 6px -6px rgba(0,0,0,0.5);
-		}
-		div.user-comment {
-			clear: both;
+		div.comments-wrapper {
 			overflow: auto;
-			margin-bottom: 25px;
 
-			div.comment-left {
-				float: left;
-				width: calc(100% - 135px);
+			div.user-comment {
+				clear: both;
+				overflow: auto;
+				margin-bottom: 20px;
 
-				div.comment-commenter {
+				div.comment-left {
 					float: left;
-					margin-right: 20px;
-					min-height: 70px;
+					width: calc(100% - 135px);
 
-					img {
-						width: 40px;
-						border-radius: 3px;
+					div.comment-commenter {
+						float: left;
+						margin-right: 20px;
+						min-height: 70px;
+
+						img {
+							width: 40px;
+							border-radius: 3px;
+						}
+						strong.comment-name {
+							display: block;
+							color: $primary-color;
+							font-size: 12px;
+							font-weight: normal;
+						}
 					}
-					strong.comment-name {
-						display: block;
-						color: $primary-color;
+					div.comment-comment {
+						display: inline-block;
+						max-width: calc(100% - 90px);
+						background-color: #eee;
+						border: 1px solid #eee;
+						border-radius: 8px;
+
+						span {
+							display: block;
+							padding: 10px 15px;
+							font-size: 13px;
+						}
+					}
+				}
+				div.comment-right {
+					float: right;
+					font-size: 12px;
+					text-align: right;
+
+					div.comment-time {
+						color: #555;
+					}
+					div.comment-like {
 						font-size: 13px;
+
+						a {
+
+							i {
+								font-size: 20px;
+							}
+							i.liked {
+								color: #63C0FF;
+							}
+							i.not-liked {
+								color: #ccc;
+							}
+						}
+					}
+					div.comment-edit {
+						margin-top: 4px;
+
+						a {
+							color: #f64c3f;
+							text-decoration: none;
+						}
 					}
 				}
-				div.comment-comment {
-					display: inline-block;
-					max-width: calc(100% - 90px);
-					border: 1px solid #91949d;
-					border-radius: 8px;
-					vertical-align: top;
-
-					span {
-						display: block;
-						padding: 10px 15px;
-						font-size: 14px;
-					}
-				}
-				div.comment-like {
-					font-size: 13px;
-				}
-			}
-			div.comment-right {
-				float: right;
-				font-size: 12px;
-				text-align: right;
-
-				div.comment-time {
-					color: #555;
-				}
-				div.comment-edit {
-
-					a {
-						color: #f64c3f;
-						text-decoration: none;
-					}
-				}
-
 			}
 		}
 	}

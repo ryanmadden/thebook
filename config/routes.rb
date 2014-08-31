@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
-  root "pages#home"
+  root "rushees#index"
   get "about" => "pages#about"
   get "top" => "rushees#top"
   get "recent" => "rushees#recent"

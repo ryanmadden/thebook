@@ -45,9 +45,29 @@ class RusheesController < ApplicationController
     end
   end
 
+  def unoffered
+    @rushee = Rushee.find(params[:id])
+    @rushee.bid_offered = false
+    @rushee.save
+    respond_to do |format|
+      format.html {redirect_to :back }
+    end
+  end
+
   def dropped
     @rushee = Rushee.find(params[:id])
     @rushee.bid_dropped = true
+    @rushee.bid_tabled = false
+    @rushee.bid_rejected = false
+    @rushee.save
+    respond_to do |format|
+      format.html {redirect_to :back }
+    end
+  end
+
+  def undropped
+    @rushee = Rushee.find(params[:id])
+    @rushee.bid_dropped = false
     @rushee.bid_tabled = false
     @rushee.bid_rejected = false
     @rushee.save
@@ -67,11 +87,33 @@ class RusheesController < ApplicationController
     end
   end
 
+  def untabled
+    @rushee = Rushee.find(params[:id])
+    @rushee.bid_dropped = false
+    @rushee.bid_tabled = false
+    @rushee.bid_rejected = false
+    @rushee.save
+    respond_to do |format|
+      format.html {redirect_to :back }
+    end
+  end
+
   def rejected
     @rushee = Rushee.find(params[:id])
     @rushee.bid_dropped = false
     @rushee.bid_tabled = false
     @rushee.bid_rejected = true
+    @rushee.save
+    respond_to do |format|
+      format.html {redirect_to :back }
+    end
+  end
+
+  def unrejected
+    @rushee = Rushee.find(params[:id])
+    @rushee.bid_dropped = false
+    @rushee.bid_tabled = false
+    @rushee.bid_rejected = false
     @rushee.save
     respond_to do |format|
       format.html {redirect_to :back }

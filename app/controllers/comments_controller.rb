@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :correct_user, only: [:destroy]
+
   def create
     @rushee = Rushee.find(params[:rushee_id])
     @rushee.comments.create(new_comment_params) do |comment|
@@ -40,8 +42,16 @@ class CommentsController < ApplicationController
 
   private
 
-  def new_comment_params
-    params.require(:comment).permit(:body)
-  end
+    def new_comment_params
+      params.require(:comment).permit(:body)
+    end
+
+    def correct_user
+      if current_user.id <= 3
+      else
+        @comment = current_user.comment.find_by(id: params[:id])
+        redirect_to rushees_path, notice: "Not authorized to edit this comment" if @comment.nil?
+      end
+    end
 
 end

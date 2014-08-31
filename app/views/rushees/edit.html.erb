@@ -32,8 +32,11 @@
 			<%= f.text_area :bio, :placeholder => "Relevant Information" %>
 
 			<%= f.text_field :fb, :placeholder => "Link to Facebook profile" %>
+
+			<%= f.label "Legacy?" %>
+			<%= f.check_box :legacy %>
 			
-			<%= f.label :image %>
+			<%= f.label "Change image" %>
 			<%= f.file_field :image %>
 			
 			<%= f.submit %>

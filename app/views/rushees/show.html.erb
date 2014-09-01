@@ -56,7 +56,7 @@
         <div class="rushee-info-container">
             <h1><%= @rushee.name %></h1>
 
-            <%= link_to( '<i class="fa fa-facebook"></i>Facebook Profile'.html_safe, @rushee.fb, html_options = {class: "rushee-facebook", target: "blank"} ) %>
+            <%= link_to( '<i class="fa fa-facebook"></i>Facebook Profile'.html_safe, "http://#{@rushee.fb}", html_options = {class: "rushee-facebook", target: "blank"} ) %>
 
             <ul class="rushee-specs">
                 <li><strong>Hometown </strong><%= @rushee.hometown %></li>

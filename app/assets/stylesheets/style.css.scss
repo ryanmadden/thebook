@@ -63,6 +63,9 @@ html {
 			}
 		}
 	}
+	body.modal-open {
+		overflow: hidden;
+	}
 }
 
 
@@ -293,6 +296,7 @@ main#Rushee {
 				position: relative;
 				float: left;
 				width: calc(100% / 5);
+				height: 46px;
 				text-align: center;
 				
 				img {
@@ -466,9 +470,14 @@ main#Rushee {
 						margin-right: 20px;
 						min-height: 70px;
 
-						img {
-							width: 40px;
-							border-radius: 3px;
+						div.comment-commenter-image-wrapper {
+							height: 40px;
+							overflow: hidden;
+
+							img {
+								width: 40px;
+								border-radius: 3px;
+							}
 						}
 						strong.comment-name {
 							display: block;
@@ -522,6 +531,47 @@ main#Rushee {
 							color: #f64c3f;
 							text-decoration: none;
 						}
+					}
+				}
+			}
+		}
+	}
+	section.rushee-likes-modal {
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		background-color: rgba(34,34,34,0.6);
+
+		div.modal-content {
+			margin: 0 auto;
+			vertical-align: middle;
+			width: 300px;
+			height: 450px;
+			background-color: #fff;
+			border-radius: 3px;
+
+			h2 {
+				padding: 10px;
+				color: #222;
+				text-shadow: none;
+			}
+			div.modal-brother-likes {
+				padding: 10px;
+
+				div.modal-brother-like {
+					width: 60px;
+					height: 60px;
+					overflow: hidden;
+
+					img.portrait {
+						width: 60px;
+						height: auto;
+					}
+					img.landscape {
+						width: auto;
+						height: 60px;
 					}
 				}
 			}

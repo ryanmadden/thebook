@@ -71,6 +71,35 @@ $ ->
 		$('main#Rushee section.rushee-comments div.comments-wrapper').css('height', leftHeight - 155)
 
 
+	# Rushee likes modal
+	$('main#Rushee section.rushee-info div.brother-likes-container div.brother-like-see-all').click ->
+		windowHeight = $(window).height()
+		$('main#Rushee section.rushee-likes-modal').height(windowHeight)
+		paddingHeight = (windowHeight - 450) / 2
+		$('main#Rushee section.rushee-likes-modal div.modal-content').css('margin-top', paddingHeight)
+		$('body').addClass('modal-open')
+
+
+		$('main#Rushee section.rushee-likes-modal').show()
+
+
+		$('.modal-brother-likes').imagesLoaded ->
+
+			$('.modal-brother-like').each ->
+				width = $(this).children().width()
+				height = $(this).children().height()
+				console.log(width)
+				console.log(height)
+				if width > height
+					$(this).children().addClass('landscape')
+				else
+					$(this).children().addClass('portrait')
+
+
+			$(".modal-brother-likes").masonry
+			  itemSelector: ".modal-brother-like"
+			  gutterWidth: 10
+
 
 
 

@@ -41,7 +41,7 @@
         <div class="brother-likes-container">
             <% @rushee.votes_for.voters.first(3).each do |v| %>
                 <div class="brother-like">
-                    <%= image_tag(v.image) %>
+                    <%= image_tag(v.image)%>
                     <span><%= v.name %></span>
                 </div>
             <% end %>
@@ -90,7 +90,9 @@
 
                     <div class="comment-left">
                         <div class="comment-commenter">
-                            <%= image_tag comment.user.image%>
+                            <div class="comment-commenter-image-wrapper">
+                                <%= image_tag comment.user.image%>
+                            </div>
                             <strong class="comment-name"><%= comment.user.name %></strong>
                         </div>
 
@@ -127,8 +129,19 @@
 
         </div>
 
+    </section>
 
-
+    <section class="rushee-likes-modal">
+        <div class="modal-content">
+            <h2>People who like this</h2>
+            <div class="modal-brother-likes transitions-enabled has-gutters">
+                <% @rushee.votes_for.voters.each do |v| %>
+                    <div class="modal-brother-like">
+                        <%= image_tag(v.image) %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
     </section>
 
 </main>

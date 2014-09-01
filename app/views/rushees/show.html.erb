@@ -103,7 +103,11 @@
 
                     <div class="comment-right">
                         <div class="comment-time">
-                            <span><%= comment.created_at.in_time_zone("America/Chicago").strftime("%B %e at %I:%M%p") %></span>
+                            <% if ( Time.current - comment.created_at) < 86400 #if the comment is less than 1 day old, show "X hours ago" %>
+                                <%= time_ago_in_words(comment.created_at) %>
+                            <% else %>
+                                <span><%= comment.created_at.in_time_zone("America/Chicago").strftime("%b %e at %I:%M%p") %></span>
+                            <% end %>
                         </div>
                         <div class="comment-like">
                             <% if !(current_user.voted_for? comment) %>

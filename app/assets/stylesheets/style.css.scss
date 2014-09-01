@@ -545,7 +545,7 @@ main#Rushee {
 			}
 		}
 	}
-	section.rushee-likes-modal {
+	section.rushee-modal {
 		display: none;
 		position: absolute;
 		top: 0;
@@ -570,10 +570,10 @@ main#Rushee {
 				background-color: #ddd;
 				border-radius: 3px 3px 0 0;
 			}
-			div.modal-brother-likes {
+			div.modal-likes {
 				padding: 10px;
 
-				div.modal-brother-like {
+				div.modal-like {
 					width: 60px;
 					height: 60px;
 					overflow: hidden;

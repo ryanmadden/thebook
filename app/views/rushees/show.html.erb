@@ -135,12 +135,12 @@
 
     </section>
 
-    <section class="rushee-likes-modal">
+    <section class="rushee-modal">
         <div class="modal-content">
             <h2>People who like this</h2>
-            <div class="modal-brother-likes transitions-enabled has-gutters">
+            <div class="modal-likes transitions-enabled has-gutters">
                 <% @rushee.votes_for.voters.each do |v| %>
-                    <div class="modal-brother-like">
+                    <div class="modal-like">
                         <%= image_tag(v.image) %>
                     </div>
                 <% end %>

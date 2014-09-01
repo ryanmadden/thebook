@@ -71,25 +71,26 @@ $ ->
 		$('main#Rushee section.rushee-comments div.comments-wrapper').css('height', leftHeight - 155)
 
 
+	# Rushee comments image sizing
+	$('main#Rushee section.rushee-comments div.comments-wrapper').imagesLoaded ->
+		$('main#Rushee section.rushee-comments div.comments-wrapper div.user-comment').each ->
+			width = $(this).find('img').width()
+			height = $(this).find('img').height()
+			if width > height
+				$(this).find('img').addClass('landscape')
+			else
+				$(this).find('img').addClass('portrait')
+
 
 	# Rushee likes in info panel sizing
-	$('main#Rushee section.rushee-comments div.comments-wrapper div.user-comment').each ->
-		width = $(this).find('img').width()
-		height = $(this).find('img').height()
-		if width > height
-			$(this).find('img').addClass('landscape')
-		else
-			$(this).find('img').addClass('portrait')
-
-
-	# Rushee comments image sizing
-	$('main#Rushee section.rushee-info div.brother-likes-container div.brother-like').each ->
-		width = $(this).children().width()
-		height = $(this).children().height()
-		if width > height
-			$(this).children().addClass('landscape')
-		else
-			$(this).children().addClass('portrait')
+	$('main#Rushee section.rushee-info div.brother-likes-container').imagesLoaded ->
+		$('main#Rushee section.rushee-info div.brother-likes-container div.brother-like').each ->
+			width = $(this).children().width()
+			height = $(this).children().height()
+			if width > height
+				$(this).children().addClass('landscape')
+			else
+				$(this).children().addClass('portrait')
 
 
 	# Rushee likes modal

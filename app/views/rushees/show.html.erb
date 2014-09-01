@@ -104,7 +104,7 @@
                     <div class="comment-right">
                         <div class="comment-time">
                             <% if ( Time.current - comment.created_at) < 86400 #if the comment is less than 1 day old, show "X hours ago" %>
-                                <%= time_ago_in_words(comment.created_at) %>
+                                <span><%= time_ago_in_words(comment.created_at) %> ago</span>
                             <% else %>
                                 <span><%= comment.created_at.in_time_zone("America/Chicago").strftime("%b %e at %I:%M%p") %></span>
                             <% end %>

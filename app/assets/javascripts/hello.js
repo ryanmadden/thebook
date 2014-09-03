@@ -69,6 +69,11 @@ $(document).ready(function() {
 		div.children(container).css('opacity', '1.0')
 		div.children(show).hide()
 	};
+	// Set comments section to equal height as info section
+	var fitCommentsToInfo = function() {
+		var infoHeight = $('section.rushee-info').height();
+		$('div.comments-wrapper').height(infoHeight - 155);
+	};
 
 
 	/*
@@ -137,7 +142,11 @@ $(document).ready(function() {
 		container = 'i';
 		hide = 'span';
 		hideText(div, container, hide);
+	});
+	// Rushee info section images load -> Set comments section to equal height
+	$('section.rushee-info').imagesLoaded(function() {
+		// placeholder to minimize
+		fitCommentsToInfo();
 	})
-
 
 });

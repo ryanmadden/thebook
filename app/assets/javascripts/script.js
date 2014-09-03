@@ -74,6 +74,54 @@ $(document).ready(function() {
 		var infoHeight = $('section.rushee-info').height();
 		$('div.comments-wrapper').height(infoHeight - 155);
 	};
+	// Set element to class 'landscape' or 'portrait' for square sizing
+	var setLandscapeOrPortraitClass = function(element, selector) {
+		width = element.find(selector).width();
+		height = element.find(selector).height();
+		if( width > height ) {
+			element.find(selector).addClass('landscape');
+		}
+		else {
+			element.find(selector).addClass('portrait');
+		}
+	};
+	// Set up and open modal
+	var setupAndOpenModal = function() {
+		// Set modal height, center it vertically
+		var windowHeight = $(window).height();
+		$('section.rushee-modal').height(windowHeight);
+		var marginHeight = (windowHeight - 450) / 2;
+		$('div.modal-content').css('margin-top', marginHeight);
+
+		// Disable scrolling
+		$('body').addClass('modal-open');
+		$('section.rushee-modal').show();
+
+		// User clicks outside modal content -> close modal
+		$(document).mouseup(function(e) {
+			var container = $('div.modal-content');
+			var overlay = $('section.rushee-modal');
+			if( !container.is(e.target) && container.has(e.target).length == 0 ) {
+				overlay.hide();
+				$('body').removeClass('modal-open');
+				return;
+			}
+		});
+
+		// Modal likes images load -> Set element classes for square sizing, initiate masonry
+		$('div.modal-likes').imagesLoaded(function() {
+			$('div.modal-like').each(function() {
+				var element = $(this);
+				var selector = 'img';
+				setLandscapeOrPortraitClass(element, selector);
+			});
+
+			var container = $('.modal-likes');
+			var item = '.modal-like';
+			var gutters = 7;
+			initiateMasonry(container, item, gutters)
+		});
+	};
 
 
 	/*
@@ -147,6 +195,27 @@ $(document).ready(function() {
 	$('section.rushee-info').imagesLoaded(function() {
 		// placeholder to minimize
 		fitCommentsToInfo();
-	})
+	});
+	// Comments wrapper images load -> set element classes for square sizing
+	$('div.comments-wrapper').imagesLoaded(function() {
+		$('div.user-comment').each(function() {
+			var element = $(this);
+			var selector = 'img';
+			setLandscapeOrPortraitClass(element, selector);
+		});
+	});
+	// Brother likes container images load -> set element classes for square sizing
+	$('div.brother-likes-container').imagesLoaded(function() {
+		$('div.brother-like').each(function() {
+			var element = $(this);
+			var selector = 'img';
+			setLandscapeOrPortraitClass(element, selector);
+		});
+	});
+	// Click see all brother likes -> Set up, open modal
+	$('div.brother-like-see-all').click(function() {
+		// placeholder to minimize
+		setupAndOpenModal();
+	});
 
 });

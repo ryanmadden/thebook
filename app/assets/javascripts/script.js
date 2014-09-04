@@ -49,9 +49,14 @@ $(document).ready(function() {
 			gutterWidth: gutters
 		});
 	};
-	// Increment likes, activate remote link_to
+	// Change like button color, increment likes, activate remote link_to
 	var processRusheeLike = function() {
-		// placeholder to minimize
+		if( $('div.rushee-like a').hasClass('liked') ) {
+			$('ul.rushee-stats li:first-child').addClass('liked');
+		}
+		else {
+			$('ul.rushee-stats li:first-child').removeClass('liked');	
+		}
 		$('div.rushee-like a')[0].click();
 	};
 	// Redirect to correct rushee order

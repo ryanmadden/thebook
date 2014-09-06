@@ -4,25 +4,28 @@
 
         <%= image_tag @rushee.image.url() %>
 
-        <ul class="rushee-stats">
-
-        
-
-            <li>
-                <% if @rushee.votes_for.size == 1 %>
-                    <i class="fa fa-thumbs-up"></i>1 like
-                <% else %>
-                    <i class="fa fa-thumbs-up"></i><%= @rushee.votes_for.size %> likes
-                <% end %>
-
-                <div class="rushee-like">
-                    <% if current_user.voted_for? @rushee %>
-                        <%= link_to('unlike', unlike_rushee_path(@rushee), class: 'liked', method: :put) %>
+        <ul class="rushee-stats">   
+            <% if current_user.voted_for? @rushee %>
+                <li class="liked">
+                    <% if @rushee.votes_for.size == 1 %>
+                        <%= link_to('<i class="fa fa-thumbs-up"></i><span>1</span> like'.html_safe, unlike_rushee_path(@rushee), class: 'liked', method: :put) %>
                     <% else %>
+<<<<<<< HEAD
                         <%= link_to('like', like_rushee_path(@rushee), method: :put,  remote: true, class: 'vote'  , data: { type: :json } ) %>
+=======
+                        <%= link_to("<i class='fa fa-thumbs-up'></i><span>#{ @rushee.votes_for.size }</span> likes".html_safe, unlike_rushee_path(@rushee), class: 'liked', method: :put) %>
+>>>>>>> 9c7bacfb6dd854222829dce665a0fd182057af51
                     <% end %>
-                </div>
-            </li>
+                </li>
+            <% else %>
+                <li>
+                    <% if @rushee.votes_for.size == 1 %>
+                        <%= link_to('<i class="fa fa-thumbs-up"></i><span>1</span> like'.html_safe, like_rushee_path(@rushee), method: :put) %>
+                    <% else %>
+                        <%= link_to("<i class='fa fa-thumbs-up'></i><span>#{@rushee.votes_for.size }</span> likes".html_safe, like_rushee_path(@rushee), method: :put) %> 
+                    <% end %>
+                    </li>
+            <% end %>
 
             <li>
                 <% if @rushee.comments_count == 1 %>
@@ -139,6 +142,7 @@
     </section>
 
     <section class="rushee-modal">
+
         <div class="modal-content">
             <h2>People who like this</h2>
             <div class="modal-likes transitions-enabled has-gutters">
@@ -149,11 +153,18 @@
                 <% end %>
             </div>
         </div>
+
     </section>
 
 </main>
 
 <!-- preps the js variables -->
+<<<<<<< HEAD
     <%= javascript_tag do %>
         window.image = '<%= j @current_user.image %>';
     <% end %>
+=======
+<%= javascript_tag do %>
+    window.image = '<%= j @current_user.image %>';
+<% end %>
+>>>>>>> 9c7bacfb6dd854222829dce665a0fd182057af51

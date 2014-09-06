@@ -5,6 +5,9 @@ $(document).ready(function() {
 	 */
 
 	// Insantiate/declare global variables
+	//   - Set navbar animation variables
+	//   - Hide brother names in likes row
+	//   - Initializes like button class
 	var setGlobalsAndInitiate = function() {
 
 		// Navbar animation
@@ -13,6 +16,11 @@ $(document).ready(function() {
 
 		// Brother likes in rushee page
 		$('div.brother-likes-container span').hide();
+
+		// Sets like button as liked or not
+		if( $('div.rushee-like a').hasClass('liked') ) {
+			$('ul.rushee-stats li:first-child').addClass('liked');
+		}
 	};
 	// Animate navbar on scroll
 	var animateNavbar = function() {
@@ -51,13 +59,12 @@ $(document).ready(function() {
 	};
 	// Change like button color, increment likes, activate remote link_to
 	var processRusheeLike = function() {
-		if( $('div.rushee-like a').hasClass('liked') ) {
-			$('ul.rushee-stats li:first-child').addClass('liked');
+		if( $('ul.rushee-stats li:first-child').hasClass('liked') ) {
+			$('ul.rushee-stats li:first-child').removeClass('liked');
 		}
 		else {
-			$('ul.rushee-stats li:first-child').removeClass('liked');	
+			$('ul.rushee-stats li:first-child').addClass('liked');
 		}
-		$('div.rushee-like a')[0].click();
 	};
 	// Redirect to correct rushee order
 	var orderRushees = function(selection) {

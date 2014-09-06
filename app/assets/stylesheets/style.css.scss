@@ -273,13 +273,21 @@ main#Rushee {
 				border: 1px solid #444;
 				border-style: none solid none none;
 
+				a {
+					text-decoration: none;
+					color: #91949d;
+				}
 				i {
 					display: block;
 					margin-bottom: 5px;
 					font-size: 14px;
 				}
-				div.rushee-like {
-					display: none;
+			}
+			li.liked {
+				background-color: #edb74b;
+
+				a {
+					color: #222;
 				}
 			}
 			li:first-child {
@@ -287,7 +295,10 @@ main#Rushee {
 			}
 			li:first-child:hover {
 				background-color: #EDB74B;
-				color: #222;
+
+				a {
+					color: #222;
+				}
 			}
 			li:last-child {
 				border: none;

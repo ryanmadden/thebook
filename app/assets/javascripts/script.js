@@ -59,19 +59,12 @@ $(document).ready(function() {
 	};
 	// Change like button color, increment likes, activate remote link_to
 	var processRusheeLike = function() {
-		if( $('div.rushee-like a').hasClass('liked') ) {
+		if( $('ul.rushee-stats li:first-child').hasClass('liked') ) {
 			$('ul.rushee-stats li:first-child').removeClass('liked');
 		}
 		else {
 			$('ul.rushee-stats li:first-child').addClass('liked');
 		}
-		$('.vote').on('ajax:success', function (jqueryEventMetadata, ourData) {
-		    $('ul.rushee-stats li:first-child span').html(ourData.count);
-		    var newBrotherLike = '<div class="brother-like"><img src="' + image + '"><span></span></div>';
-		    $('div.brother-like-see-all').before(newBrotherLike);
-		    return false;
-		});
-		console.log('hi');
 	};
 	// Redirect to correct rushee order
 	var orderRushees = function(selection) {

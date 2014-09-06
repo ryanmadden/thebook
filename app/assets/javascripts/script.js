@@ -65,12 +65,13 @@ $(document).ready(function() {
 		else {
 			$('ul.rushee-stats li:first-child').addClass('liked');
 		}
-		$('div.rushee-like a')[0].click();
 		$('.vote').on('ajax:success', function (jqueryEventMetadata, ourData) {
 		    $('ul.rushee-stats li:first-child span').html(ourData.count);
 		    var newBrotherLike = '<div class="brother-like"><img src="' + image + '"><span></span></div>';
 		    $('div.brother-like-see-all').before(newBrotherLike);
+		    return false;
 		});
+		console.log('hi');
 	};
 	// Redirect to correct rushee order
 	var orderRushees = function(selection) {

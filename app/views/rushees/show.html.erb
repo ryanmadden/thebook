@@ -4,15 +4,12 @@
 
         <%= image_tag @rushee.image.url() %>
 
-        <ul class="rushee-stats">
-
-        
-
+        <ul class="rushee-stats">   
             <li>
                 <% if @rushee.votes_for.size == 1 %>
-                    <i class="fa fa-thumbs-up"></i>1 like
+                    <i class="fa fa-thumbs-up"></i><span>1</span> like
                 <% else %>
-                    <i class="fa fa-thumbs-up"></i><%= @rushee.votes_for.size %> likes
+                    <i class="fa fa-thumbs-up"></i><span><%= @rushee.votes_for.size %></span> likes
                 <% end %>
 
                 <div class="rushee-like">
@@ -139,6 +136,7 @@
     </section>
 
     <section class="rushee-modal">
+
         <div class="modal-content">
             <h2>People who like this</h2>
             <div class="modal-likes transitions-enabled has-gutters">
@@ -149,11 +147,12 @@
                 <% end %>
             </div>
         </div>
+
     </section>
 
 </main>
 
 <!-- preps the js variables -->
-        <%= javascript_tag do %>
-            window.image = '<%= j @current_user.image %>';
-        <% end %>
+<%= javascript_tag do %>
+    window.image = '<%= j @current_user.image %>';
+<% end %>

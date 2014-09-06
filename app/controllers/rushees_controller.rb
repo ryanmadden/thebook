@@ -147,6 +147,7 @@ class RusheesController < ApplicationController
     @rushee.liked_by current_user
     respond_to do |format|
       format.html {redirect_to :back }
+      format.json { render json: { count: @rushee.votes_for.size } }
     end
   end
 

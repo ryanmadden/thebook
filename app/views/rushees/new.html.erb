@@ -17,16 +17,25 @@
 				</div>
 			<% end %>
 
-			<%= f.text_field :name, :placeholder => "Name" %>
+			<div id="new-rushee-quick-info">
+				<div class="new-rushee-input-item">
+					<i class="fa fa-user"></i><%= f.text_field :name, :id=>"name", :placeholder => "Name" %>
+				</div>
+				<div class="new-rushee-input-item">
+					<i class="fa fa-clock-o"></i><%= f.text_field :age, :id=>"age", :placeholder => "Age" %>
+				</div>
+				<div class="new-rushee-input-item">
+					<i class="fa fa-graduation-cap"></i><%= f.text_field :major, :id=>"major", :placeholder => "Major" %>
+				</div>
+				<div class="new-rushee-input-item">
+					<i class="fa fa-home"></i><%= f.text_field :hometown, :id=>"hometown", :placeholder => "Hometown" %>
+				</div>
+				<div class="new-rushee-input-item">
+					<i class="fa fa-list"></i><%= f.text_field :campus_involvement, :id=>"campus-involvement", :placeholder => "Campus involvement" %>
+				</div>
+			</div>
 			
-			<%= f.text_field :age, :placeholder => "Age" %>
-
-			<%= f.text_field :major, :placeholder => "Major" %>
-
-			<%= f.text_field :hometown, :placeholder => "Hometown" %>
-
-			<%= f.text_field :campus_involvement, :placeholder => "Campus involvement" %>
-			
+			<%= f.label "Rushee Summary" %>
 			<%= f.text_area :bio, :placeholder => "Relevant Information" %>
 
 			<%= f.text_field :fb, :placeholder => "Link to Facebook profile" %>

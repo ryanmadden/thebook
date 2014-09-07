@@ -2,8 +2,12 @@
 	font-family: "Nevis";
 	src: url(/fonts/Nevis/nevis.ttf);
 }
+@font-face {
+	font-family: "Font-Awesome";
+	src: url(/fonts/Font-Awesome/fonts/FontAwesome.otf);
+}
 
-$font-family: Arial, Helvetica, sans-serif;
+$font-stack: Arial, Helvetica, sans-serif;
 $primary-color: #001e33;//#002640;// #003050;
 $secondary-color: #edb700;
 $facebook-color: #3b5998;
@@ -21,7 +25,7 @@ label, table, caption, {
 }
 html {
 	height: 100%;
-	font-family: $font-family;
+	font-family: $font-stack;
 	background-image: -ms-linear-gradient(top left, #001E33 0%, #003752 100%);
 	background-image: -moz-linear-gradient(top left, #001E33 0%, #003752 100%);
 	background-image: -o-linear-gradient(top left, #001E33 0%, #003752 100%);
@@ -172,11 +176,26 @@ main#Rushees {
 			margin-bottom: 30px;
 		}
 		span {
-			color: #ddd;
+			margin-right: 5px;
+			color: #eee;
 		}
 		select {
-			border-radius: 3px;
-			background-color: #eee;
+			padding: 2px 6px;
+			width: 100px;
+			font-family: $font-stack;
+			font-size: 13px;
+			appearance: none;
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			background-color: #fff;
+			background-image: url(/caret-down.jpg);
+			background-repeat: no-repeat;
+			background-position: 70px -5px;
+			background-size: 30px 30px;
+			border: none;
+			border-radius: 2px;
+			cursor: pointer;
+			outline: none;
 		}
 		div#masonry-container {
 			margin-top: 20px;
@@ -446,7 +465,7 @@ main#Rushee {
 				width: calc(100% - 110px);
 				height: 60px;
 				resize: none;
-				border: 1px solid #91949d;
+				border: 1px solid #bbb;
 				border-radius: 3px;
 			}
 			input {
@@ -617,6 +636,48 @@ main#New-Rushee {
 		form {
 			margin-top: 20px;
 
+			div#new-rushee-quick-info {
+
+				div.new-rushee-input-item {
+					width: 200px;
+
+					i {
+						float: left;
+						padding: 0 5px;
+						height: 32px;
+						line-height: 32px;
+						font-size: 22px;
+						color: $secondary-color;
+						background-color: #fff;
+						border-radius: 3px 0 0 3px;
+					}
+					input {
+						display: block;
+						margin-bottom: 10px;
+						padding: 8px 10px;
+						font-size: 12px;
+						background-color: #fff;
+						border: 1px solid #fff;
+						border-radius: 0 3px 3px 0;
+					}
+					input#name {
+						width: 151px;
+					}
+					input#age {
+						width: 149px;
+					}
+					input#major {
+						width: 140px;
+					}
+					input#hometown {
+						width: 148px;
+					}
+					input#campus-involvement {
+						width: 146px;
+					}
+				}
+			}
+
 			label {
 				display: block;
 				padding: 10px 0;
@@ -628,8 +689,9 @@ main#New-Rushee {
 				margin-bottom: 10px;
 				padding: 8px 10px;
 				font-size: 14px;
-				border: 1px solid $secondary-color;
-				border-radius: 3px;
+				background-color: #fff;
+				border: 1px solid #fff;;
+				border-radius: 0 3px 3px 0;
 			}
 			input {
 				width: 200px;
@@ -647,7 +709,7 @@ main#New-Rushee {
 				font-size: 12px;
 				color: #fff;
 			}
-			input:last-child {
+			> input:last-child {
 				margin: 15px 0 0 0;
 				width: 150px;
 				height: 2.4em;

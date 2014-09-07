@@ -636,6 +636,48 @@ main#New-Rushee {
 		form {
 			margin-top: 20px;
 
+			div#new-rushee-quick-info {
+
+				div.new-rushee-input-item {
+					width: 200px;
+
+					i {
+						float: left;
+						padding: 0 5px;
+						height: 32px;
+						line-height: 32px;
+						font-size: 22px;
+						color: $secondary-color;
+						background-color: #fff;
+						border-radius: 3px 0 0 3px;
+					}
+					input {
+						display: block;
+						margin-bottom: 10px;
+						padding: 8px 10px;
+						font-size: 12px;
+						background-color: #fff;
+						border: 1px solid #fff;
+						border-radius: 0 3px 3px 0;
+					}
+					input#name {
+						width: 151px;
+					}
+					input#age {
+						width: 149px;
+					}
+					input#major {
+						width: 140px;
+					}
+					input#hometown {
+						width: 148px;
+					}
+					input#campus-involvement {
+						width: 146px;
+					}
+				}
+			}
+
 			label {
 				display: block;
 				padding: 10px 0;
@@ -647,8 +689,9 @@ main#New-Rushee {
 				margin-bottom: 10px;
 				padding: 8px 10px;
 				font-size: 14px;
-				border: 1px solid $secondary-color;
-				border-radius: 3px;
+				background-color: #fff;
+				border: 1px solid #fff;;
+				border-radius: 0 3px 3px 0;
 			}
 			input {
 				width: 200px;
@@ -666,7 +709,7 @@ main#New-Rushee {
 				font-size: 12px;
 				color: #fff;
 			}
-			input:last-child {
+			> input:last-child {
 				margin: 15px 0 0 0;
 				width: 150px;
 				height: 2.4em;

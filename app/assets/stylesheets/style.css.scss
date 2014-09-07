@@ -2,8 +2,12 @@
 	font-family: "Nevis";
 	src: url(/fonts/Nevis/nevis.ttf);
 }
+@font-face {
+	font-family: "Font-Awesome";
+	src: url(/fonts/Font-Awesome/fonts/FontAwesome.otf);
+}
 
-$font-family: Arial, Helvetica, sans-serif;
+$font-stack: Arial, Helvetica, sans-serif;
 $primary-color: #001e33;//#002640;// #003050;
 $secondary-color: #edb700;
 $facebook-color: #3b5998;
@@ -21,7 +25,7 @@ label, table, caption, {
 }
 html {
 	height: 100%;
-	font-family: $font-family;
+	font-family: $font-stack;
 	background-image: -ms-linear-gradient(top left, #001E33 0%, #003752 100%);
 	background-image: -moz-linear-gradient(top left, #001E33 0%, #003752 100%);
 	background-image: -o-linear-gradient(top left, #001E33 0%, #003752 100%);
@@ -172,11 +176,25 @@ main#Rushees {
 			margin-bottom: 30px;
 		}
 		span {
-			color: #ddd;
+			margin-right: 5px;
+			color: #eee;
 		}
 		select {
+			padding: 2px 6px;
+			font-family: $font-stack;
+			font-size: 13px;
+			appearance: none;
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			background-color: #fff;
+			background-image: url(/caret-down.jpg);
+			background-repeat: no-repeat;
+			background-position: 55px -4px;
+			background-size: 30px 30px;
+			border: none;
 			border-radius: 3px;
-			background-color: #eee;
+			cursor: pointer;
+			outline: none;
 		}
 		div#masonry-container {
 			margin-top: 20px;
@@ -446,7 +464,7 @@ main#Rushee {
 				width: calc(100% - 110px);
 				height: 60px;
 				resize: none;
-				border: 1px solid #91949d;
+				border: 1px solid #bbb;
 				border-radius: 3px;
 			}
 			input {

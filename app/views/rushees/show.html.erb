@@ -10,11 +10,8 @@
                     <% if @rushee.votes_for.size == 1 %>
                         <%= link_to('<i class="fa fa-thumbs-up"></i><span>1</span> like'.html_safe, unlike_rushee_path(@rushee), class: 'liked', method: :put) %>
                     <% else %>
-<<<<<<< HEAD
                         <%= link_to('like', like_rushee_path(@rushee), method: :put,  remote: true, class: 'vote'  , data: { type: :json } ) %>
-=======
                         <%= link_to("<i class='fa fa-thumbs-up'></i><span>#{ @rushee.votes_for.size }</span> likes".html_safe, unlike_rushee_path(@rushee), class: 'liked', method: :put) %>
->>>>>>> 9c7bacfb6dd854222829dce665a0fd182057af51
                     <% end %>
                 </li>
             <% else %>
@@ -159,12 +156,9 @@
 </main>
 
 <!-- preps the js variables -->
-<<<<<<< HEAD
-    <%= javascript_tag do %>
-        window.image = '<%= j @current_user.image %>';
-    <% end %>
-=======
 <%= javascript_tag do %>
     window.image = '<%= j @current_user.image %>';
 <% end %>
->>>>>>> 9c7bacfb6dd854222829dce665a0fd182057af51
+<%= javascript_tag do %>
+    window.image = '<%= j @current_user.image %>';
+<% end %>

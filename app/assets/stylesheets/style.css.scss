@@ -19,12 +19,18 @@ $desktop-header-inner-width: 90%;
 $desktop-rushee-info-width: 240px;
 $desktop-rushee-brother-like-height: 46px;
 $desktop-rushee-comments-width: calc(100% - 280px);
+$desktop-rushee-comments-comment-left-width: calc(100% - 135px);
+$desktop-rushee-comments-comment-image-wrapper-width: 50px;
+$desktop-rushee-comments-commenter-width: 90px;
 
 $mobile-main-inner-width: 95%;
 $mobile-header-inner-width: 95%;
 $mobile-rushee-info-width: 100%;
 $mobile-rushee-brother-like-height: 61px;
 $mobile-rushee-comments-width: calc(100% - 20px);
+$mobile-rushee-comments-comment-left-width: 100%;
+$mobile-rushee-comments-comment-image-wrapper-width: 40px;
+$mobile-rushee-comments-commenter-width: 78px;
 
 
 
@@ -56,7 +62,7 @@ html {
 				margin: 0 auto;
 				padding: 100px 0 20px 0;
 				width: $mobile-main-inner-width;
-				max-width: 1000px;
+				max-width: 1145px;
 				overflow: auto;
 
 				section {
@@ -532,6 +538,7 @@ main#Rushee {
 	}
 	section.rushee-comments {
 		float: left;
+		margin-top: 15px;
 		padding: 10px;
 		width: $mobile-rushee-comments-width;
 		overflow: auto;
@@ -595,44 +602,45 @@ main#Rushee {
 
 				div.comment-left {
 					float: left;
-					width: calc(100% - 135px);
+					width: $mobile-rushee-comments-comment-left-width;
 
 					div.comment-commenter {
 						float: left;
 						min-height: 70px;
-						width: 90px;
+						width: $mobile-rushee-comments-commenter-width;
 
 						div.comment-commenter-image-wrapper {
-							height: 50px;
+							width: $mobile-rushee-comments-comment-image-wrapper-width;
+							height: $mobile-rushee-comments-comment-image-wrapper-width;
 							overflow: hidden;
 
 							img.portrait {
-								width: 50px;
+								width: $mobile-rushee-comments-comment-image-wrapper-width;
 								height: auto;
 							}
 							img.landscape {
 								width: auto;
-								width: 50px;
+								height: $mobile-rushee-comments-comment-image-wrapper-width;
 							}
 						}
 						strong.comment-name {
 							display: block;
 							color: #666;
-							font-size: 13px;
+							font-size: 12px;
 							font-weight: normal;
 						}
 					}
 					div.comment-comment {
 						display: inline-block;
-						max-width: calc(100% - 110px);
+						max-width: calc(100% - 80px);
 						background-color: #eee;
 						border: 1px solid #eee;
 						border-radius: 8px;
 
-						span {
+						span.comment-body {
 							display: block;
-							padding: 10px 15px;
-							font-size: 13px;
+							padding: 7px 10px;
+							font-size: 12px;
 						}
 					}
 				}
@@ -641,16 +649,18 @@ main#Rushee {
 					font-size: 12px;
 					text-align: right;
 
+					> div {
+						display: inline-block;
+					}
 					div.comment-time {
 						color: #555;
 					}
 					div.comment-like {
-						font-size: 13px;
 
 						a {
 
 							i {
-								font-size: 20px;
+								font-size: 16px;
 							}
 							i.liked {
 								color: #63C0FF;
@@ -674,7 +684,61 @@ main#Rushee {
 	}
 	@media(min-width: 481px) {
 		section.rushee-comments {
+			margin-top: 0;
 			width: $desktop-rushee-comments-width;
+
+			div.comments-wrapper {
+
+				div.user-comment {
+
+					div.comment-left {
+						width: $desktop-rushee-comments-comment-left-width;
+
+						div.comment-commenter {
+							width: $desktop-rushee-comments-commenter-width;
+
+							div.comment-commenter-image-wrapper {
+								width: $desktop-rushee-comments-comment-image-wrapper-width;
+								height: $desktop-rushee-comments-comment-image-wrapper-width;
+
+								img.portrait {
+									width: $desktop-rushee-comments-comment-image-wrapper-width;
+								}
+								img.landscape {
+									height: $desktop-rushee-comments-comment-image-wrapper-width;
+								}
+							}
+							strong.comment-name {
+								font-size: 13px;
+							}
+						}
+						div.comment-comment {
+							max-width: calc(100% - 100px);
+
+							span.comment-body {
+								padding: 10px 15px;
+								font-size: 13px;
+							}
+						}
+					}
+					div.comment-right {
+
+						> div {
+							display: block;
+						}
+						div.comment-like {
+							font-size: 13px;
+
+							a {
+
+								i {
+									font-size: 20px;
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 	section.rushee-modal {

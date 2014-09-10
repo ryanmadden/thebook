@@ -149,10 +149,10 @@ $(document).ready(function() {
 	 */
 
 	// Scroll -> animate navbar
-	$(window).scroll(function() {
-		// placeholder to minimize
-		animateNavbar();
-	});
+	// $(window).scroll(function() {
+	// 	// placeholder to minimize
+	// 	animateNavbar();
+	// });
 	// Click on rushee in rushees page -> redirect to correct rushee
 	$('div.masonry-rushee').click(function() {
 		var rushee = $(this)

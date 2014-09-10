@@ -33,20 +33,23 @@
 				<div class="new-rushee-input-item">
 					<i class="fa fa-list"></i><%= f.text_field :campus_involvement, :id=>"campus-involvement", :placeholder => "Campus involvement" %>
 				</div>
+				<div class="new-rushee-input-item">
+					<i class="fa fa-facebook"></i><%= f.text_field :fb, :id=>"facebook-link", :placeholder => "Link to Facebook profile" %>
+				</div>
+
+				<%= f.label "Legacy?" %>
+				<%= f.check_box :legacy, :id=>"legacy" %><span>Yes</span>
+
+				<%= f.label :image %>
+				<%= f.file_field :image, :placeholder => "SDF" %>
 			</div>
 			
-			<%= f.label "Rushee Summary" %>
-			<%= f.text_area :bio, :placeholder => "Relevant Information" %>
-
-			<%= f.text_field :fb, :placeholder => "Link to Facebook profile" %>
-
-			<%= f.label "Legacy?" %>
-			<%= f.check_box :legacy %>
+			<div id="new-rushee-rushee-summary">
+				<i class="fa fa-info"></i><%= f.text_area :bio, :placeholder => "Rushee summary" %>
+			</div>
+		
 			
-			<%= f.label :image %>
-			<%= f.file_field :image, :placeholder => "SDF" %>
-			
-			<%= f.submit %>
+			<%= f.submit :id=>"new-rushee-submit" %>
 			
 		<% end %>
 

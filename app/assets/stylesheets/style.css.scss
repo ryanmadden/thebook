@@ -84,7 +84,7 @@ header {
 
 	> nav {
 		margin: 0 auto;
-		padding: 20px 0;
+		padding: 15px 0;
 		width: 90%;
 		overflow: auto;
 		font-family: "Nevis";
@@ -629,7 +629,7 @@ main#Rushee {
 				color: #222;
 				font-size: 17px;
 				text-shadow: none;
-				background-color: #eee;
+				background-color: #f3f3f3;
 				border-radius: 3px 3px 0 0;
 			}
 			div.modal-likes {
@@ -685,6 +685,9 @@ main#New-Rushee {
 			margin-top: 20px;
 
 			div#new-rushee-quick-info {
+				float: left;
+				overflow: auto;
+				margin-bottom: 30px;
 
 				div.new-rushee-input-item {
 					width: 200px;
@@ -703,6 +706,7 @@ main#New-Rushee {
 						display: block;
 						margin-bottom: 10px;
 						padding: 8px 10px;
+						height: 14px;
 						font-size: 12px;
 						background-color: #fff;
 						border: 1px solid #fff;
@@ -723,46 +727,70 @@ main#New-Rushee {
 					input#campus-involvement {
 						width: 146px;
 					}
+					input#facebook-link {
+						width: 155px;
+					}
+				}
+				label {
+					display: block;
+					padding: 10px 0;
+					color: $secondary-color;
+					text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+				}
+				input#legacy {
+					display: inline-block;
+				}
+				input#legacy + span {
+					margin-left: 5px;
+					font-size: 12px;
+					color: #fff;
+				}
+				input#rushee_image {
+					border: none;
+					width: 220px;
+					height: 20px;
+					vertical-align: middle;
+					font-size: 12px;
+					color: #fff;
 				}
 			}
+			div#new-rushee-rushee-summary {
+				float: left;
+				overflow: auto;
 
-			label {
+				i {
+					float: left;
+					padding: 0 8px;
+					height: 363px; //243
+					line-height: 35px;
+					font-size: 24px;
+					color: $secondary-color;
+					background-color: #fff;
+					border-radius: 3px 0 0 3px;
+				}
+				textarea {
+					display: block;
+					margin-bottom: 10px;
+					padding: 8px 10px;
+					width: 480px;
+					height: 345px; //225
+					font-size: 16px;
+					border: 1px solid #fff;
+					border-radius: 0 3px 3px 0;
+					outline: none;
+					resize: none;
+				}
+			}
+			input#new-rushee-submit {
 				display: block;
-				padding: 10px 0;
-				color: $secondary-color;
-				text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-			}
-			input, textarea {
-				display: block;
-				margin-bottom: 10px;
-				padding: 8px 10px;
-				font-size: 14px;
-				background-color: #fff;
-				border: 1px solid #fff;;
-				border-radius: 0 3px 3px 0;
-			}
-			input {
-				width: 200px;
-				height: 14px;
-			}
-			textarea {
-				width: 400px;
-				height: 150px;
-			}
-			input#rushee_image {
-				border: none;
-				width: 220px;
-				height: 20px;
-				vertical-align: middle;
-				font-size: 12px;
-				color: #fff;
-			}
-			> input:last-child {
-				margin: 15px 0 0 0;
+				clear: both;
+				margin: 55px 0 0 0;
 				width: 150px;
 				height: 2.4em;
 				color: $primary-color;
 				background-color: $secondary-color;
+				border: 1px solid $secondary-color;
+				border-radius: 3px;
 				box-shadow: 0 3px 0 #333;
 			}
 		}
@@ -779,42 +807,126 @@ main#Edit-Rushee {
 		form {
 			margin-top: 20px;
 
-			label {
+			img#rushee-image {
+				display: block;
+			}
+			> label {
 				display: block;
 				padding: 10px 0;
 				color: $secondary-color;
 				text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 			}
-			input, textarea {
-				display: block;
-				margin-bottom: 10px;
-				padding: 8px 10px;
-				font-size: 14px;
-				border: 1px solid $secondary-color;
-				border-radius: 3px;
-			}
-			input {
-				width: 200px;
-				height: 14px;
-			}
-			textarea {
-				width: 400px;
-				height: 150px;
-			}
 			input#rushee_image {
-				border: none;
+				display: block;
+				margin-bottom: 20px;
 				width: 220px;
 				height: 20px;
 				vertical-align: middle;
 				font-size: 12px;
 				color: #fff;
+				border: none;
 			}
-			input:last-child {
-				margin: 15px 0 0 0;
+
+			div#new-rushee-quick-info {
+				float: left;
+				overflow: auto;
+				margin-bottom: 30px;
+
+				div.new-rushee-input-item {
+					width: 200px;
+
+					i {
+						float: left;
+						padding: 0 5px;
+						height: 32px;
+						line-height: 32px;
+						font-size: 22px;
+						color: $secondary-color;
+						background-color: #fff;
+						border-radius: 3px 0 0 3px;
+					}
+					input {
+						display: block;
+						margin-bottom: 10px;
+						padding: 8px 10px;
+						height: 14px;
+						font-size: 12px;
+						background-color: #fff;
+						border: 1px solid #fff;
+						border-radius: 0 3px 3px 0;
+					}
+					input#name {
+						width: 151px;
+					}
+					input#age {
+						width: 149px;
+					}
+					input#major {
+						width: 140px;
+					}
+					input#hometown {
+						width: 148px;
+					}
+					input#campus-involvement {
+						width: 146px;
+					}
+					input#facebook-link {
+						width: 155px;
+					}
+				}
+				label {
+					display: block;
+					padding: 10px 0;
+					color: $secondary-color;
+					text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+				}
+				input#legacy {
+					display: inline-block;
+				}
+				input#legacy + span {
+					margin-left: 5px;
+					font-size: 12px;
+					color: #fff;
+				}
+			}
+			div#new-rushee-rushee-summary {
+				float: left;
+				overflow: auto;
+
+				i {
+					float: left;
+					margin-left: 20px;
+					padding: 0 8px;
+					height: 313px; //243
+					line-height: 35px;
+					font-size: 24px;
+					color: $secondary-color;
+					background-color: #fff;
+					border-radius: 3px 0 0 3px;
+				}
+				textarea {
+					display: block;
+					margin-bottom: 10px;
+					padding: 8px 10px;
+					width: 480px;
+					height: 295px; //225
+					font-size: 16px;
+					border: 1px solid #fff;
+					border-radius: 0 3px 3px 0;
+					outline: none;
+					resize: none;
+				}
+			}
+			input#new-rushee-submit {
+				display: block;
+				clear: both;
+				margin: 55px 0 0 0;
 				width: 150px;
 				height: 2.4em;
 				color: $primary-color;
 				background-color: $secondary-color;
+				border: 1px solid $secondary-color;
+				border-radius: 3px;
 				box-shadow: 0 3px 0 #333;
 			}
 		}

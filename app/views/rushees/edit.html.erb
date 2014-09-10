@@ -4,7 +4,6 @@
 
 		<h1>Edit Rushee</h1>
 
-		<%= image_tag @rushee.image.url(:medium) %>
 
 		<%= form_for(@rushee) do |f| %>
 			<% if @rushee.errors.any? %>
@@ -19,27 +18,42 @@
 				</div>
 			<% end %>
 
-			<%= f.text_field :name, :placeholder => "Name" %>
+			<%= image_tag @rushee.image.url(:medium), :id=>"rushee-image" %>
+
+			<%= f.label "Edit Image" %>
+			<%= f.file_field :image, :placeholder => "SDF" %>
+
+			<div id="new-rushee-quick-info">
+				<div class="new-rushee-input-item">
+					<i class="fa fa-user"></i><%= f.text_field :name, :id=>"name", :placeholder => "Name" %>
+				</div>
+				<div class="new-rushee-input-item">
+					<i class="fa fa-clock-o"></i><%= f.text_field :age, :id=>"age", :placeholder => "Age" %>
+				</div>
+				<div class="new-rushee-input-item">
+					<i class="fa fa-graduation-cap"></i><%= f.text_field :major, :id=>"major", :placeholder => "Major" %>
+				</div>
+				<div class="new-rushee-input-item">
+					<i class="fa fa-home"></i><%= f.text_field :hometown, :id=>"hometown", :placeholder => "Hometown" %>
+				</div>
+				<div class="new-rushee-input-item">
+					<i class="fa fa-list"></i><%= f.text_field :campus_involvement, :id=>"campus-involvement", :placeholder => "Campus involvement" %>
+				</div>
+				<div class="new-rushee-input-item">
+					<i class="fa fa-facebook"></i><%= f.text_field :fb, :id=>"facebook-link", :placeholder => "Link to Facebook profile" %>
+				</div>
+
+				<%= f.label "Legacy?" %>
+				<%= f.check_box :legacy, :id=>"legacy" %><span>Yes</span>
+
+			</div>
 			
-			<%= f.text_field :age, :placeholder => "Age" %>
-
-			<%= f.text_field :major, :placeholder => "Major" %>
-
-			<%= f.text_field :hometown, :placeholder => "Hometown" %>
-
-			<%= f.text_field :campus_involvement, :placeholder => "Campus involvement" %>
+			<div id="new-rushee-rushee-summary">
+				<i class="fa fa-info"></i><%= f.text_area :bio, :placeholder => "Rushee summary" %>
+			</div>
+		
 			
-			<%= f.text_area :bio, :placeholder => "Relevant Information" %>
-
-			<%= f.text_field :fb, :placeholder => "Link to Facebook profile" %>
-
-			<%= f.label "Legacy?" %>
-			<%= f.check_box :legacy %>
-			
-			<%= f.label "Change image" %>
-			<%= f.file_field :image %>
-			
-			<%= f.submit %>
+			<%= f.submit :id=>"new-rushee-submit" %>
 			
 		<% end %>
 

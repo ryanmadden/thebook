@@ -45,12 +45,14 @@
             <% @rushee.votes_for.voters.first(3).each do |v| %>
                 <div class="brother-like">
                     <%= image_tag(v.image)%>
+                    <div class="brother-likes-image-overlay"></div>
                     <span><%= v.name %></span>
                 </div>
             <% end %>
             <% if @rushee.votes_for.size > 0 %>
                 <div class="brother-like-see-all">
                     <i class="fa fa-plus"></i>
+                    <div class="brother-likes-image-overlay"></div>
                     <span>See all likes</span>
                 </div>
             <% end %>
@@ -146,6 +148,8 @@
                 <% @rushee.votes_for.voters.each do |v| %>
                     <div class="modal-like">
                         <%= image_tag(v.image) %>
+                        <div class="modal-image-overlay"></div>
+                        <span class="modal-image-name"><%= v.name %></span>
                     </div>
                 <% end %>
             </div>

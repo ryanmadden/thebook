@@ -342,12 +342,21 @@ main#Rushee {
 					width: auto;
 					height: 100%;
 				}
+				div.brother-likes-image-overlay {
+					display: none;
+					position: absolute;
+					width: 48px;
+					height: 46px;
+					top: 0;
+					left: 0;
+					background: rgba(0, 0, 0, 0.4);
+				}
 				span {
 					padding: 11px 0;
 					position: absolute;
 					top: 1px;
 					width: 100%;
-					color: $primary-color;
+					color: #fff;
 					font-size: 11px;
 				}
 			}
@@ -364,11 +373,20 @@ main#Rushee {
 					color: #888;
 					font-size: 18px;
 				}
+				div.brother-likes-image-overlay {
+					display: none;
+					position: absolute;
+					width: 48px;
+					height: 46px;
+					top: 0;
+					left: 0;
+					background: rgba(0, 0, 0, 0.4);
+				}
 				span {
 					position: absolute;
 					top: 0;
 					padding: 10px 0;
-					color: #eee;
+					color: #fff;
 					font-size: 11px;
 				}
 			}
@@ -387,7 +405,10 @@ main#Rushee {
 				color: #fff;
 				font-size: 12px;
 				text-decoration: none;
+				background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #476CB8), color-stop(1, $facebook-color) );
+				background: -moz-linear-gradient( center top, #476CB8 5%, $facebook-color 100% );
 				background-color: $facebook-color;
+				border: 1px solid #466AB5;
 				border-radius: 3px;
 
 				i {
@@ -470,7 +491,7 @@ main#Rushee {
 			}
 			input {
 				display: inline-block;
-				padding: 32px 10px;
+				padding: 32px 9px;
 				vertical-align: top;
 				color: #fff;
 				font-size: 12px;
@@ -491,9 +512,17 @@ main#Rushee {
 				position:relative;
 				top:1px;
 			}
+			input:hover {
+				opacity: 0.9;
+			}
 		}
 		div.comments-wrapper {
 			overflow: auto;
+			background: url(/crest.png);
+			background-size: 330px 446px;
+			background-repeat: no-repeat;
+			background-position: 50% 40px;
+
 
 			div.user-comment {
 				clear: both;
@@ -592,16 +621,15 @@ main#Rushee {
 			vertical-align: middle;
 			width: 290px;
 			height: 450px;
-			background-color: #fff;
+			background-color: lighten($primary-color, 5%);
 			border-radius: 3px;
 
 			h2 {
 				padding: 10px;
-				color: #333;
+				color: #222;
 				font-size: 17px;
-				// font-weight: normal;
 				text-shadow: none;
-				background-color: #ddd;
+				background-color: #eee;
 				border-radius: 3px 3px 0 0;
 			}
 			div.modal-likes {
@@ -611,7 +639,11 @@ main#Rushee {
 					width: 60px;
 					height: 60px;
 					overflow: hidden;
+					text-align: center;
 
+					img {
+						position: relative;
+					}
 					img.portrait {
 						width: 60px;
 						height: auto;
@@ -619,6 +651,22 @@ main#Rushee {
 					img.landscape {
 						width: auto;
 						height: 60px;
+					}
+					div.modal-image-overlay {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 60px;
+						height: 60px;
+						background: rgba(0, 0, 0, 0.4);
+					}
+					span.modal-image-name {
+						padding: 11px 0;
+						position: absolute;
+						top: 6px;
+						left: 2px;
+						color: #fff;
+						font-size: 11px;
 					}
 				}
 			}

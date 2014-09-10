@@ -14,6 +14,19 @@ $facebook-color: #3b5998;
 $h1-color: $secondary-color;
 $h2-color: $secondary-color;
 
+$desktop-main-inner-width: 80%;
+$desktop-header-inner-width: 90%;
+$desktop-rushee-info-width: 240px;
+$desktop-rushee-brother-like-height: 46px;
+$desktop-rushee-comments-width: calc(100% - 280px);
+
+$mobile-main-inner-width: 95%;
+$mobile-header-inner-width: 95%;
+$mobile-rushee-info-width: 100%;
+$mobile-rushee-brother-like-height: 61px;
+$mobile-rushee-comments-width: calc(100% - 20px);
+
+
 
 
 /* Templating */
@@ -42,7 +55,7 @@ html {
 			main {
 				margin: 0 auto;
 				padding: 100px 0 20px 0;
-				width: 80%;
+				width: $mobile-main-inner-width;
 				max-width: 1000px;
 				overflow: auto;
 
@@ -65,6 +78,11 @@ html {
 					}
 				}
 			}
+			@media(min-width: 481px) {
+				main {
+					width: $desktop-main-inner-width;
+				}
+			}
 		}
 	}
 	body.modal-open {
@@ -85,7 +103,7 @@ header {
 	> nav {
 		margin: 0 auto;
 		padding: 15px 0;
-		width: 90%;
+		width: $mobile-header-inner-width;
 		overflow: auto;
 		font-family: "Nevis";
 
@@ -127,6 +145,11 @@ header {
 			transition: 0.2s;
 		}
 
+	}
+	@media(min-width: 481px) {
+		> nav {
+			width: $desktop-header-inner-width;
+		}
 	}
 }
 header:hover {
@@ -171,39 +194,7 @@ header:hover {
 
 
 
-/* Home page */
-main#Home {
-
-	section:first-child {
-		padding: 280px 0;
-		width: 100%;
-		text-align: center;
-
-		h1 {
-			font-size: 50px;
-			font-family: "Nevis";
-		}
-		h2 {
-			margin-top: 10px;
-			font-size: 16px;
-		}
-		a {
-			color: #bbb; //#4a9de8;
-			text-decoration: none;
-		}
-		a:hover {
-			opacity: 0.7;
-			-webkit-transition: 0.5s;
-			-moz-transition: 0.5s;
-			-o-transition: 0.5s;
-			transition: 0.5s;
-		}
-	}
-}
-
-
-
-/* Rushees page */
+/* Home/Rushees page */
 main#Rushees {
 
 	section:first-child {
@@ -305,13 +296,13 @@ main#Rushee {
 	section.rushee-info {
 		float: left;
 		margin-right: 20px;
-		width: 240px;
+		width: $mobile-rushee-info-width;
 		background-color: #fff;
 		border-radius: 3px;
 
 		img {
 			display: block;
-			width: 240px;
+			width: $mobile-rushee-info-width;
 			border-radius: 2px 2px 0 0;
 		}
 		ul.rushee-stats {
@@ -366,7 +357,7 @@ main#Rushee {
 				position: relative;
 				float: left;
 				width: calc(100% / 5);
-				height: 46px;
+				height: $mobile-rushee-brother-like-height;
 				text-align: center;
 				overflow: hidden;
 				
@@ -381,14 +372,14 @@ main#Rushee {
 				div.brother-likes-image-overlay {
 					display: none;
 					position: absolute;
-					width: 48px;
-					height: 46px;
+					width: calc(#{$mobile-rushee-brother-like-height} + 2px);
+					height: $mobile-rushee-brother-like-height;
 					top: 0;
 					left: 0;
 					background: rgba(0, 0, 0, 0.4);
 				}
 				span {
-					padding: 11px 0;
+					padding: 16px 0;
 					position: absolute;
 					top: 1px;
 					width: 100%;
@@ -400,7 +391,7 @@ main#Rushee {
 				position: relative;
 				float: left;
 				width: calc(100% / 5);
-				padding: calc(100% / 18) 0;
+				padding: calc(100% / 16 + 2px) 0;
 				text-align: center;
 				background-color: #444;
 				cursor: pointer;
@@ -412,8 +403,8 @@ main#Rushee {
 				div.brother-likes-image-overlay {
 					display: none;
 					position: absolute;
-					width: 48px;
-					height: 46px;
+					width: calc(#{$mobile-rushee-brother-like-height} - 1px);
+					height: $mobile-rushee-brother-like-height;
 					top: 0;
 					left: 0;
 					background: rgba(0, 0, 0, 0.4);
@@ -421,9 +412,9 @@ main#Rushee {
 				span {
 					position: absolute;
 					top: 0;
-					padding: 10px 0;
+					padding: 15px 0;
 					color: #fff;
-					font-size: 11px;
+					font-size: 12px;
 				}
 			}
 		}
@@ -502,10 +493,47 @@ main#Rushee {
 			}
 		}
 	}
+	@media(min-width: 481px) {
+		section.rushee-info {
+			width: $desktop-rushee-info-width;
+
+			img {
+				width: $desktop-rushee-info-width;
+			}
+			div.brother-likes-container {
+
+				div.brother-like {
+					height: $desktop-rushee-brother-like-height;
+
+					div.brother-likes-image-overlay {
+						width: calc(#{$desktop-rushee-brother-like-height} + 2px);
+						height: $desktop-rushee-brother-like-height;
+					}
+					span {
+						padding: 11px 0;
+						top: 1px;
+					}
+				}
+				div.brother-like-see-all {
+					padding: calc(100% / 18) 0;
+
+					div.brother-likes-image-overlay {
+						width: calc(#{$desktop-rushee-brother-like-height} + 2px);
+						height: $desktop-rushee-brother-like-height;
+					}
+					span {
+						padding: 10px 0;
+						font-size: 11px;
+					}
+				}
+			}
+
+		}
+	}
 	section.rushee-comments {
 		float: left;
 		padding: 10px;
-		width: calc(100% - 280px);
+		width: $mobile-rushee-comments-width;
 		overflow: auto;
 		background-color: #fff;
 		border-radius: 3px;
@@ -642,6 +670,11 @@ main#Rushee {
 					}
 				}
 			}
+		}
+	}
+	@media(min-width: 481px) {
+		section.rushee-comments {
+			width: $desktop-rushee-comments-width;
 		}
 	}
 	section.rushee-modal {

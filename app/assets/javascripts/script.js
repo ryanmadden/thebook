@@ -22,29 +22,6 @@ $(document).ready(function() {
 			$('ul.rushee-stats li:first-child').addClass('liked');
 		}
 	};
-	// Animate navbar on scroll
-	var animateNavbar = function() {
-		var newPosition = $('header').offset().top
-		if(newPosition && !animated) {
-			$('header > nav').animate({
-				padding: "10px 0"
-			}, {
-				duration: 400,
-				queue: false
-			});
-			animated = true;
-		}
-		else if(!newPosition && animated) {
-			$('header > nav').animate({
-				padding: "20px 0"
-			}, {
-				duration: 400,
-				queue: false
-			});
-			animated = false;
-		}
-		navPosition = newPosition
-	};
 	// Redirect to correct rushee page
 	var redirectToRushee = function(rushee) {
 		// placeholder to minimize
@@ -134,6 +111,15 @@ $(document).ready(function() {
 			initiateMasonry(container, item, gutters)
 		});
 	};
+	// Open/close mobile navbar
+	var toggleMobileNavbar = function() {
+		if( $('header nav nav').is(':visible') ) {
+			$('header nav nav').hide();
+		}
+		else {
+			$('header nav nav').show();
+		}
+	};
 
 
 	/*
@@ -148,11 +134,6 @@ $(document).ready(function() {
 	 * Events
 	 */
 
-	// Scroll -> animate navbar
-	// $(window).scroll(function() {
-	// 	// placeholder to minimize
-	// 	animateNavbar();
-	// });
 	// Click on rushee in rushees page -> redirect to correct rushee
 	$('div.masonry-rushee').click(function() {
 		var rushee = $(this)
@@ -228,6 +209,11 @@ $(document).ready(function() {
 	$('div.brother-like-see-all').click(function() {
 		// placeholder to minimize
 		setupAndOpenModal();
+	});
+	// Click header menu -> toggle mobile navbar menu
+	$('header nav > i').click(function() {
+		// placeholder for minimize
+		toggleMobileNavbar();
 	});
 
 });

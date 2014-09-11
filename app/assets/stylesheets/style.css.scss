@@ -27,6 +27,7 @@ $mobile-main-inner-width: 95%;
 $mobile-header-inner-width: 95%;
 $mobile-rushee-info-width: 100%;
 $mobile-rushee-brother-like-height: 61px;
+$mobile-landscape-rushee-brother-like-height: 92px;
 $mobile-rushee-comments-width: calc(100% - 20px);
 $mobile-rushee-comments-comment-left-width: 100%;
 $mobile-rushee-comments-comment-image-wrapper-width: 40px;
@@ -203,7 +204,7 @@ header:hover {
 /* Home/Rushees page */
 main#Rushees {
 
-	section:first-child {
+	section#rushees-list {
 
 		h1 {
 			margin-bottom: 30px;
@@ -242,7 +243,7 @@ main#Rushees {
 
 				img {
 					display: block;
-					width: 300px;
+					width: 100%;
 					border-radius: 2px 2px 0 0;
 				}
 				div.rushee-info {
@@ -289,6 +290,34 @@ main#Rushees {
 				-moz-transition: 0.5s;
 				-o-transition: 0.5s;
 				transition: 0.5s;	
+			}
+		}
+	}
+	@media(min-width: 321px) {
+		section#rushees-list {
+
+			div#masonry-container {
+
+				> div.masonry-rushee {
+					width: 100%;
+
+					img {
+						
+					}
+				}
+			}
+		}
+	}
+	@media(min-width: 481px) {
+		section#rushees-list {
+
+			div#masonry-container {
+
+				> div.masonry-rushee {
+					width: 300px;
+
+
+				}
 			}
 		}
 	}
@@ -494,6 +523,37 @@ main#Rushee {
 						a {
 							color: #f64c3f;
 						}
+					}
+				}
+			}
+		}
+	}
+	@media(min-width: 321px) {
+		section.rushee-info {
+
+			div.brother-likes-container {
+
+				div.brother-like {
+					height: $mobile-landscape-rushee-brother-like-height;
+
+					div.brother-likes-image-overlay {
+						width: calc(#{$mobile-landscape-rushee-brother-like-height} + 2px);
+						height: $mobile-landscape-rushee-brother-like-height;
+					}
+					span {
+						padding: 37px 0;
+					}
+				}
+				div.brother-like-see-all {
+					padding: calc(100% / 14 + 4px) 0;
+
+					div.brother-likes-image-overlay {
+						width: $mobile-landscape-rushee-brother-like-height;
+						height: $mobile-landscape-rushee-brother-like-height;
+					}
+					span {
+						padding: 23px 0;
+						font-size: 18px;
 					}
 				}
 			}
@@ -928,7 +988,7 @@ main#New-Rushee {
 			}
 		}
 	}
-	@media(min-width: 480px) {
+	@media(min-width: 321px) {
 		section#new-rushee-form {
 
 			form {
@@ -963,8 +1023,22 @@ main#New-Rushee {
 				div#new-rushee-rushee-summary {
 
 					textarea {
-						width: 480px;
+						width: 189px;
 						font-size: 16px;
+					}	
+				}
+			}
+		}
+	}
+	@media(min-width: 481px) {
+		section#new-rushee-form {
+
+			form {
+
+				div#new-rushee-rushee-summary {
+
+					textarea {
+						width: 480px;
 					}	
 				}
 			}
@@ -1103,7 +1177,7 @@ main#Edit-Rushee {
 			}
 		}
 	}
-	@media(min-width: 480px) {
+	@media(min-width: 321px) {
 		section#edit-rushee-form {
 
 			form {
@@ -1140,6 +1214,20 @@ main#Edit-Rushee {
 					i {
 						margin-left: 20px;
 					}
+					textarea {
+						width: 189px;
+					}
+				}
+			}
+		}
+	}
+	@media(min-width: 481px) {
+		section#edit-rushee-form {
+
+			form {
+
+				div#new-rushee-rushee-summary {
+
 					textarea {
 						width: 480px;
 						font-size: 16px;

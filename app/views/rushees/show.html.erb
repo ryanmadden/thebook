@@ -16,7 +16,7 @@
 
         <ul class="rushee-stats">   
             <% if current_user.voted_for? @rushee %>
-                <li class="liked">
+                <li class="liked btn">
                     <% if @rushee.votes_for.size == 1 %>
                         <%= link_to('<i class="fa fa-thumbs-up"></i><span>1</span> like'.html_safe, unlike_rushee_path(@rushee), method: :put) %>
                     <% else %>
@@ -24,7 +24,7 @@
                     <% end %>
                 </li>
             <% else %>
-                <li>
+                <li class="btn">
                     <% if @rushee.votes_for.size == 1 %>
                         <%= link_to('<i class="fa fa-thumbs-up"></i><span>1</span> like'.html_safe, like_rushee_path(@rushee), method: :put) %>
                     <% else %>

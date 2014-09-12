@@ -19,7 +19,10 @@
 
                 <div class="masonry-rushee">
 
-                    <div class="rushee-status rip-corded">Rip corded</div>
+
+                    <% if rushee.bid_dropped? %>
+                        <div class="rushee-status bid-dropped">Bid dropped!</div>
+                    <% end %>
 
                     <%= image_tag rushee.image.url() %>
 

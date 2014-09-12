@@ -1,6 +1,6 @@
 <main id="Rushees">
 
-    <section>
+    <section id="rushees-list">
 
         <h1>Rushees</h1>
 
@@ -18,6 +18,8 @@
             <% @rushees.each do |rushee| %>
 
                 <div class="masonry-rushee">
+
+                    <div class="rushee-status rip-corded">Rip corded</div>
 
                     <%= image_tag rushee.image.url() %>
 

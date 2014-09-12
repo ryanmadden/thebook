@@ -6,9 +6,9 @@
 
         <span>Sort by</span>
         <select>
-            <option value="rushees">Random</option>
+            <option selected="selected" value="rushees">Random</option>
             <option value="top">Likes</option>
-            <option selected="selected" value="views">Views</option>
+            <option value="views">Views</option>
             <option value="comments">Comments</option>
             <option value="recent">Most Recent</option>
         </select>
@@ -18,8 +18,15 @@
             <% @rushees.each do |rushee| %>
 
                 <div class="masonry-rushee">
-
-                    <div class="rushee-status rip-corded">Rip corded</div>
+                    <% if rushee.bid_offered? %>
+                        <div class="rushee-status bid-offered">Has bid</div>
+                    <% elsif rushee.bid_dropped? %>
+                        <div class="rushee-status bid-dropped">Bid dropped!</div>
+                    <% elsif rushee.bid_tabled? %>
+                        <div class="rushee-status bid-dropped">Bid tabled...</div>
+                    <% elsif rushee.bid_rejected? %>
+                        <div class="rushee-status bid-refused">Bid refused</div>   
+                    <% end %>
 
                     <%= image_tag rushee.image.url() %>
 

@@ -2,7 +2,16 @@
 
     <section class="rushee-info">
 
-        <div class="rushee-status rip-corded">Rip corded</div>
+        <% if @rushee.bid_offered? %>
+            <div class="rushee-status bid-offered">Has bid</div>
+        <% elsif @rushee.bid_dropped? %>
+            <div class="rushee-status bid-dropped">Bid dropped!</div>
+        <% elsif @rushee.bid_tabled? %>
+            <div class="rushee-status bid-dropped">Bid tabled...</div>
+        <% elsif @rushee.bid_rejected? %>
+            <div class="rushee-status bid-refused">Bid refused</div>   
+        <% end %>
+        
         <%= image_tag @rushee.image.url() %>
 
         <ul class="rushee-stats">   

@@ -2,14 +2,14 @@
 
     <section class="rushee-info">
 
-        <% if @rushee.bid_offered? %>
-            <div class="rushee-status bid-offered">Has bid</div>
-        <% elsif @rushee.bid_dropped? %>
+        <% if @rushee.bid_dropped? %>
             <div class="rushee-status bid-dropped">Bid dropped!</div>
         <% elsif @rushee.bid_tabled? %>
-            <div class="rushee-status bid-dropped">Bid tabled...</div>
+            <div class="rushee-status bid-tabled">Bid tabled...</div>
         <% elsif @rushee.bid_rejected? %>
-            <div class="rushee-status bid-refused">Bid refused</div>   
+            <div class="rushee-status bid-refused">Bid refused</div> 
+        <% elsif @rushee.bid_offered? %>
+            <div class="rushee-status bid-offered">Has bid</div>  
         <% end %>
         
         <%= image_tag @rushee.image.url() %>
@@ -86,6 +86,37 @@
                     <ul>
                         <li><%= link_to 'Edit rushee', edit_rushee_path(@rushee) %></li>
                         <li><%= link_to 'Delete rushee', rushee_path(@rushee), method: :delete, data: { confirm: "Are you sure you want to delete this post?" } %></li>
+                        <br></br>
+                        <% if current_user.id <= 3 %>
+                            <ul class="rushee-specs">
+                                <li><strong>Bid Status:</strong></li>
+                            </ul>
+
+                            <% if @rushee.bid_offered? %>
+                                <li><%= link_to 'Undo bid given', unoffer_rushee_path(@rushee) %></li>
+                            <% else %>
+                                <li><%= link_to 'Bid given', offer_rushee_path(@rushee) %></li>
+                            <% end %>
+
+                            <% if @rushee.bid_dropped? %>
+                                <li><%= link_to 'Undo bid dropped', undrop_rushee_path(@rushee) %></li>
+                            <% else %>
+                                <li><%= link_to 'Bid dropped', drop_rushee_path(@rushee) %></li>
+                            <% end %>
+
+                            <% if @rushee.bid_tabled? %>
+                                <li><%= link_to 'Undo bid tabled', untable_rushee_path(@rushee) %></li>
+                            <% else %>
+                                <li><%= link_to 'Bid tabled', table_rushee_path(@rushee) %></li>
+                            <% end %>
+
+                            <% if @rushee.bid_rejected? %>
+                                <li><%= link_to 'Undo bid rejected', unreject_rushee_path(@rushee) %></li>
+                            <% else %>
+                                <li><%= link_to 'Bid rejected', reject_rushee_path(@rushee) %></li>
+                            <% end %>
+
+                        <% end %>
                     </ul>
                 <% end %>
             </div>

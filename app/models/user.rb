@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  has_many :rushees
-  has_many :comments
+  has_many :rushees, dependent: :destroy
+  has_many :comments, dependent: :destroy
   acts_as_voter
 end

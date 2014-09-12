@@ -1,7 +1,7 @@
 class RusheesController < ApplicationController
   before_action :signed_in
   before_action :correct_user, only: [:edit, :update, :destroy]
-  # before_action :admin, only: [:offered, :unoffered, :dropped, :undropped, :tabled, :untabled, :rejected, :unrejected]
+  before_action :admin, only: [:offered, :unoffered, :dropped, :undropped, :tabled, :untabled, :rejected, :unrejected]
 
 
   def index
@@ -49,6 +49,9 @@ class RusheesController < ApplicationController
   def unoffered
     @rushee = Rushee.find(params[:id])
     @rushee.bid_offered = false
+    @rushee.bid_dropped = false
+    @rushee.bid_tabled = false
+    @rushee.bid_rejected = false
     @rushee.save
     respond_to do |format|
       format.html {redirect_to :back }
@@ -179,10 +182,10 @@ class RusheesController < ApplicationController
       end
     end
 
-    # def admin
-      # if current_user.id <= 3
-      # end
-    # end
+    def admin
+      if current_user.id <= 3
+      end
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rushee_params

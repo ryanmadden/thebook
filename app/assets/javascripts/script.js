@@ -215,5 +215,10 @@ $(document).ready(function() {
 		// placeholder for minimize
 		toggleMobileNavbar();
 	});
+	$('ul.rushee-stats li:first-child').click(function() {
+
+		var address = $(this).find('a').attr('href');
+		window.location.replace(address);
+	});
 
 });

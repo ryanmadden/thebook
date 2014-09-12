@@ -2,16 +2,16 @@
 
     <section class="rushee-info">
 
+        <div class="rushee-status rip-corded">Rip corded</div>
         <%= image_tag @rushee.image.url() %>
 
         <ul class="rushee-stats">   
             <% if current_user.voted_for? @rushee %>
                 <li class="liked">
                     <% if @rushee.votes_for.size == 1 %>
-                        <%= link_to('<i class="fa fa-thumbs-up"></i><span>1</span> like'.html_safe, unlike_rushee_path(@rushee), class: 'liked', method: :put) %>
+                        <%= link_to('<i class="fa fa-thumbs-up"></i><span>1</span> like'.html_safe, unlike_rushee_path(@rushee), method: :put) %>
                     <% else %>
-                        <%= link_to('', like_rushee_path(@rushee), method: :put,  remote: true, class: 'vote'  , data: { type: :json } ) %>
-                        <%= link_to("<i class='fa fa-thumbs-up'></i><span>#{ @rushee.votes_for.size }</span> likes".html_safe, unlike_rushee_path(@rushee), class: 'liked', method: :put) %>
+                        <%= link_to("<i class='fa fa-thumbs-up'></i><span>#{ @rushee.votes_for.size }</span> likes".html_safe, unlike_rushee_path(@rushee), method: :put) %>
                     <% end %>
                 </li>
             <% else %>

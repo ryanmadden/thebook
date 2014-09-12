@@ -1,6 +1,7 @@
 class RusheesController < ApplicationController
   before_action :signed_in
   before_action :correct_user, only: [:edit, :update, :destroy]
+  # before_action :admin, only: [:offered, :unoffered, :dropped, :undropped, :tabled, :untabled, :rejected, :unrejected]
 
 
   def index
@@ -174,6 +175,11 @@ class RusheesController < ApplicationController
       else
         @rushee = current_user.rushees.find_by(id: params[:id])
         redirect_to rushees_path, notice: "Not authorized to edit this post" if @rushee.nil?
+      end
+    end
+
+    def admin
+      if current_user.id <= 3
       end
     end
 

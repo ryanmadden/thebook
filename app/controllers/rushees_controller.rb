@@ -165,9 +165,6 @@ class RusheesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_rushee
-      @rushee = Rushee.find(params[:id])
-    end
 
     def signed_in
       redirect_to root_path, notice: "Please log in to view page" unless current_user

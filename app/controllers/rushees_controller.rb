@@ -31,6 +31,7 @@ class RusheesController < ApplicationController
 
   def new
     @rushee = current_user.rushees.build
+    flash[:notice] = "Rushee successfully added"
   end
 
   def edit
@@ -134,6 +135,7 @@ class RusheesController < ApplicationController
   end
 
   def update
+    @rushee = Rushee.find(params[:id])
     if @rushee.update(rushee_params)
       redirect_to @rushee, notice: 'Rushee was successfully updated.'
     else
@@ -142,6 +144,7 @@ class RusheesController < ApplicationController
   end
 
   def destroy
+    @rushee = Rushee.find(params[:id])
     @rushee.destroy
     redirect_to rushees_url, notice: 'Rushee was successfully deleted'
   end

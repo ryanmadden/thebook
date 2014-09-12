@@ -1,12 +1,13 @@
 <main id="Home">
 
-	<section>
+	<section id="home-banner">
 
 		<h1>THE BOOK</h1>
 
 		<% if current_user %>
 			<h2>Welcome, brother.</h2>
 		<% else %>
+			<h2>For the Glory of Constantine</h2>
 			<%= link_to "Sign in", "/auth/facebook", id: "sign_in" %>
 		<% end %>
 

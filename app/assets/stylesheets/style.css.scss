@@ -201,7 +201,51 @@ header:hover {
 
 
 
-/* Home/Rushees page */
+/* Home */
+main#Home {
+
+	section#home-banner {
+		text-align: center;
+		padding-top: 110px;
+
+		h1 {
+			margin-bottom: 0px;
+			font-size: 50px;
+			line-height: 50px;
+		}
+		h2 {
+			margin-bottom: 10px;
+			font-size: 15px;
+		}
+		a {
+			font-size: 18px;
+			color: #bbb;
+			text-decoration: none;
+		}
+	}
+	@media(min-width: 321px) {
+		section#home-banner {
+			padding-top: 70px;
+		}
+	}
+	@media(min-width: 481px) {
+		section#home-banner {
+			padding-top: 240px;
+
+			h1 {
+				font-size: 80px;
+				margin-bottom: 10px;
+			}
+			h2 {
+				font-size: 24px;
+			}
+		}
+	}
+}
+
+
+
+/* Rushees page */
 main#Rushees {
 
 	section#rushees-list {
@@ -253,7 +297,7 @@ main#Rushees {
 					border-radius: 3px 3px 0 0;
 				}
 				div.rushee-status.bid-dropped { background-color: rgba(16, 143, 57, 0.7); }
-				div.rushee-status.bid-offered { background-color: rgba(16, 181, 57, 0.7); }
+				div.rushee-status.bid-offered { background-color: rgba(87, 149, 255, 0.7); }
 				div.rushee-status.bid-tabled { background-color: rgba(222, 204, 16, 0.7); }
 				div.rushee-status.bid-refused { background-color: rgba(255, 104, 19, 0.7); }
 				div.rushee-status.rip-corded { background-color: rgba(217, 40, 18, 0.7); }
@@ -364,7 +408,7 @@ main#Rushee {
 			border-radius: 3px 3px 0 0;
 		}
 		div.rushee-status.bid-dropped { background-color: rgba(16, 143, 57, 0.7); }
-		div.rushee-status.bid-offered { background-color: rgba(16, 181, 57, 0.7); }
+		div.rushee-status.bid-offered { background-color: rgba(87, 149, 255, 0.7); }
 		div.rushee-status.bid-tabled { background-color: rgba(222, 204, 16, 0.7); }
 		div.rushee-status.bid-refused { background-color: rgba(255, 104, 19, 0.7); }
 		div.rushee-status.rip-corded { background-color: rgba(217, 40, 18, 0.7); }
@@ -550,14 +594,30 @@ main#Rushee {
 				}
 				ul {
 					margin: 0 0 10px 0;
+
+					li {
+						margin: 0 10px 0 0;
+					}
+				}
+				ul.rushee-edit-general {
 					list-style: none;
 
 					li {
 						display: inline-block;
-						margin: 0 10px 0 0;
 
 						a {
 							color: #f64c3f;
+						}
+					}
+				}
+				ul.rushee-edit-bid-status {
+					list-style: none;
+
+					li {
+
+						a {
+							color: #6487FF;
+							text-decoration: none;
 						}
 					}
 				}

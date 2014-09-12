@@ -4,7 +4,7 @@
 
         <h1>New Rushee</h1>
 
-        <%= form_for(@rushee) do |f| %>
+        <%= form_for(@rushee), html: { multipart: true } do |f| %>
             <% if @rushee.errors.any? %>
                 <div id="error_explanation">
                     <h2><%= pluralize(@rushee.errors.count, "error") %> prohibited this rushee from being saved:</h2>

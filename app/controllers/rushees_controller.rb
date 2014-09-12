@@ -34,6 +34,7 @@ class RusheesController < ApplicationController
   end
 
   def edit
+     @rushee = Rushee.find(params[:id])
   end
 
   def offered
@@ -178,10 +179,10 @@ class RusheesController < ApplicationController
       end
     end
 
-    def admin
-      if current_user.id <= 3
-      end
-    end
+    # def admin
+      # if current_user.id <= 3
+      # end
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rushee_params

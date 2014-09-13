@@ -1,7 +1,7 @@
 class RusheesController < ApplicationController
-  before_action :signed_in, only: [:show, :edit, :update, :destroy]
-  before_action :set_rushee, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in
   before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :admin, only: [:offered, :unoffered, :dropped, :undropped, :tabled, :untabled, :rejected, :unrejected]
 
 
   def index
@@ -31,9 +31,11 @@ class RusheesController < ApplicationController
 
   def new
     @rushee = current_user.rushees.build
+    flash[:notice] = "Rushee successfully added"
   end
 
   def edit
+     @rushee = Rushee.find(params[:id])
   end
 
   def offered
@@ -48,6 +50,9 @@ class RusheesController < ApplicationController
   def unoffered
     @rushee = Rushee.find(params[:id])
     @rushee.bid_offered = false
+    @rushee.bid_dropped = false
+    @rushee.bid_tabled = false
+    @rushee.bid_rejected = false
     @rushee.save
     respond_to do |format|
       format.html {redirect_to :back }
@@ -130,6 +135,7 @@ class RusheesController < ApplicationController
   end
 
   def update
+    @rushee = Rushee.find(params[:id])
     if @rushee.update(rushee_params)
       redirect_to @rushee, notice: 'Rushee was successfully updated.'
     else
@@ -138,6 +144,7 @@ class RusheesController < ApplicationController
   end
 
   def destroy
+    @rushee = Rushee.find(params[:id])
     @rushee.destroy
     redirect_to rushees_url, notice: 'Rushee was successfully deleted'
   end
@@ -165,9 +172,6 @@ class RusheesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_rushee
-      @rushee = Rushee.find(params[:id])
-    end
 
     def signed_in
       redirect_to root_path, notice: "Please log in to view page" unless current_user
@@ -178,6 +182,11 @@ class RusheesController < ApplicationController
       else
         @rushee = current_user.rushees.find_by(id: params[:id])
         redirect_to rushees_path, notice: "Not authorized to edit this post" if @rushee.nil?
+      end
+    end
+
+    def admin
+      if current_user.id <= 3
       end
     end
 

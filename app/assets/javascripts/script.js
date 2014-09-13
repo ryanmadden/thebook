@@ -22,29 +22,6 @@ $(document).ready(function() {
 			$('ul.rushee-stats li:first-child').addClass('liked');
 		}
 	};
-	// Animate navbar on scroll
-	var animateNavbar = function() {
-		var newPosition = $('header').offset().top
-		if(newPosition && !animated) {
-			$('header > nav').animate({
-				padding: "10px 0"
-			}, {
-				duration: 400,
-				queue: false
-			});
-			animated = true;
-		}
-		else if(!newPosition && animated) {
-			$('header > nav').animate({
-				padding: "20px 0"
-			}, {
-				duration: 400,
-				queue: false
-			});
-			animated = false;
-		}
-		navPosition = newPosition
-	};
 	// Redirect to correct rushee page
 	var redirectToRushee = function(rushee) {
 		// placeholder to minimize
@@ -73,13 +50,13 @@ $(document).ready(function() {
 	};
 	// Show text (brother like names, see all)
 	var showText = function(div, container, show) {
-		div.children(container).css('opacity', '0.6')
-		div.children(show).show()
+		div.children(container).css('display', 'block');
+		div.children(show).show();
 	};
 	// Hide text (brother like names, see all)
 	var hideText = function(div, container, hide) {
-		div.children(container).css('opacity', '1.0')
-		div.children(show).hide()
+		div.children(container).css('display', 'none');;
+		div.children(show).hide();
 	};
 	// Set comments section to equal height as info section
 	var fitCommentsToInfo = function() {
@@ -130,9 +107,18 @@ $(document).ready(function() {
 
 			var container = $('.modal-likes');
 			var item = '.modal-like';
-			var gutters = 7;
+			var gutters = 10;
 			initiateMasonry(container, item, gutters)
 		});
+	};
+	// Open/close mobile navbar
+	var toggleMobileNavbar = function() {
+		if( $('header nav nav').is(':visible') ) {
+			$('header nav nav').hide();
+		}
+		else {
+			$('header nav nav').show();
+		}
 	};
 
 
@@ -148,11 +134,6 @@ $(document).ready(function() {
 	 * Events
 	 */
 
-	// Scroll -> animate navbar
-	$(window).scroll(function() {
-		// placeholder to minimize
-		animateNavbar();
-	});
 	// Click on rushee in rushees page -> redirect to correct rushee
 	$('div.masonry-rushee').click(function() {
 		var rushee = $(this)
@@ -178,28 +159,28 @@ $(document).ready(function() {
 	// Hover over brother like -> show name
 	$('div.brother-like').mouseenter(function() {
 		div = $(this);
-		container = 'img';
+		container = 'div.brother-likes-image-overlay';
 		show = 'span';
 		showText(div, container, show);
 	});
 	// Stop hovering over brother like -> hide name
 	$('div.brother-like').mouseleave(function() {
 		div = $(this);
-		container = 'img';
+		container = 'div.brother-likes-image-overlay';
 		hide = 'span';
 		hideText(div, container, hide);
 	});
 	// Hover over see all likes div -> show see all
 	$('div.brother-like-see-all').mouseenter(function() {
 		div = $(this);
-		container = 'i';
+		container = 'div.brother-likes-image-overlay';
 		show = 'span';
 		showText(div, container, show);
 	});
 	// Stop hovering over see all likes div -> hide see all
 	$('div.brother-like-see-all').mouseleave(function() {
 		div = $(this);
-		container = 'i';
+		container = 'div.brother-likes-image-overlay';
 		hide = 'span';
 		hideText(div, container, hide);
 	});
@@ -228,6 +209,16 @@ $(document).ready(function() {
 	$('div.brother-like-see-all').click(function() {
 		// placeholder to minimize
 		setupAndOpenModal();
+	});
+	// Click header menu -> toggle mobile navbar menu
+	$('header nav > i').click(function() {
+		// placeholder for minimize
+		toggleMobileNavbar();
+	});
+	$('ul.rushee-stats li:first-child').click(function() {
+
+		var address = $(this).find('a').attr('href');
+		window.location.replace(address);
 	});
 
 });

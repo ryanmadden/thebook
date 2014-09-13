@@ -1,13 +1,13 @@
 <main id="Rushees">
 
-    <section>
+    <section id="rushees-list">
 
         <h1>Rushees</h1>
 
         <span>Sort by</span>
         <select>
-            <option value="rushees">Random</option>
-            <option selected="selected" value="top">Likes</option>
+            <option selected="selected" value="rushees">Random</option>
+            <option value="top">Likes</option>
             <option value="views">Views</option>
             <option value="comments">Comments</option>
             <option value="recent">Most Recent</option>
@@ -18,6 +18,15 @@
             <% @rushees.each do |rushee| %>
 
                 <div class="masonry-rushee">
+                    <% if rushee.bid_dropped? %>
+                        <div class="rushee-status bid-dropped">Bid dropped!</div>
+                    <% elsif rushee.bid_tabled? %>
+                        <div class="rushee-status bid-tabled">Bid tabled...</div>
+                    <% elsif rushee.bid_rejected? %>
+                        <div class="rushee-status bid-refused">Bid refused</div>
+                    <% elsif rushee.bid_offered? %>
+                        <div class="rushee-status bid-offered">Has bid</div>   
+                    <% end %>
 
                     <%= image_tag rushee.image.url() %>
 

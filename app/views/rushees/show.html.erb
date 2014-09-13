@@ -2,19 +2,30 @@
 
     <section class="rushee-info">
 
+        <% if @rushee.bid_dropped? %>
+            <div class="rushee-status bid-dropped">Bid dropped!</div>
+        <% elsif @rushee.bid_tabled? %>
+            <div class="rushee-status bid-tabled">Bid tabled...</div>
+        <% elsif @rushee.bid_rejected? %>
+            <div class="rushee-status bid-refused">Bid refused</div> 
+        <% elsif @rushee.bid_offered? %>
+            <div class="rushee-status bid-offered">Has bid</div>  
+        <% end %>
+        
         <%= image_tag @rushee.image.url() %>
 
         <ul class="rushee-stats">   
             <% if current_user.voted_for? @rushee %>
-                <li class="liked">
+                <li class="liked btn">
                     <% if @rushee.votes_for.size == 1 %>
-                        <%= link_to('<i class="fa fa-thumbs-up"></i><span>1</span> like'.html_safe, unlike_rushee_path(@rushee), class: 'liked', method: :put) %>
+                        <%= link_to('<i class="fa fa-thumbs-up"></i><span>1</span> like'.html_safe, unlike_rushee_path(@rushee), method: :put) %>
                     <% else %>
                         <%= link_to("<i class='fa fa-thumbs-up'></i><span>#{ @rushee.votes_for.size }</span> likes".html_safe, unlike_rushee_path(@rushee), class: 'liked', method: :put) %>
+                        <%= link_to("<i class='fa fa-thumbs-up'></i><span>#{ @rushee.votes_for.size }</span> likes".html_safe, unlike_rushee_path(@rushee), method: :put) %>
                     <% end %>
                 </li>
             <% else %>
-                <li>
+                <li class="btn">
                     <% if @rushee.votes_for.size == 1 %>
                         <%= link_to('<i class="fa fa-thumbs-up"></i><span>1</span> like'.html_safe, like_rushee_path(@rushee), method: :put) %>
                     <% else %>
@@ -44,12 +55,14 @@
             <% @rushee.votes_for.voters.first(3).each do |v| %>
                 <div class="brother-like">
                     <%= image_tag(v.image)%>
+                    <div class="brother-likes-image-overlay"></div>
                     <span><%= v.name %></span>
                 </div>
             <% end %>
             <% if @rushee.votes_for.size > 0 %>
                 <div class="brother-like-see-all">
                     <i class="fa fa-plus"></i>
+                    <div class="brother-likes-image-overlay"></div>
                     <span>See all likes</span>
                 </div>
             <% end %>
@@ -71,10 +84,42 @@
                 <span>Rushee added by <%= @rushee.user.name %></span>
                 <% if @rushee.user == current_user or current_user.id <= 3 %>
                     <span>Since you added this rushee, you can perform the following actions: </span>
-                    <ul>
+                    <ul class="rushee-edit-general">
                         <li><%= link_to 'Edit rushee', edit_rushee_path(@rushee) %></li>
                         <li><%= link_to 'Delete rushee', rushee_path(@rushee), method: :delete, data: { confirm: "Are you sure you want to delete this post?" } %></li>
                     </ul>
+
+                    <% if current_user.id <= 3 %>
+                        <span>Rushee's rush status</span>
+                        <ul class="rushee-edit-bid-status">
+
+                            <% if @rushee.bid_offered? %>
+                                <li><%= link_to 'Undo bid given', unoffer_rushee_path(@rushee) %></li>
+                            <% else %>
+                                <li><%= link_to 'Bid given', offer_rushee_path(@rushee) %></li>
+                            <% end %>
+
+                            <% if @rushee.bid_dropped? %>
+                                <li><%= link_to 'Undo bid dropped', undrop_rushee_path(@rushee) %></li>
+                            <% else %>
+                                <li><%= link_to 'Bid dropped', drop_rushee_path(@rushee) %></li>
+                            <% end %>
+
+                            <% if @rushee.bid_tabled? %>
+                                <li><%= link_to 'Undo bid tabled', untable_rushee_path(@rushee) %></li>
+                            <% else %>
+                                <li><%= link_to 'Bid tabled', table_rushee_path(@rushee) %></li>
+                            <% end %>
+
+                            <% if @rushee.bid_rejected? %>
+                                <li><%= link_to 'Undo bid rejected', unreject_rushee_path(@rushee) %></li>
+                            <% else %>
+                                <li><%= link_to 'Bid rejected', reject_rushee_path(@rushee) %></li>
+                            <% end %>
+
+                        </ul>
+                    <% end %>
+                    
                 <% end %>
             </div>
         </div>
@@ -145,6 +190,8 @@
                 <% @rushee.votes_for.voters.each do |v| %>
                     <div class="modal-like">
                         <%= image_tag(v.image) %>
+                        <div class="modal-image-overlay"></div>
+                        <span class="modal-image-name"><%= v.name %></span>
                     </div>
                 <% end %>
             </div>
@@ -154,10 +201,3 @@
 
 </main>
 
-<!-- preps the js variables -->
-<%= javascript_tag do %>
-    window.image = '<%= j @current_user.image %>';
-<% end %>
-<%= javascript_tag do %>
-    window.image = '<%= j @current_user.image %>';
-<% end %>

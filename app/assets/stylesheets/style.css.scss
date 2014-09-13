@@ -14,6 +14,26 @@ $facebook-color: #3b5998;
 $h1-color: $secondary-color;
 $h2-color: $secondary-color;
 
+$desktop-main-inner-width: 80%;
+$desktop-header-inner-width: 90%;
+$desktop-rushee-info-width: 240px;
+$desktop-rushee-brother-like-height: 46px;
+$desktop-rushee-comments-width: calc(100% - 280px);
+$desktop-rushee-comments-comment-left-width: calc(100% - 135px);
+$desktop-rushee-comments-comment-image-wrapper-width: 50px;
+$desktop-rushee-comments-commenter-width: 90px;
+
+$mobile-main-inner-width: 95%;
+$mobile-header-inner-width: 95%;
+$mobile-rushee-info-width: 100%;
+$mobile-rushee-brother-like-height: 61px;
+$mobile-landscape-rushee-brother-like-height: 92px;
+$mobile-rushee-comments-width: calc(100% - 20px);
+$mobile-rushee-comments-comment-left-width: 100%;
+$mobile-rushee-comments-comment-image-wrapper-width: 40px;
+$mobile-rushee-comments-commenter-width: 78px;
+
+
 
 
 /* Templating */
@@ -41,9 +61,9 @@ html {
 
 			main {
 				margin: 0 auto;
-				padding: 100px 0 20px 0;
-				width: 80%;
-				max-width: 1000px;
+				padding: 70px 0 20px 0;
+				width: $mobile-main-inner-width;
+				max-width: 1145px;
 				overflow: auto;
 
 				section {
@@ -65,6 +85,11 @@ html {
 					}
 				}
 			}
+			@media(min-width: 481px) {
+				main {
+					width: $desktop-main-inner-width;
+				}
+			}
 		}
 	}
 	body.modal-open {
@@ -84,8 +109,8 @@ header {
 
 	> nav {
 		margin: 0 auto;
-		padding: 20px 0;
-		width: 90%;
+		padding: 15px 0;
+		width: $mobile-header-inner-width;
 		overflow: auto;
 		font-family: "Nevis";
 
@@ -95,23 +120,27 @@ header {
 			font-family: "Nevis";
 			text-decoration: none;
 		}
-		nav {
+		i {
 			float: right;
+			font-size: 18px;
+		}
+		nav {
+			display: none;
+			margin-top: 30px;
 
 			ul {
+				float: right;
+				text-align: right;
 
 				li {
-					display: inline-block;
-					padding: 0 15px;
+					display: block;
+					margin-bottom: 5px;
 
 					a {
 						text-decoration: none;
 						font-size: 14px;
 						color: $primary-color;
 					}
-				}
-				li:last-child {
-					padding: 0;
 				}
 			}
 		}
@@ -124,6 +153,11 @@ header {
 		}
 
 	}
+	@media(min-width: 481px) {
+		> nav {
+			width: $desktop-header-inner-width;
+		}
+	}
 }
 header:hover {
 	background-color: $secondary-color;
@@ -132,35 +166,79 @@ header:hover {
 	-o-transition: 0.2s;
 	transition: 0.2s;
 }
+@media(min-width: 481px) {
+	header {
+
+		> nav {
+
+			> i#header-menu {
+				display: none;
+			}
+			nav {
+				display: block;
+				float: right;
+				margin-top: 0;
+
+				ul {
+					float: none;
+					text-align: inherit;
+
+					li {
+						display: inline-block;
+						margin-bottom: 0;
+						padding: 0 15px;
+
+						a { }
+					}
+					li:last-child {
+						padding: 0;
+					}
+				}
+			}
+		}
+	}
+}
 
 
 
-/* Home page */
+/* Home */
 main#Home {
 
-	section:first-child {
-		padding: 280px 0;
-		width: 100%;
+	section#home-banner {
 		text-align: center;
+		padding-top: 110px;
 
 		h1 {
+			margin-bottom: 0px;
 			font-size: 50px;
-			font-family: "Nevis";
+			line-height: 50px;
 		}
 		h2 {
-			margin-top: 10px;
-			font-size: 16px;
+			margin-bottom: 10px;
+			font-size: 15px;
 		}
 		a {
-			color: #bbb; //#4a9de8;
+			font-size: 18px;
+			color: #bbb;
 			text-decoration: none;
 		}
-		a:hover {
-			opacity: 0.7;
-			-webkit-transition: 0.5s;
-			-moz-transition: 0.5s;
-			-o-transition: 0.5s;
-			transition: 0.5s;
+	}
+	@media(min-width: 321px) {
+		section#home-banner {
+			padding-top: 70px;
+		}
+	}
+	@media(min-width: 481px) {
+		section#home-banner {
+			padding-top: 240px;
+
+			h1 {
+				font-size: 80px;
+				margin-bottom: 10px;
+			}
+			h2 {
+				font-size: 24px;
+			}
 		}
 	}
 }
@@ -170,7 +248,7 @@ main#Home {
 /* Rushees page */
 main#Rushees {
 
-	section:first-child {
+	section#rushees-list {
 
 		h1 {
 			margin-bottom: 30px;
@@ -207,9 +285,25 @@ main#Rushees {
 				border-radius: 3px;
 				cursor: pointer;
 
+				div.rushee-status {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 40px;
+					text-align: center;
+					line-height: 40px;
+					color: #fff;
+					border-radius: 3px 3px 0 0;
+				}
+				div.rushee-status.bid-dropped { background-color: rgba(16, 143, 57, 0.7); }
+				div.rushee-status.bid-offered { background-color: rgba(87, 149, 255, 0.7); }
+				div.rushee-status.bid-tabled { background-color: rgba(222, 204, 16, 0.7); }
+				div.rushee-status.bid-refused { background-color: rgba(255, 104, 19, 0.7); }
+				div.rushee-status.rip-corded { background-color: rgba(217, 40, 18, 0.7); }
 				img {
 					display: block;
-					width: 300px;
+					width: 100%;
 					border-radius: 2px 2px 0 0;
 				}
 				div.rushee-info {
@@ -259,6 +353,34 @@ main#Rushees {
 			}
 		}
 	}
+	@media(min-width: 321px) {
+		section#rushees-list {
+
+			div#masonry-container {
+
+				> div.masonry-rushee {
+					width: 100%;
+
+					img {
+						
+					}
+				}
+			}
+		}
+	}
+	@media(min-width: 481px) {
+		section#rushees-list {
+
+			div#masonry-container {
+
+				> div.masonry-rushee {
+					width: 300px;
+
+
+				}
+			}
+		}
+	}
 }
 
 
@@ -267,15 +389,32 @@ main#Rushees {
 main#Rushee {
 
 	section.rushee-info {
+		position: relative;
 		float: left;
 		margin-right: 20px;
-		width: 240px;
+		width: $mobile-rushee-info-width;
 		background-color: #fff;
 		border-radius: 3px;
 
+		div.rushee-status {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 40px;
+			text-align: center;
+			line-height: 40px;
+			color: #fff;
+			border-radius: 3px 3px 0 0;
+		}
+		div.rushee-status.bid-dropped { background-color: rgba(16, 143, 57, 0.7); }
+		div.rushee-status.bid-offered { background-color: rgba(87, 149, 255, 0.7); }
+		div.rushee-status.bid-tabled { background-color: rgba(222, 204, 16, 0.7); }
+		div.rushee-status.bid-refused { background-color: rgba(255, 104, 19, 0.7); }
+		div.rushee-status.rip-corded { background-color: rgba(217, 40, 18, 0.7); }
 		img {
 			display: block;
-			width: 240px;
+			width: $mobile-rushee-info-width;
 			border-radius: 2px 2px 0 0;
 		}
 		ul.rushee-stats {
@@ -284,7 +423,6 @@ main#Rushee {
 
 			li {
 				display: inline-block;
-				padding: 10px 0;
 				width: calc(33% - 3px);
 				color: #91949d;
 				font-size: 11px;
@@ -292,14 +430,20 @@ main#Rushee {
 				border: 1px solid #444;
 				border-style: none solid none none;
 
-				a {
-					text-decoration: none;
-					color: #91949d;
-				}
 				i {
 					display: block;
 					margin-bottom: 5px;
 					font-size: 14px;
+				}
+			}
+			li.btn {
+
+				a {
+					display: block;
+					padding: 10px 0;
+					width: 100%;
+					text-decoration: none;
+					color: #91949d;
 				}
 			}
 			li.liked {
@@ -330,7 +474,7 @@ main#Rushee {
 				position: relative;
 				float: left;
 				width: calc(100% / 5);
-				height: 46px;
+				height: $mobile-rushee-brother-like-height;
 				text-align: center;
 				overflow: hidden;
 				
@@ -342,12 +486,21 @@ main#Rushee {
 					width: auto;
 					height: 100%;
 				}
+				div.brother-likes-image-overlay {
+					display: none;
+					position: absolute;
+					width: calc(#{$mobile-rushee-brother-like-height} + 2px);
+					height: $mobile-rushee-brother-like-height;
+					top: 0;
+					left: 0;
+					background: rgba(0, 0, 0, 0.4);
+				}
 				span {
-					padding: 11px 0;
+					padding: 16px 0;
 					position: absolute;
 					top: 1px;
 					width: 100%;
-					color: $primary-color;
+					color: #fff;
 					font-size: 11px;
 				}
 			}
@@ -355,7 +508,7 @@ main#Rushee {
 				position: relative;
 				float: left;
 				width: calc(100% / 5);
-				padding: calc(100% / 18) 0;
+				padding: calc(100% / 16 + 2px) 0;
 				text-align: center;
 				background-color: #444;
 				cursor: pointer;
@@ -364,12 +517,21 @@ main#Rushee {
 					color: #888;
 					font-size: 18px;
 				}
+				div.brother-likes-image-overlay {
+					display: none;
+					position: absolute;
+					width: calc(#{$mobile-rushee-brother-like-height} - 1px);
+					height: $mobile-rushee-brother-like-height;
+					top: 0;
+					left: 0;
+					background: rgba(0, 0, 0, 0.4);
+				}
 				span {
 					position: absolute;
 					top: 0;
-					padding: 10px 0;
-					color: #eee;
-					font-size: 11px;
+					padding: 15px 0;
+					color: #fff;
+					font-size: 12px;
 				}
 			}
 		}
@@ -387,7 +549,10 @@ main#Rushee {
 				color: #fff;
 				font-size: 12px;
 				text-decoration: none;
+				background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #476CB8), color-stop(1, $facebook-color) );
+				background: -moz-linear-gradient( center top, #476CB8 5%, $facebook-color 100% );
 				background-color: $facebook-color;
+				border: 1px solid #466AB5;
 				border-radius: 3px;
 
 				i {
@@ -431,24 +596,109 @@ main#Rushee {
 				}
 				ul {
 					margin: 0 0 10px 0;
+
+					li {
+						margin: 0 10px 0 0;
+					}
+				}
+				ul.rushee-edit-general {
 					list-style: none;
 
 					li {
 						display: inline-block;
-						margin: 0 10px 0 0;
 
 						a {
 							color: #f64c3f;
 						}
 					}
 				}
+				ul.rushee-edit-bid-status {
+					list-style: none;
+
+					li {
+
+						a {
+							color: #6487FF;
+							text-decoration: none;
+						}
+					}
+				}
 			}
+		}
+	}
+	@media(min-width: 321px) {
+		section.rushee-info {
+
+			div.brother-likes-container {
+
+				div.brother-like {
+					height: $mobile-landscape-rushee-brother-like-height;
+
+					div.brother-likes-image-overlay {
+						width: calc(#{$mobile-landscape-rushee-brother-like-height} + 2px);
+						height: $mobile-landscape-rushee-brother-like-height;
+					}
+					span {
+						padding: 37px 0;
+					}
+				}
+				div.brother-like-see-all {
+					padding: calc(100% / 14 + 4px) 0;
+
+					div.brother-likes-image-overlay {
+						width: $mobile-landscape-rushee-brother-like-height;
+						height: $mobile-landscape-rushee-brother-like-height;
+					}
+					span {
+						padding: 23px 0;
+						font-size: 18px;
+					}
+				}
+			}
+		}
+	}
+	@media(min-width: 481px) {
+		section.rushee-info {
+			width: $desktop-rushee-info-width;
+
+			img {
+				width: $desktop-rushee-info-width;
+			}
+			div.brother-likes-container {
+
+				div.brother-like {
+					height: $desktop-rushee-brother-like-height;
+
+					div.brother-likes-image-overlay {
+						width: calc(#{$desktop-rushee-brother-like-height} + 2px);
+						height: $desktop-rushee-brother-like-height;
+					}
+					span {
+						padding: 11px 0;
+						top: 1px;
+					}
+				}
+				div.brother-like-see-all {
+					padding: calc(100% / 18) 0;
+
+					div.brother-likes-image-overlay {
+						width: calc(#{$desktop-rushee-brother-like-height} + 2px);
+						height: $desktop-rushee-brother-like-height;
+					}
+					span {
+						padding: 10px 0;
+						font-size: 11px;
+					}
+				}
+			}
+
 		}
 	}
 	section.rushee-comments {
 		float: left;
+		margin-top: 15px;
 		padding: 10px;
-		width: calc(100% - 280px);
+		width: $mobile-rushee-comments-width;
 		overflow: auto;
 		background-color: #fff;
 		border-radius: 3px;
@@ -470,7 +720,7 @@ main#Rushee {
 			}
 			input {
 				display: inline-block;
-				padding: 32px 10px;
+				padding: 32px 9px;
 				vertical-align: top;
 				color: #fff;
 				font-size: 12px;
@@ -491,9 +741,17 @@ main#Rushee {
 				position:relative;
 				top:1px;
 			}
+			input:hover {
+				opacity: 0.9;
+			}
 		}
 		div.comments-wrapper {
 			overflow: auto;
+			background: url(/crest.png);
+			background-size: 260px 351px;
+			background-repeat: no-repeat;
+			background-position: 50% 40px;
+
 
 			div.user-comment {
 				clear: both;
@@ -502,44 +760,46 @@ main#Rushee {
 
 				div.comment-left {
 					float: left;
-					width: calc(100% - 135px);
+					width: $mobile-rushee-comments-comment-left-width;
 
 					div.comment-commenter {
 						float: left;
 						min-height: 70px;
-						width: 90px;
+						width: $mobile-rushee-comments-commenter-width;
 
 						div.comment-commenter-image-wrapper {
-							height: 50px;
+							width: $mobile-rushee-comments-comment-image-wrapper-width;
+							height: $mobile-rushee-comments-comment-image-wrapper-width;
 							overflow: hidden;
 
 							img.portrait {
-								width: 50px;
+								width: $mobile-rushee-comments-comment-image-wrapper-width;
 								height: auto;
 							}
 							img.landscape {
 								width: auto;
-								width: 50px;
+								height: $mobile-rushee-comments-comment-image-wrapper-width;
 							}
 						}
 						strong.comment-name {
 							display: block;
+							margin-top: 4px;
 							color: #666;
-							font-size: 13px;
+							font-size: 12px;
 							font-weight: normal;
 						}
 					}
 					div.comment-comment {
 						display: inline-block;
-						max-width: calc(100% - 110px);
+						max-width: calc(100% - 80px);
 						background-color: #eee;
 						border: 1px solid #eee;
 						border-radius: 8px;
 
-						span {
+						span.comment-body {
 							display: block;
-							padding: 10px 15px;
-							font-size: 13px;
+							padding: 7px 10px;
+							font-size: 12px;
 						}
 					}
 				}
@@ -548,16 +808,18 @@ main#Rushee {
 					font-size: 12px;
 					text-align: right;
 
+					> div {
+						display: inline-block;
+					}
 					div.comment-time {
 						color: #555;
 					}
 					div.comment-like {
-						font-size: 13px;
 
 						a {
 
 							i {
-								font-size: 20px;
+								font-size: 16px;
 							}
 							i.liked {
 								color: #63C0FF;
@@ -579,9 +841,69 @@ main#Rushee {
 			}
 		}
 	}
+	@media(min-width: 481px) {
+		section.rushee-comments {
+			margin-top: 0;
+			width: $desktop-rushee-comments-width;
+
+			div.comments-wrapper {
+				background-size: 330px 446px;
+
+				div.user-comment {
+
+					div.comment-left {
+						width: $desktop-rushee-comments-comment-left-width;
+
+						div.comment-commenter {
+							width: $desktop-rushee-comments-commenter-width;
+
+							div.comment-commenter-image-wrapper {
+								width: $desktop-rushee-comments-comment-image-wrapper-width;
+								height: $desktop-rushee-comments-comment-image-wrapper-width;
+
+								img.portrait {
+									width: $desktop-rushee-comments-comment-image-wrapper-width;
+								}
+								img.landscape {
+									height: $desktop-rushee-comments-comment-image-wrapper-width;
+								}
+							}
+							strong.comment-name {
+								font-size: 13px;
+							}
+						}
+						div.comment-comment {
+							max-width: calc(100% - 100px);
+
+							span.comment-body {
+								padding: 10px 15px;
+								font-size: 13px;
+							}
+						}
+					}
+					div.comment-right {
+
+						> div {
+							display: block;
+						}
+						div.comment-like {
+							font-size: 13px;
+
+							a {
+
+								i {
+									font-size: 20px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	section.rushee-modal {
 		display: none;
-		position: absolute;
+		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100%;
@@ -592,16 +914,15 @@ main#Rushee {
 			vertical-align: middle;
 			width: 290px;
 			height: 450px;
-			background-color: #fff;
+			background-color: lighten($primary-color, 5%);
 			border-radius: 3px;
 
 			h2 {
 				padding: 10px;
-				color: #333;
+				color: #222;
 				font-size: 17px;
-				// font-weight: normal;
 				text-shadow: none;
-				background-color: #ddd;
+				background-color: #f3f3f3;
 				border-radius: 3px 3px 0 0;
 			}
 			div.modal-likes {
@@ -611,7 +932,11 @@ main#Rushee {
 					width: 60px;
 					height: 60px;
 					overflow: hidden;
+					text-align: center;
 
+					img {
+						position: relative;
+					}
 					img.portrait {
 						width: 60px;
 						height: auto;
@@ -619,6 +944,22 @@ main#Rushee {
 					img.landscape {
 						width: auto;
 						height: 60px;
+					}
+					div.modal-image-overlay {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 60px;
+						height: 60px;
+						background: rgba(0, 0, 0, 0.4);
+					}
+					span.modal-image-name {
+						padding: 11px 0;
+						position: absolute;
+						top: 6px;
+						left: 2px;
+						color: #fff;
+						font-size: 11px;
 					}
 				}
 			}
@@ -631,15 +972,16 @@ main#Rushee {
 /* New rushees page */
 main#New-Rushee {
 
-	section:first-child {
+	section#new-rushee-form {
 
 		form {
 			margin-top: 20px;
 
 			div#new-rushee-quick-info {
+				margin-bottom: 30px;
 
 				div.new-rushee-input-item {
-					width: 200px;
+					width: 100%;
 
 					i {
 						float: left;
@@ -655,67 +997,149 @@ main#New-Rushee {
 						display: block;
 						margin-bottom: 10px;
 						padding: 8px 10px;
+						height: 14px;
 						font-size: 12px;
 						background-color: #fff;
 						border: 1px solid #fff;
 						border-radius: 0 3px 3px 0;
+						outline: none;
 					}
 					input#name {
-						width: 151px;
+						width: 255px;
 					}
 					input#age {
-						width: 149px;
+						width: 253px;
 					}
 					input#major {
-						width: 140px;
+						width: 244px;
 					}
 					input#hometown {
-						width: 148px;
+						width: 252px;
 					}
 					input#campus-involvement {
-						width: 146px;
+						width: 250px;
+					}
+					input#facebook-link {
+						width: 259px;
 					}
 				}
+				label {
+					display: block;
+					padding: 10px 0;
+					color: $secondary-color;
+					text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+				}
+				input#legacy {
+					display: inline-block;
+				}
+				input#legacy + span {
+					margin-left: 5px;
+					font-size: 12px;
+					color: #fff;
+				}
+				input#rushee_image {
+					border: none;
+					width: 220px;
+					height: 20px;
+					vertical-align: middle;
+					font-size: 12px;
+					color: #fff;
+				}
 			}
+			div#new-rushee-rushee-summary {
+				float: left;
+				overflow: auto;
 
-			label {
+				i {
+					float: left;
+					padding: 0 8px;
+					height: 363px; //243
+					line-height: 35px;
+					font-size: 24px;
+					color: $secondary-color;
+					background-color: #fff;
+					border-radius: 3px 0 0 3px;
+				}
+				textarea {
+					display: block;
+					margin-bottom: 10px;
+					padding: 8px 10px;
+					width: 257px;
+					height: 345px; //225
+					font-size: 12px;
+					border: 1px solid #fff;
+					border-radius: 0 3px 3px 0;
+					outline: none;
+					resize: none;
+				}
+			}
+			input#new-rushee-submit {
 				display: block;
-				padding: 10px 0;
-				color: $secondary-color;
-				text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-			}
-			input, textarea {
-				display: block;
-				margin-bottom: 10px;
-				padding: 8px 10px;
-				font-size: 14px;
-				background-color: #fff;
-				border: 1px solid #fff;;
-				border-radius: 0 3px 3px 0;
-			}
-			input {
-				width: 200px;
-				height: 14px;
-			}
-			textarea {
-				width: 400px;
-				height: 150px;
-			}
-			input#rushee_image {
-				border: none;
-				width: 220px;
-				height: 20px;
-				vertical-align: middle;
-				font-size: 12px;
-				color: #fff;
-			}
-			> input:last-child {
-				margin: 15px 0 0 0;
+				clear: both;
+				margin: 55px 0 0 0;
 				width: 150px;
 				height: 2.4em;
 				color: $primary-color;
 				background-color: $secondary-color;
+				border: 1px solid $secondary-color;
+				border-radius: 3px;
 				box-shadow: 0 3px 0 #333;
+			}
+		}
+	}
+	@media(min-width: 321px) {
+		section#new-rushee-form {
+
+			form {
+
+				div#new-rushee-quick-info {
+					float: left;
+					overflow: auto;
+
+					div.new-rushee-input-item {
+						width: 200px;
+
+						input#name {
+							width: 151px;
+						}
+						input#age {
+							width: 149px;
+						}
+						input#major {
+							width: 140px;
+						}
+						input#hometown {
+							width: 148px;
+						}
+						input#campus-involvement {
+							width: 146px;
+						}
+						input#facebook-link {
+							width: 155px;
+						}
+					}
+				}
+				div#new-rushee-rushee-summary {
+
+					textarea {
+						width: 189px;
+						font-size: 16px;
+					}	
+				}
+			}
+		}
+	}
+	@media(min-width: 481px) {
+		section#new-rushee-form {
+
+			form {
+
+				div#new-rushee-rushee-summary {
+
+					textarea {
+						width: 480px;
+					}	
+				}
 			}
 		}
 	}
@@ -726,48 +1150,188 @@ main#New-Rushee {
 /* Edit rushee page */
 main#Edit-Rushee {
 
-	section:first-child {
+	section#edit-rushee-form{
 
 		form {
 			margin-top: 20px;
 
-			label {
+			img#rushee-image {
+				display: block;
+			}
+			> label {
 				display: block;
 				padding: 10px 0;
 				color: $secondary-color;
 				text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 			}
-			input, textarea {
-				display: block;
-				margin-bottom: 10px;
-				padding: 8px 10px;
-				font-size: 14px;
-				border: 1px solid $secondary-color;
-				border-radius: 3px;
-			}
-			input {
-				width: 200px;
-				height: 14px;
-			}
-			textarea {
-				width: 400px;
-				height: 150px;
-			}
 			input#rushee_image {
-				border: none;
+				display: block;
+				margin-bottom: 20px;
 				width: 220px;
 				height: 20px;
 				vertical-align: middle;
 				font-size: 12px;
 				color: #fff;
+				border: none;
 			}
-			input:last-child {
-				margin: 15px 0 0 0;
+
+			div#new-rushee-quick-info {
+				margin-bottom: 30px;
+
+				div.new-rushee-input-item {
+					width: 100%;
+
+					i {
+						float: left;
+						padding: 0 5px;
+						height: 32px;
+						line-height: 32px;
+						font-size: 22px;
+						color: $secondary-color;
+						background-color: #fff;
+						border-radius: 3px 0 0 3px;
+					}
+					input {
+						display: block;
+						margin-bottom: 10px;
+						padding: 8px 10px;
+						height: 14px;
+						font-size: 12px;
+						background-color: #fff;
+						border: 1px solid #fff;
+						border-radius: 0 3px 3px 0;
+					}
+					input#name {
+						width: 255px;
+					}
+					input#age {
+						width: 253px;
+					}
+					input#major {
+						width: 244px;
+					}
+					input#hometown {
+						width: 252px;
+					}
+					input#campus-involvement {
+						width: 250px;
+					}
+					input#facebook-link {
+						width: 259px;
+					}
+				}
+				label {
+					display: block;
+					padding: 10px 0;
+					color: $secondary-color;
+					text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+				}
+				input#legacy {
+					display: inline-block;
+				}
+				input#legacy + span {
+					margin-left: 5px;
+					font-size: 12px;
+					color: #fff;
+				}
+			}
+			div#new-rushee-rushee-summary {
+				float: left;
+				overflow: auto;
+
+				i {
+					float: left;
+					padding: 0 8px;
+					height: 313px; //243
+					line-height: 35px;
+					font-size: 24px;
+					color: $secondary-color;
+					background-color: #fff;
+					border-radius: 3px 0 0 3px;
+				}
+				textarea {
+					display: block;
+					margin-bottom: 10px;
+					padding: 8px 10px;
+					width: 257px;
+					height: 295px; //225
+					font-size: 16px;
+					border: 1px solid #fff;
+					border-radius: 0 3px 3px 0;
+					outline: none;
+					resize: none;
+				}
+			}
+			input#new-rushee-submit {
+				display: block;
+				clear: both;
+				margin: 55px 0 0 0;
 				width: 150px;
 				height: 2.4em;
 				color: $primary-color;
 				background-color: $secondary-color;
+				border: 1px solid $secondary-color;
+				border-radius: 3px;
 				box-shadow: 0 3px 0 #333;
+			}
+		}
+	}
+	@media(min-width: 321px) {
+		section#edit-rushee-form {
+
+			form {
+
+				div#new-rushee-quick-info {
+					float: left;
+					overflow: auto;
+
+					div.new-rushee-input-item {
+						width: 200px;
+
+						input#name {
+							width: 151px;
+						}
+						input#age {
+							width: 149px;
+						}
+						input#major {
+							width: 140px;
+						}
+						input#hometown {
+							width: 148px;
+						}
+						input#campus-involvement {
+							width: 146px;
+						}
+						input#facebook-link {
+							width: 155px;
+						}
+					}
+				}
+				div#new-rushee-rushee-summary {
+
+					i {
+						margin-left: 20px;
+					}
+					textarea {
+						width: 189px;
+					}
+				}
+			}
+		}
+	}
+	@media(min-width: 481px) {
+		section#edit-rushee-form {
+
+			form {
+
+				div#new-rushee-rushee-summary {
+
+					textarea {
+						width: 480px;
+						font-size: 16px;
+					}	
+				}
 			}
 		}
 	}

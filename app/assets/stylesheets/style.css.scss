@@ -46,12 +46,13 @@ label, table, caption, {
 html {
 	height: 100%;
 	font-family: $font-stack;
-	background-image: -ms-linear-gradient(top left, #001E33 0%, #003752 100%);
-	background-image: -moz-linear-gradient(top left, #001E33 0%, #003752 100%);
-	background-image: -o-linear-gradient(top left, #001E33 0%, #003752 100%);
-	background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #001E33), color-stop(1, #003752));
-	background-image: -webkit-linear-gradient(top left, #001E33 0%, #003752 100%);
-	background-image: linear-gradient(to bottom right, #001E33 0%, #003752 100%);
+	// background-image: -ms-linear-gradient(top left, #001E33 0%, #003752 100%);
+	// background-image: -moz-linear-gradient(top left, #001E33 0%, #003752 100%);
+	// background-image: -o-linear-gradient(top left, #001E33 0%, #003752 100%);
+	// background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0, #001E33), color-stop(1, #003752));
+	// background-image: -webkit-linear-gradient(top left, #001E33 0%, #003752 100%);
+	// background-image: linear-gradient(to bottom right, #001E33 0%, #003752 100%);
+	background-color: #003752;
 	background-attachment: fixed;
 
 	body {
@@ -244,11 +245,11 @@ main#Home {
 			padding-top: 240px;
 
 			h1 {
-				font-size: 80px;
+				font-size: 60px;
 				margin-bottom: 10px;
 			}
 			h2 {
-				font-size: 24px;
+				font-size: 18px;
 			}
 		}
 	}

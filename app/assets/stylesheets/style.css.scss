@@ -59,6 +59,17 @@ html {
 		.wrapper {
 			width: 100%;
 
+			div.alert {
+				z-index: 10001;
+				position: absolute;
+				top: 48px;
+				left: 0;
+				padding: 10px 10px;
+				width: calc(100% - 20px);
+				text-align: center;
+				color: #fff;
+				background-color: rgba(173, 228, 255, 0.7);
+			}
 			main {
 				margin: 0 auto;
 				padding: 70px 0 20px 0;
@@ -929,6 +940,7 @@ main#Rushee {
 				padding: 10px;
 
 				div.modal-like {
+					margin-bottom: 10px;
 					width: 60px;
 					height: 60px;
 					overflow: hidden;
@@ -1005,22 +1017,22 @@ main#New-Rushee {
 						outline: none;
 					}
 					input#name {
-						width: 255px;
-					}
-					input#age {
 						width: 253px;
 					}
+					input#age {
+						width: 251px;
+					}
 					input#major {
-						width: 244px;
+						width: 242px;
 					}
 					input#hometown {
-						width: 252px;
-					}
-					input#campus-involvement {
 						width: 250px;
 					}
+					input#campus-involvement {
+						width: 248px;
+					}
 					input#facebook-link {
-						width: 259px;
+						width: 257px;
 					}
 				}
 				label {
@@ -1064,7 +1076,7 @@ main#New-Rushee {
 					display: block;
 					margin-bottom: 10px;
 					padding: 8px 10px;
-					width: 257px;
+					width: 255px;
 					height: 345px; //225
 					font-size: 12px;
 					border: 1px solid #fff;
@@ -1202,22 +1214,22 @@ main#Edit-Rushee {
 						border-radius: 0 3px 3px 0;
 					}
 					input#name {
-						width: 255px;
-					}
-					input#age {
 						width: 253px;
 					}
+					input#age {
+						width: 251px;
+					}
 					input#major {
-						width: 244px;
+						width: 242px;
 					}
 					input#hometown {
-						width: 252px;
-					}
-					input#campus-involvement {
 						width: 250px;
 					}
+					input#campus-involvement {
+						width: 248px;
+					}
 					input#facebook-link {
-						width: 259px;
+						width: 257px;
 					}
 				}
 				label {
@@ -1253,7 +1265,7 @@ main#Edit-Rushee {
 					display: block;
 					margin-bottom: 10px;
 					padding: 8px 10px;
-					width: 257px;
+					width: 255px;
 					height: 295px; //225
 					font-size: 16px;
 					border: 1px solid #fff;

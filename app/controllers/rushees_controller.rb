@@ -31,7 +31,6 @@ class RusheesController < ApplicationController
 
   def new
     @rushee = current_user.rushees.build
-    flash[:notice] = "Rushee successfully added"
   end
 
   def edit

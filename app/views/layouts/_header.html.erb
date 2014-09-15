@@ -3,7 +3,9 @@
     <nav>
         <%= link_to "THE BOOK", "/rushees" %>
 
-        <i id="header-menu" class="fa fa-bars"></i>
+        <% if current_user %>
+            <i id="header-menu" class="fa fa-bars"></i>
+        <% end %>
         <nav>
             <ul> 
                 <li><%= link_to "Home", "/rushees" %></li>

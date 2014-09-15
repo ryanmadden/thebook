@@ -49,7 +49,7 @@ class CommentsController < ApplicationController
     def correct_user
       if current_user.id <= 3
       else
-        @comment = current_user.comment.find_by(id: params[:id])
+        @comment = current_user.comments.find_by(id: params[:id])
         redirect_to rushees_path, notice: "You think you're clever, don't you" if @comment.nil?
       end
     end

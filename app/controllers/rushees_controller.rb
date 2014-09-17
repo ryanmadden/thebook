@@ -34,7 +34,7 @@ class RusheesController < ApplicationController
   end
 
   def edit
-     @rushee = Rushee.find(params[:id])
+    # @rushee = Rushee.find(params[:id])
   end
 
   def offered

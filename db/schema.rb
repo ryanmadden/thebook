@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140831200521) do
+ActiveRecord::Schema.define(version: 20140917202016) do
 
   create_table "comments", force: true do |t|
     t.datetime "created_at"
@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 20140831200521) do
   create_table "rushees", force: true do |t|
     t.string   "name"
     t.string   "age"
-    t.string   "bio"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
@@ -75,6 +74,7 @@ ActiveRecord::Schema.define(version: 20140831200521) do
     t.boolean  "bid_rejected"
     t.boolean  "bid_tabled"
     t.boolean  "legacy"
+    t.text     "bio"
   end
 
   add_index "rushees", ["cached_votes_down"], name: "index_rushees_on_cached_votes_down"

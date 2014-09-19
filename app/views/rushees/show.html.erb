@@ -12,7 +12,9 @@
             <div class="rushee-status bid-offered">Has bid</div>  
         <% end %>
         
-        <%= image_tag @rushee.image.url() %>
+        <div class="rushee-image-wrapper">
+            <%= image_tag @rushee.image.url() %>
+        </div>
 
         <ul class="rushee-stats">   
             <% if current_user.voted_for? @rushee %>

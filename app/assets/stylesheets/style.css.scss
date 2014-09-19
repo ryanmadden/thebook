@@ -430,10 +430,16 @@ main#Rushee {
 		div.rushee-status.bid-tabled { background-color: rgba(222, 204, 16, 0.7); }
 		div.rushee-status.bid-refused { background-color: rgba(255, 104, 19, 0.7); }
 		div.rushee-status.rip-corded { background-color: rgba(217, 40, 18, 0.7); }
-		img {
-			display: block;
-			width: $mobile-rushee-info-width;
-			border-radius: 2px 2px 0 0;
+		div.rushee-image-wrapper {
+			width: 100%;
+			max-height: 300px;
+			overflow: hidden;
+
+			img {
+				display: block;
+				width: $mobile-rushee-info-width;
+				border-radius: 2px 2px 0 0;
+			}			
 		}
 		ul.rushee-stats {
 			width: 100%;

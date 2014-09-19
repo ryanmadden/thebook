@@ -28,7 +28,9 @@
                         <div class="rushee-status bid-offered">Has bid</div>   
                     <% end %>
 
-                    <%= image_tag rushee.image.url() %>
+                    <div class="rushee-image-wrapper">
+                        <%= image_tag rushee.image.url() %>
+                    </div>
 
                     <div class="rushee-info">
                         <h2><%= link_to rushee.name, rushee_path(rushee) %></h2>

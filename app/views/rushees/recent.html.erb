@@ -6,11 +6,11 @@
 
         <span>Sort by</span>
         <select>
-            <option selected="selected" value="rushees">Random</option>
+            <option value="rushees">Random</option>
             <option value="top">Likes</option>
             <option value="views">Views</option>
             <option value="comments">Comments</option>
-            <option value="recent">Most Recent</option>
+            <option selected="selected" value="recent">Most Recent</option>
         </select>
 
         <div id="masonry-container" class="transitions-enabled has-gutters">
@@ -28,7 +28,9 @@
                         <div class="rushee-status bid-offered">Has bid</div>   
                     <% end %>
 
-                    <%= image_tag rushee.image.url() %>
+                    <div class="rushee-image-wrapper">
+                        <%= image_tag rushee.image.url() %>
+                    </div>
 
                     <div class="rushee-info">
                         <h2><%= link_to rushee.name, rushee_path(rushee) %></h2>

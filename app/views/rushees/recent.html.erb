@@ -2,8 +2,6 @@
 
     <section id="rushees-list">
 
-        <h1>Rushees</h1>
-
         <span>Sort by</span>
         <select>
             <option value="rushees">Random</option>
@@ -62,7 +60,19 @@
             <% end %>
 
         </div>
-
     </section>
 
+    <section id="rushees-news">
+        <ul class="rushees-news-list">
+        <% @comments.each do |v| %>
+            <li class="news-item">
+                <%= image_tag v.rushee.image %>
+                <div class="news-comment">
+                    <span class="news-comment-text"><%= v.body%></span>
+                    <span class="news-commenter">- <%= v.user.name %></span>
+                </div>
+            </li>
+            <% end%>
+        </ul>
+    </section>
 </main>

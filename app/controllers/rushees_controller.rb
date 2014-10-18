@@ -10,6 +10,7 @@ class RusheesController < ApplicationController
 
   def recent
     @rushees = Rushee.all.order("created_at DESC")
+    @comments = Comment.all.order("created_at DESC")
   end
 
   def top

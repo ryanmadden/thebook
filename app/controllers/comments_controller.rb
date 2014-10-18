@@ -40,6 +40,8 @@ class CommentsController < ApplicationController
     end
   end
 
+
+
   private
 
     def new_comment_params

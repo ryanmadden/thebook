@@ -120,6 +120,12 @@ $(document).ready(function() {
 			$('header nav nav').show();
 		}
 	};
+	// Set rushees news section height to window height minus header
+	var setRusheesNewsHeight = function() {
+		var windowHeight = $(window).height();
+		var headerHeight = $('header').height();
+		$('main#Rushees section#rushees-news').height(windowHeight - headerHeight);
+	};
 
 
 	/*
@@ -128,6 +134,7 @@ $(document).ready(function() {
 
 	var animated, navPosition;
 	setGlobalsAndInitiate();
+	setRusheesNewsHeight();
 
 
 	/*

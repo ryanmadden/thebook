@@ -310,6 +310,13 @@ main#Rushees {
 				div.rushee-status.bid-tabled { background-color: rgba(222, 204, 16, 0.7); }
 				div.rushee-status.bid-refused { background-color: rgba(255, 104, 19, 0.7); }
 				div.rushee-status.rip-corded { background-color: rgba(217, 40, 18, 0.7); }
+				div.rushee-legacy {
+					position: absolute;
+					bottom: 0;
+					right: 20px;
+					width: 20px;
+					background-color: #fff;
+				}
 				div.rushee-image-wrapper {
 					width: 100%;
 					max-height: 350px;

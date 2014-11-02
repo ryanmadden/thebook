@@ -68,5 +68,21 @@
         </div>
 
     </section>
-
+    
+    <section id="rushees-news">
+        <ul class="rushees-news-list">
+            <% @comments.each do |v| %>
+                <li class="news-item">
+                    <%= link_to rushee_path(v.rushee) %>
+                    <div class="news-comment-image-wrapper">
+                        <%= image_tag v.user.image %>
+                    </div>
+                    <div class="news-comment">
+                        <span class="news-commenter">@<%= v.rushee.name %>:</span>
+                        <span class="news-comment-text">"<%= v.body[0, 30]%>..."</span>
+                    </div>
+                </li>
+            <% end%>
+        </ul>
+    </section>
 </main>

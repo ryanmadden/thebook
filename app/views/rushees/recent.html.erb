@@ -71,7 +71,7 @@
                     </div>
                     <div class="news-comment">
                         <span class="news-commenter">@<%= v.rushee.name %>:</span>
-                        <span class="news-comment-text">"<%= v.body%>"</span>
+                        <span class="news-comment-text">"<%= v.body[0, 45]%>..."</span>
                     </div>
                 </li>
             <% end%>

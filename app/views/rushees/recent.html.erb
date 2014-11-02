@@ -63,7 +63,7 @@
 
     <section id="rushees-news">
         <ul class="rushees-news-list">
-            <% @comments.first(30).each do |v| %>
+            <% @comments.first(20).each do |v| %>
                 <li class="news-item">
                     <%= link_to rushee_path(v.rushee) %>
                     <div class="news-comment-image-wrapper">

@@ -146,6 +146,10 @@ $(document).ready(function() {
 		var rushee = $(this)
 		redirectToRushee(rushee);
 	});
+	$('li.news-item').click(function() {
+		console.log($(this).find('a').html());
+		window.location = $(this).find('a').html();
+	});
 	// Images load -> initiate masonry
 	$('#masonry-container').imagesLoaded(function() {
 		var container = $('#masonry-container');
@@ -208,6 +212,13 @@ $(document).ready(function() {
 	$('div.brother-likes-container').imagesLoaded(function() {
 		$('div.brother-like').each(function() {
 			var element = $(this);
+			var selector = 'img';
+			setLandscapeOrPortraitClass(element, selector);
+		});
+	});
+	$('ul.rushees-news-list').imagesLoaded(function() {
+		$('li.news-item').each(function() {
+			var element = $(this).children($('div.news-comment-image-wrapper'));
 			var selector = 'img';
 			setLandscapeOrPortraitClass(element, selector);
 		});

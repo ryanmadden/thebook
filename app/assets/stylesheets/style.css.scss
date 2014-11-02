@@ -408,6 +408,7 @@ main#Rushees {
 		margin: 0 0 0 50px;
 		padding-bottom: 0;
 		width: calc(100% - 50px);
+		max-width: none;
 
 		section#rushees-list {
 			float: left;
@@ -418,7 +419,7 @@ main#Rushees {
 			float: right;
 			margin-top: -22px;
 			width: 250px;
-			overflow: scroll;
+			overflow-y: scroll;
 
 			ul.rushees-news-list {
 				width: 100%;
@@ -429,30 +430,44 @@ main#Rushees {
 					height: 75px;
 					background-color: #e5e5e5;
 					border-bottom: 1px solid #aaa;
+					cursor: pointer;
 
-					> img {
+					> a {
+						display: none;
+					}
+					div.news-comment-image-wrapper {
 						display: inline-block;
+						overflow: hidden;
 						width: 75px;
+						height: 75px;
+
+						> img.portrait {
+							width: 100%;
+							height: auto;
+						}
+						> img.landscape {
+							width: auto;
+							height: 100%;
+						}
 					}
 					div.news-comment {
 						display: inline-block;
 						margin-top: 10px;
-						margin-right: 10px;
+						margin-left: 10px;
 						vertical-align: top;
-						text-align: right;
+						text-align: left;
 						width: calc(100% - 80px - 10px);
 
 						span {
-							color: #555;
-						}
-
-						span.news-comment-text {
-							font-size: 15px;
-							// color: 
+							color: #333;
 						}
 						span.news-commenter {
-							display: block;
 							font-size: 15px;
+							font-weight: bold;
+						}
+						span.news-comment-text {
+							text-align: right;
+							font-size: 14px;
 						}
 					}
 				}

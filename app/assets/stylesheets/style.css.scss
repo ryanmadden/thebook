@@ -412,7 +412,7 @@ main#Rushees {
 
 		section#rushees-list {
 			float: left;
-			width: calc(100% - 250px - 50px - 25px);
+			width: calc(100% - 280px - 50px - 25px);
 		}
 		section#rushees-news {
 			position: fixed;
@@ -423,7 +423,7 @@ main#Rushees {
 			overflow-y: scroll;
 
 			ul.rushees-news-list {
-				width: 250px;
+				width: 280px;
 				list-style: none;
 
 				li.news-item {
@@ -468,7 +468,7 @@ main#Rushees {
 						}
 						span.news-comment-text {
 							text-align: right;
-							font-size: 14px;
+							font-size: 12px;
 						}
 					}
 				}

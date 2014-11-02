@@ -262,9 +262,6 @@ main#Rushees {
 
 	section#rushees-list {
 
-		h1 {
-			margin-bottom: 30px;
-		}
 		span {
 			margin-right: 5px;
 			color: #eee;
@@ -313,6 +310,13 @@ main#Rushees {
 				div.rushee-status.bid-tabled { background-color: rgba(222, 204, 16, 0.7); }
 				div.rushee-status.bid-refused { background-color: rgba(255, 104, 19, 0.7); }
 				div.rushee-status.rip-corded { background-color: rgba(217, 40, 18, 0.7); }
+				div.rushee-legacy {
+					position: absolute;
+					bottom: 0;
+					right: 20px;
+					width: 20px;
+					background-color: #fff;
+				}
 				div.rushee-image-wrapper {
 					width: 100%;
 					max-height: 350px;
@@ -371,6 +375,9 @@ main#Rushees {
 			}
 		}
 	}
+	section#rushees-news {
+		display: none;
+	}
 	@media(min-width: 321px) {
 		section#rushees-list {
 
@@ -393,8 +400,76 @@ main#Rushees {
 
 				> div.masonry-rushee {
 					width: 300px;
+				}
+			}
+		}
+	}
+	@media(min-width: 800px) {
+		margin: 0 0 0 50px;
+		padding-bottom: 0;
+		width: calc(100% - 50px);
+		max-width: none;
 
+		section#rushees-list {
+			float: left;
+			width: calc(100% - 250px - 50px - 25px);
+		}
+		section#rushees-news {
+			display: block;
+			float: right;
+			margin-top: -22px;
+			width: 250px;
+			overflow-y: scroll;
 
+			ul.rushees-news-list {
+				width: 100%;
+				list-style: none;
+
+				li.news-item {
+					width: 100%;
+					height: 75px;
+					background-color: #e5e5e5;
+					border-bottom: 1px solid #aaa;
+					cursor: pointer;
+
+					> a {
+						display: none;
+					}
+					div.news-comment-image-wrapper {
+						display: inline-block;
+						overflow: hidden;
+						width: 75px;
+						height: 75px;
+
+						> img.portrait {
+							width: 100%;
+							height: auto;
+						}
+						> img.landscape {
+							width: auto;
+							height: 100%;
+						}
+					}
+					div.news-comment {
+						display: inline-block;
+						margin-top: 10px;
+						margin-left: 10px;
+						vertical-align: top;
+						text-align: left;
+						width: calc(100% - 80px - 10px);
+
+						span {
+							color: #333;
+						}
+						span.news-commenter {
+							font-size: 15px;
+							font-weight: bold;
+						}
+						span.news-comment-text {
+							text-align: right;
+							font-size: 14px;
+						}
+					}
 				}
 			}
 		}

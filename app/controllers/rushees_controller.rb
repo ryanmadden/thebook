@@ -3,6 +3,9 @@ class RusheesController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :admin, only: [:offered, :unoffered, :dropped, :undropped, :tabled, :untabled, :rejected, :unrejected]
 
+  def stats
+    @rushees = Rushee.all.shuffle
+  end
 
   def index
     @rushees = Rushee.all.shuffle

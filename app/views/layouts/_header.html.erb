@@ -9,6 +9,7 @@
         <nav>
             <ul> 
                 <li><%= link_to "Home", "/rushees" %></li>
+                <li><%= link_to "Stats", stats_path %></li>
 
                 <% if current_user %>
                     <li><%= link_to "Add Rushee", new_rushee_path %></li>

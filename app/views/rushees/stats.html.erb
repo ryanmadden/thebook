@@ -4,8 +4,8 @@
 
         <h1>Rush Overview</h1>
         <div id="masonry-container" class="transitions-enabled has-gutters">
-            <div class="masonry-rushee">
-                <h2>Bids Given</h2>
+            <div class="masonry-rushee" id="bidlist">
+                <h2 id="bidtitle">Bids Given</h2>
                 <% @rushees.each do |rushee| %>
                     <% if rushee.bid_offered? %>
                         <div class="rushee-list">

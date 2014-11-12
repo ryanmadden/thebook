@@ -153,6 +153,11 @@ $(document).ready(function() {
 		redirectToRushee(rushee);
 	});
 
+	//Add number to bids given on stats page
+	$('#stats-list').imagesLoaded(function() {
+		$('#bidtitle').text($('#bidtitle').text() + ' (' + $('#bidlist .rushee-list').length + ')');
+	});
+
 	$('li.news-item').click(function() {
 		console.log($(this).find('a').html());
 		window.location = $(this).find('a').html();

@@ -5,6 +5,8 @@ class RusheesController < ApplicationController
 
   def stats
     @rushees = Rushee.all.shuffle
+    @rushees_likes = Rushee.all.order(:cached_votes_total => :desc)
+    @rushees_comments = Rushee.all.order(:comments_count => :desc)
   end
 
   def index

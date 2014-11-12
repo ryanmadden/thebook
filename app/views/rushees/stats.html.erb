@@ -3,12 +3,12 @@
     <section id="stats-list">
 
         <h1>Rush Overview</h1>
-        <div id="list-container">
-            <div id="bids-given">
+        <div id="masonry-container" class="transitions-enabled has-gutters">
+            <div class="masonry-rushee">
                 <h2>Bids Given</h2>
                 <% @rushees.each do |rushee| %>
                     <% if rushee.bid_offered? %>
-                        <div class="list-rushee">
+                        <div class="rushee-list">
                             <div class="rushee-image-wrapper">
                                 <%= image_tag rushee.image.url() %>
                             </div>
@@ -19,9 +19,31 @@
                     <% end %>
                 <% end %>
             </div>
-            <div id="most-likes">
+            <div class="masonry-rushee">
+                <h2>Most Likes (no bid)</h2>
+                <% @rushees_likes.first(10).each do |rushee| %>
+                    <div class="rushee-list">
+                        <div class="rushee-image-wrapper">
+                            <%= image_tag rushee.image.url() %>
+                        </div>
+                        <div class="rushee-info">
+                            <h2><%= link_to rushee.name, rushee_path(rushee) %></h2>
+                        </div>
+                    </div>
+                <% end %>
             </div>       
-            <div id="most-comments">
+            <div class="masonry-rushee">
+                <h2>Most Comments (no bid)</h2>
+                <% @rushees_comments.first(10).each do |rushee| %>
+                    <div class="rushee-list">
+                        <div class="rushee-image-wrapper">
+                            <%= image_tag rushee.image.url() %>
+                        </div>
+                        <div class="rushee-info">
+                            <h2><%= link_to rushee.name, rushee_path(rushee) %></h2>
+                        </div>
+                    </div>
+                <% end %>
             </div> 
         </div>
 

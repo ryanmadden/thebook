@@ -22,27 +22,31 @@
             <div class="masonry-rushee">
                 <h2>Most Likes (no bid)</h2>
                 <% @rushees_likes.first(10).each do |rushee| %>
-                    <div class="rushee-list">
-                        <div class="rushee-image-wrapper">
-                            <%= image_tag rushee.image.url() %>
+                    <% if !rushee.bid_offered? %>
+                        <div class="rushee-list">
+                            <div class="rushee-image-wrapper">
+                                <%= image_tag rushee.image.url() %>
+                            </div>
+                            <div class="rushee-info">
+                                <h2><%= link_to rushee.name, rushee_path(rushee) %></h2>
+                            </div>
                         </div>
-                        <div class="rushee-info">
-                            <h2><%= link_to rushee.name, rushee_path(rushee) %></h2>
-                        </div>
-                    </div>
+                    <% end %>
                 <% end %>
             </div>       
             <div class="masonry-rushee">
                 <h2>Most Comments (no bid)</h2>
                 <% @rushees_comments.first(10).each do |rushee| %>
-                    <div class="rushee-list">
-                        <div class="rushee-image-wrapper">
-                            <%= image_tag rushee.image.url() %>
+                    <% if !rushee.bid_offered? %>
+                        <div class="rushee-list">
+                            <div class="rushee-image-wrapper">
+                                <%= image_tag rushee.image.url() %>
+                            </div>
+                            <div class="rushee-info">
+                                <h2><%= link_to rushee.name, rushee_path(rushee) %></h2>
+                            </div>
                         </div>
-                        <div class="rushee-info">
-                            <h2><%= link_to rushee.name, rushee_path(rushee) %></h2>
-                        </div>
-                    </div>
+                    <% end %>
                 <% end %>
             </div> 
         </div>

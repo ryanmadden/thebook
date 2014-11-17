@@ -528,20 +528,18 @@ main#Stats {
 					height: 60px;
 					overflow: hidden;
 					float: left;
-					position: relative;
 
 					img {
-						width: 100%;
-						display: block;
-					    min-width: 100%;
-					    min-height: 100%;
+						display: inline-block;
 					    margin: auto;
-					    position: absolute;
-					    top: -100%;
-					    right: -100%;
-					    bottom: -100%;
-					    left: -100%;
 						border-radius: 4px 0 0 4px;
+					}
+					img.portrait {
+						width: 100%;
+					}
+
+					img.landscape {
+						height: 100%;
 					}
 				}
 				div.rushee-info {

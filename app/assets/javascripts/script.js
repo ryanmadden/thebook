@@ -153,8 +153,13 @@ $(document).ready(function() {
 		redirectToRushee(rushee);
 	});
 
-	//Add number to bids given on stats page
+	//Add number to bids given on stats page, fix image showing bug
 	$('#stats-list').imagesLoaded(function() {
+		$('div.rushee-image-wrapper img').each(function() {
+			var element = $(this).parent();
+			var selector = 'img';
+			setLandscapeOrPortraitClass(element, selector);
+		});
 		$('#bidtitle').text($('#bidtitle').text() + ' (' + $('#bidlist .rushee-list').length + ')');
 	});
 
